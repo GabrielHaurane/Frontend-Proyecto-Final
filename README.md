@@ -1,2 +1,2 @@
-# Poyecto - Hotel Code
+# Proyecto - Hotel Code
 
