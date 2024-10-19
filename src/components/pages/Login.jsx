@@ -25,9 +25,12 @@ const Login = ({ setUsuarioLogueado }) => {
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Registro Exitoso",
-            text: `Gracias por unirte a Hotel Code`,
+            text: `Gracias por unirte a Hotel Code, ya puedes Iniciar Sesión`,
             icon: "success",
-          });
+          }).then(()=>{
+            reset()
+            setRegistrarse(false)
+          })
         } else {
           Swal.fire({
             title: "Error",
