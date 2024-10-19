@@ -22,7 +22,11 @@ export const registro = async (usuarioNuevo) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(usuarioNuevo),
+      body: JSON.stringify({
+        email: usuarioNuevo.email,
+        password: usuarioNuevo.password,
+        confirmarPassword: usuarioNuevo.confirmarPassword,
+      }),
     });
     return respuesta;
   } catch (error) {

@@ -19,48 +19,38 @@ const Login = ({ setUsuarioLogueado }) => {
   const onsubmit = async (usuario) => {
     try {
       if (registrarse) {
-        if (usuario.password !== usuario.confirmarPassword) {
-          Swal.fire({
-            title: "Error",
-            text: "Las contraseñas no coinciden",
-            icon: "error",
-          });
-          return;
-        }
-        const respuesta = await registro({
-          email: usuario.email,
-          password: usuario.password,
-        });
-        const datos = await  respuesta.json();
+        const respuesta = await registro(usuario);
+        const datos = await respuesta.json();
 
-        if (respuesta.status === 201) {
+        if (respuesta.status === 200) {
           Swal.fire({
             title: "Registro Exitoso",
-            text: `Registro Exitoso, Bienvenido ${datos.email}`,
+            text: `Gracias por unirte a Hotel Code`,
             icon: "success",
           });
-          reset();
-          setRegistrarse(false);
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: datos.mensaje || "No se pudo completar el registro",
+            icon: "error",
+          });
         }
       } else {
-        const respuesta = await login({
-          email: usuario.email,
-          password: usuario.password,
-        });
-        const datos = await respuesta.json()
+        const respuesta = await login(usuario);
+        const datos = await respuesta.json();
+
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Usuario Logueado",
             text: `Bienvenido a HotelCode`,
             icon: "success",
           });
-          const datos = await respuesta.json();
-          setUsuarioLogueado({ email: datos.email, token: datos.token });
-          sessionStorage.setItem(
-            "userKey",
-            JSON.stringify({ email: datos.email, token: datos.token })
-          );
-          navegacion('/login')
+        } else {
+          Swal.fire({
+            title: "Error",
+            text: datos.mensaje || "Email o Password incorrecto",
+            icon: "error",
+          });
         }
       }
     } catch (error) {
@@ -118,7 +108,7 @@ const Login = ({ setUsuarioLogueado }) => {
                 <Form.Group controlId="formGroupPassword">
                   <Form.Label>Contraseña</Form.Label>
                   <Form.Control
-                  className="text-center"
+                    className="text-center"
                     type="password"
                     placeholder="Ej: 123aA45$"
                     {...register("password", {
@@ -143,7 +133,7 @@ const Login = ({ setUsuarioLogueado }) => {
                   <Form.Group controlId="formGroupPassword">
                     <Form.Label>Repetir Contraseña</Form.Label>
                     <Form.Control
-                    className="text-center"
+                      className="text-center"
                       type="password"
                       placeholder="Ej: 123aA45$"
                       {...register("confirmarPassword", {
