@@ -1,16 +1,83 @@
-import React from "react";
+import React, { useState } from "react";
 import { Row, Container, Form, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { login, registro } from "../../helpers/queries.usuarios.js";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Login = ({ setUsuarioLogueado }) => {
+  const [registrarse, setRegistrarse] = useState(false);
+  const navegacion = useNavigate();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
-  const onsubmit = () => {};
 
+  const onsubmit = async (usuario) => {
+    try {
+      if (registrarse) {
+        if (usuario.password !== usuario.confirmarPassword) {
+          Swal.fire({
+            title: "Error",
+            text: "Las contraseñas no coinciden",
+            icon: "error",
+          });
+          return;
+        }
+        const respuesta = await registro({
+          email: usuario.email,
+          password: usuario.password,
+        });
+        const datos = await  respuesta.json();
+
+        if (respuesta.status === 201) {
+          Swal.fire({
+            title: "Registro Exitoso",
+            text: `Registro Exitoso, Bienvenido ${datos.email}`,
+            icon: "success",
+          });
+          reset();
+          setRegistrarse(false);
+        }
+      } else {
+        const respuesta = await login({
+          email: usuario.email,
+          password: usuario.password,
+        });
+        const datos = await respuesta.json()
+        if (respuesta.status === 200) {
+          Swal.fire({
+            title: "Usuario Logueado",
+            text: `Bienvenido a HotelCode`,
+            icon: "success",
+          });
+          const datos = await respuesta.json();
+          setUsuarioLogueado({ email: datos.email, token: datos.token });
+          sessionStorage.setItem(
+            "userKey",
+            JSON.stringify({ email: datos.email, token: datos.token })
+          );
+          navegacion('/login')
+        }
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Ocurrió un error",
+        text: registrarse
+          ? "No se pudo completar el registro"
+          : "Email o Password incorrecto",
+        icon: "error",
+      });
+    }
+  };
+
+  const cambiarFormulario = () => {
+    setRegistrarse(!registrarse);
+    reset();
+  };
 
   return (
     <section className="container text-center my-5">
@@ -19,7 +86,9 @@ const Login = ({ setUsuarioLogueado }) => {
           <Card>
             <Card.Body>
               <div className="justify-content-center">
-                <Card.Title>Iniciar Sesión</Card.Title>
+                <Card.Title>
+                  {registrarse ? "Registrarse" : "Iniciar Sesión"}
+                </Card.Title>
               </div>
               <Form onSubmit={handleSubmit(onsubmit)}>
                 <Form.Group controlId="formGroupEmail">
@@ -49,8 +118,9 @@ const Login = ({ setUsuarioLogueado }) => {
                 <Form.Group controlId="formGroupPassword">
                   <Form.Label>Contraseña</Form.Label>
                   <Form.Control
-                    type="email"
-                    placeholder="********"
+                  className="text-center"
+                    type="password"
+                    placeholder="Ej: 123aA45$"
                     {...register("password", {
                       required: "La contraseña es un campo obligatorio",
                       minLength: {
@@ -69,12 +139,46 @@ const Login = ({ setUsuarioLogueado }) => {
                     {errors.password?.message}
                   </Form.Text>
                 </Form.Group>
+                {registrarse && (
+                  <Form.Group controlId="formGroupPassword">
+                    <Form.Label>Repetir Contraseña</Form.Label>
+                    <Form.Control
+                    className="text-center"
+                      type="password"
+                      placeholder="Ej: 123aA45$"
+                      {...register("confirmarPassword", {
+                        required: "La contraseña es un campo obligatorio",
+                        minLength: {
+                          value: 8,
+                          message:
+                            "La contraseña debe contener al menos 8 caracteres",
+                        },
+                        maxLength: {
+                          value: 100,
+                          message:
+                            "La contraseña no debe contener más de 320 caracteres",
+                        },
+                      })}
+                    />
+                    <Form.Text className="text-danger">
+                      {errors.confirmarPassword?.message}
+                    </Form.Text>
+                  </Form.Group>
+                )}
+
                 <div className="justify-content-center d-flex">
                   <Button type="submit" variant="success">
-                    Enviar
+                    {registrarse ? "Registrarse" : "Iniciar Sesion"}
                   </Button>
                 </div>
               </Form>
+              <div>
+                <p onClick={cambiarFormulario}>
+                  {registrarse
+                    ? "¿Ya tenes cuenta? Inicia sesión aquí"
+                    : "¿No tenes cuenta?  Registrate aquí"}
+                </p>
+              </div>
             </Card.Body>
           </Card>
         </Row>

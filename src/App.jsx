@@ -18,8 +18,8 @@ import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const usuario = JSON.parse(sessionStorage.getItem('userKey')) || '';
-  const [usuarioLogueado, setUsuarioLogeado] = useState(usuario)
+  const usuario = JSON.parse(sessionStorage.getItem('userKey')) || {};
+  const [usuarioLogueado, setUsuarioLogueado] = useState(usuario)
 
   return (
     <>
@@ -32,7 +32,7 @@ function App() {
         <Route exact path='/galeria' element={<Galeria></Galeria>}></Route>
         <Route exact path='/catalogo' element={<Catalogo></Catalogo>}></Route>
         <Route exact path='/detallehabitacion/:id' element={<DetalleHabitacion></DetalleHabitacion>}></Route>
-        <Route exact path='/login' element={<Login setUsuarioLogeado={setUsuarioLogeado}></Login>}></Route>
+        <Route exact path='/login' element={<Login setUsuarioLogeado={setUsuarioLogueado}></Login>}></Route>
         <Route exact path='/administrador/*' element={
           <RutasProtegidas>
             <RutasAdmin></RutasAdmin>
