@@ -1,10 +1,13 @@
 import Carousel from "react-bootstrap/Carousel";
-import { primeraImg, segundaImg, terceraImg } from "../assets/imagenes.js";
-import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import {
+  hotelImg,
+  primeraImg,
+  segundaImg,
+  terceraImg,
+} from "../assets/imagenes.js";
+import FormularioDisponibilidad from "./Habitaciones/FormularioDisponibilidad.jsx";
 
 const Inicio = () => {
-  
   return (
     <div className="mainSection">
       <Carousel interval={null}>
@@ -72,6 +75,68 @@ const Inicio = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      <div className="py-3 backC">
+        {<FormularioDisponibilidad></FormularioDisponibilidad>}
+      </div>
+      <div className="text-center py-2 Acerca text-white">
+      <h1 >Acerca del Hotel</h1>
+      </div>
+      <section className="d-flex text-white backS p-3">
+        <div className="pe-3">
+          <p className="fs-5">
+            El Hotel Code fue fundado en el año 1995 por unos visionarios
+            emprendedores y apasionados de la tecnología, Gabriel Haurane, Oscar
+            Ventura, Augusto Brito, quien siempre había soñado con fusionar lo
+            mejor de la hospitalidad tradicional con los avances tecnológicos
+            del futuro. Ubicado en una ciudad cosmopolita y vibrante, el hotel
+            abrió sus puertas como una joya de diseño moderno, con una promesa
+            clara: ofrecer una experiencia de lujo sofisticada con la mayor
+            innovación tecnológica disponible en la época.
+          </p>
+          <p className="fs-5">
+            Desde sus inicios, el Hotel Code rompió moldes al ser uno de los
+            primeros hoteles en implementar sistemas de domótica avanzada en
+            cada una de sus habitaciones, permitiendo a los huéspedes controlar
+            las luces, cortinas, y temperatura mediante paneles digitales.
+            Además, su equipo de desarrollo interno creó una plataforma
+            exclusiva que permitía a los clientes realizar check-ins
+            automatizados y gestionar todas sus necesidades durante su estancia
+            a través de una app propia, algo revolucionario para la década de
+            los 90.
+          </p>
+          <p className="fs-5">
+            Con los años, el hotel se consolidó como uno de los más prestigiosos
+            de la región, atrayendo a empresarios, artistas, y personalidades
+            del mundo de la tecnología y las startups. El Hotel Code no solo
+            ofrecía una estancia de lujo, sino que también se convirtió en un
+            centro de innovación, albergando conferencias tecnológicas,
+            lanzamientos de productos, y eventos exclusivos para los líderes del
+            sector.
+          </p>
+        </div>
+        <div className="w-50 d-flex align-self-center">
+          <img
+            className=""
+            src={hotelImg}
+            alt="First slide"
+            width={600}
+            height={400}
+          />
+        </div>
+      </section>
+      <div className="d-flex justify-content-center py-3 backC">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.106067952452!2d-65.20974728807246!3d-26.836578489931565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1729326016435!5m2!1ses-419!2sar"
+        width="800"
+        height="600"
+        style={{ border: 0 }}
+        allowFullScreen=""
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Google Maps"
+        
+      ></iframe>
+      </div>
     </div>
   );
 };

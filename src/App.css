@@ -20,6 +20,12 @@
 .backC{
     background-color: var(--gris-plomo);
 }
+.backS{
+  background-color: var(--azul-marino);
+}
+.Acerca{
+  background-color: var(--verde-esmeralda);
+}
 .mainSection{
     flex-grow: 1;
 }
@@ -41,4 +47,20 @@
     border-top: 5px solid #D4AF37; 
     margin: 10px auto;  
     opacity: 1;
+  }
+  .date-label {
+    cursor: pointer;
+    color: #007bff; /* Color azul Bootstrap */
+    text-decoration: underline; /* Subrayado para indicar que es clickeable */
+    margin-bottom: 5px; /* Espacio entre el label y el input */
+  }
+  .line-lateral {
+    height: 75px;  
+    border: none;
+    border-right: 5px solid #D4AF37; 
+    margin-right: 20px;  
+    opacity: 1;
+  }
+  .longi{
+    width: 65%;
   }

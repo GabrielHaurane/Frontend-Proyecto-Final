@@ -1,3 +1,4 @@
 export const primeraImg = 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/502665484.jpg?k=598ce30fea80a9ccf01215c66007eb816b469bd5cf71ef144098895b6a30004b&o=&hp=1'
 export const segundaImg = 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/501406255.jpg?k=88941fe4283cba82ab27fc8a47fe4db15f45849e88fd9086db83cee6c68be2bc&o=&hp=1'
 export const terceraImg = 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/500510566.jpg?k=8943b4e98efe4b16e087e7ae312e231cc57f0c09254426635b658161f50908be&o=&hp=1'
+export const hotelImg = 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/493489460.jpg?k=b101d4613bcd33bd4ac7c93a9e12b2c015d6559ea15e9ba6de42010f6b7e811d&o=&hp=1'
