@@ -6,3 +6,17 @@
     --beige-champagne: #E0C097;
     --verde-esmeralda: #2E8B57;
 }
+
+/* Estilos FormLogin */
+
+.texto-opcion {
+    cursor: pointer;
+}
+
+.texto-opcion:hover{
+    color: var(--verde-esmeralda) !important
+}
+
+.btnLogin:hover {
+    background-color: var(--azul-marino) !important
+}

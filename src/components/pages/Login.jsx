@@ -73,21 +73,23 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <section className="container text-center my-5">
+    <section className="container text-center my-5 ">
       <Container>
         <Row className="justify-content-center">
-          <Card>
+          <div className="col-lg-6 d-flex my-lg-5">
+            <h1 className="fst-italic text-primary">
+              {registrarse
+                ? "¡Creá tu cuenta y comenzá a navegar!"
+                : `¡Iniciá sesión y encontrá tu habitación ideal!`}
+            </h1>
+          </div>
+          <Card className="col-lg-6">
             <Card.Body>
-              <div className="justify-content-center">
-                <Card.Title>
-                  {registrarse ? "Registrarse" : "Iniciar Sesión"}
-                </Card.Title>
-              </div>
-              <Form onSubmit={handleSubmit(onsubmit)}>
+              <Form onSubmit={handleSubmit(onsubmit)} className="fw-bold">
                 <Form.Group controlId="formGroupEmail">
-                  <Form.Label>Correo Electrónico</Form.Label>
+                  <Form.Label>Correo Electrónico *</Form.Label>
                   <Form.Control
-                    className="text-center"
+                    className="text-center w-75 m-auto"
                     type="email"
                     placeholder="Ej: juanperez@email.com"
                     {...register("email", {
@@ -109,9 +111,9 @@ const Login = ({ setUsuarioLogueado }) => {
                   </Form.Text>
                 </Form.Group>
                 <Form.Group controlId="formGroupPassword">
-                  <Form.Label>Contraseña</Form.Label>
+                  <Form.Label>Contraseña *</Form.Label>
                   <Form.Control
-                    className="text-center"
+                    className="text-center w-75 m-auto"
                     type="password"
                     placeholder="Ej: 123aA45$"
                     {...register("password", {
@@ -134,9 +136,9 @@ const Login = ({ setUsuarioLogueado }) => {
                 </Form.Group>
                 {registrarse && (
                   <Form.Group controlId="formGroupPassword">
-                    <Form.Label>Repetir Contraseña</Form.Label>
+                    <Form.Label>Repetir Contraseña *</Form.Label>
                     <Form.Control
-                      className="text-center"
+                      className="text-center w-75 m-auto"
                       type="password"
                       placeholder="Ej: 123aA45$"
                       {...register("confirmarPassword", {
@@ -159,14 +161,14 @@ const Login = ({ setUsuarioLogueado }) => {
                   </Form.Group>
                 )}
 
-                <div className="justify-content-center d-flex">
-                  <Button type="submit" variant="success">
+                <div className="justify-content-center d-flex my-3">
+                  <Button type="submit" variant="success" className="btnLogin">
                     {registrarse ? "Registrarse" : "Iniciar Sesion"}
                   </Button>
                 </div>
               </Form>
               <div>
-                <p onClick={cambiarFormulario}>
+                <p onClick={cambiarFormulario} className="text-info texto-opcion">
                   {registrarse
                     ? "¿Ya tenes cuenta? Inicia sesión aquí"
                     : "¿No tenes cuenta?  Registrate aquí"}
