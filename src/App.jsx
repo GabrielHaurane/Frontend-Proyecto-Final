@@ -1,4 +1,3 @@
-import './App.css'
 import Menu from './components/common/Menu.jsx'
 import Footer from './components/common/Footer.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -16,6 +15,7 @@ import RutasAdmin from './components/routes/RutasAdmin.jsx'
 import RutasProtegidas from './components/routes/RutasProtegidas.jsx'
 import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
+import './App.css'
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('userKey')) || {};

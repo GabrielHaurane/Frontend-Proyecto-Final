@@ -73,19 +73,21 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <section className="container text-center my-5 ">
+    <section className="container text-center my-5 m-auto">
       <Container>
         <Row className="justify-content-center">
           <div className="col-lg-6 d-flex my-lg-5">
-            <h1 className="fst-italic text-primary">
+            <h1 className="fst-italic text-primary my-lg-5">
               {registrarse
                 ? "¡Creá tu cuenta y comenzá a navegar!"
                 : `¡Iniciá sesión y encontrá tu habitación ideal!`}
             </h1>
           </div>
-          <Card className="col-lg-6">
+          <Card className={`col-lg-6 text-center my-5 ${
+        registrarse ? "bg-registro" : "bg-login"
+      }`}>
             <Card.Body>
-              <Form onSubmit={handleSubmit(onsubmit)} className="fw-bold">
+              <Form onSubmit={handleSubmit(onsubmit)} className={`fw-bold ${registrarse? 'text-dark' : 'text-white'}`}>
                 <Form.Group controlId="formGroupEmail">
                   <Form.Label>Correo Electrónico *</Form.Label>
                   <Form.Control
@@ -168,7 +170,7 @@ const Login = ({ setUsuarioLogueado }) => {
                 </div>
               </Form>
               <div>
-                <p onClick={cambiarFormulario} className="text-info texto-opcion">
+                <p onClick={cambiarFormulario} className={`texto-opcion ${registrarse?'text-dark':'text-white'}`}>
                   {registrarse
                     ? "¿Ya tenes cuenta? Inicia sesión aquí"
                     : "¿No tenes cuenta?  Registrate aquí"}

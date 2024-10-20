@@ -13,10 +13,18 @@
     cursor: pointer;
 }
 
-.texto-opcion:hover{
-    color: var(--verde-esmeralda) !important
+p.texto-opcion:hover{
+    color: aqua !important;
 }
 
 .btnLogin:hover {
-    background-color: var(--azul-marino) !important
+    background-color: var(--azul-marino) 
+}
+
+.bg-registro{
+    background: var(--beige-champagne);
+}
+
+.bg-login{
+    background: var(--azul-marino);   
 }
