@@ -25,10 +25,10 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto w-100 d-flex justify-content-end">
             <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Inicio</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Quienes somos</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Contacto</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Galeria de imagenes</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Catalogo de habitaciones</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center' to='/quienessomos'>Quienes somos</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center' to='/contacto'>Contacto</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center' to='/galeria'>Galeria de imagenes</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center' to='/catalogo'>Catalogo de habitaciones</NavLink>
             {/* {
                 usuarioLogueado!==''?(
                     <>
@@ -38,7 +38,7 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
               ): */}
               <NavLink end className='nav-link text-white' to='/login'>Login</NavLink>
             {/* } */}
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Ajustes</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center' to='/ajustes'>Ajustes</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

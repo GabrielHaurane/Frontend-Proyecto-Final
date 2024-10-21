@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 const FormularioDisponibilidad = () => {
   const [fechaEntrada, setFechaEntrada] = useState("");
   const [fechaSalida, setFechaSalida] = useState("");
   const [adultos, setAdultos] = useState(1);
   const [ninos, setNinos] = useState(0);
+  const navegacion = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    console.log({
-      fechaEntrada,
-      fechaSalida,
-      adultos,
-      ninos,
+    navegacion("/catalogo", {
+      state:{fechaEntrada, fechaEntrada, adultos, ninos},
     });
   };
   const today = new Date().toISOString().split("T")[0];
@@ -56,32 +56,24 @@ const FormularioDisponibilidad = () => {
         <Form.Group controlId="formAdultos">
           <Form.Label>Cantidad de Adultos</Form.Label>
           <Form.Control
-            as="select"
+            type="number"
             value={adultos}
             onChange={(e) => setAdultos(e.target.value)}
+            min={1}
             required
           >
-            {[...Array(10).keys()].map((i) => (
-              <option key={i} value={i + 1}>
-                {i + 1}
-              </option>
-            ))}
           </Form.Control>
         </Form.Group>
 
         <Form.Group controlId="formNinos">
           <Form.Label>Cantidad de Niños</Form.Label>
           <Form.Control
-            as="select"
+            type="number"
             value={ninos}
             onChange={(e) => setNinos(e.target.value)}
+            min={0}
             required
           >
-            {[...Array(10).keys()].map((i) => (
-              <option key={i} value={i}>
-                {i}
-              </option>
-            ))}
           </Form.Control>
         </Form.Group>
 
