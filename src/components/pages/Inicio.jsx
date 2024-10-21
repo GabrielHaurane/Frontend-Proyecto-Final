@@ -81,8 +81,8 @@ const Inicio = () => {
       <div className="text-center py-2 Acerca text-white">
         <h1>Acerca del Hotel</h1>
       </div>
-      <section className="d-flex text-white backS p-3">
-        <div className="pe-3">
+      <section className="d-flex flex-wrap flex-column flex-lg-row text-white backS p-3">
+        <article className="pe-3 col-12 col-lg-6">
           <p className="fs-5">
             El Hotel Code fue fundado en el año 1995 por unos visionarios
             emprendedores y apasionados de la tecnología, Gabriel Haurane y
@@ -113,14 +113,14 @@ const Inicio = () => {
             lanzamientos de productos, y eventos exclusivos para los líderes del
             sector.
           </p>
-        </div>
-        <div className="w-50 d-flex align-self-center">
+        </article>
+        <div className="col-12 col-lg-6 d-flex align-self-center">
           <img
-            className=""
+            className="w-100"
             src={hotelImg}
-            alt="First slide"
-            width={600}
-            height={400}
+            alt="imagen del hotel"
+            
+            height={300}
           />
         </div>
       </section>
