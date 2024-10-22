@@ -1,10 +1,9 @@
-import React from 'react';
 
 const Administrador = () => {
     return (
-        <div>
+        <section className='mainSection container'>
             
-        </div>
+        </section>
     );
 };
 
