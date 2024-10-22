@@ -24,26 +24,38 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Menu></Menu>
-      <Routes>
-        <Route exact path='/' element={<Inicio></Inicio>} ></Route>
-        {/* <Route exact path='/quienessomos'element={<Quienes></Quienes>}></Route> */}
-        <Route exact path='/contacto' element={<Contacto></Contacto>}></Route>
-        <Route exact path='/galeria' element={<Galeria></Galeria>}></Route>
-        <Route exact path='/catalogo' element={<Catalogo></Catalogo>}></Route>
-        <Route exact path='/detallehabitacion/:id' element={<DetalleHabitacion></DetalleHabitacion>}></Route>
-        <Route exact path='/login' element={<Login setUsuarioLogeado={setUsuarioLogueado}></Login>}></Route>
-        <Route exact path='/administrador/*' element={
-          <RutasProtegidas>
-            <RutasAdmin></RutasAdmin>
-          </RutasProtegidas>
-        }></Route>
-        <Route exact path='/ajustes' element={<Ajustes></Ajustes>}></Route>
-        <Route exact path='*' element={<Error404></Error404>}></Route>
-      </Routes>
+        <Menu></Menu>
+        <Routes>
+          <Route exact path="/" element={<Inicio></Inicio>}></Route>
+          {/* <Route exact path='/quienessomos'element={<Quienes></Quienes>}></Route> */}
+          <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
+          <Route exact path="/galeria" element={<Galeria></Galeria>}></Route>
+          <Route exact path="/catalogo" element={<Catalogo></Catalogo>}></Route>
+          <Route
+            exact
+            path="/detallehabitacion/:id"
+            element={<DetalleHabitacion></DetalleHabitacion>}
+          ></Route>
+          <Route
+            exact
+            path="/login"
+            element={<Login setUsuarioLogueado={setUsuarioLogueado}></Login>}
+          ></Route>
+          <Route
+            exact
+            path="/administrador/*"
+            element={
+              <RutasProtegidas>
+                <RutasAdmin></RutasAdmin>
+              </RutasProtegidas>
+            }
+          ></Route>
+          <Route exact path="/ajustes" element={<Ajustes></Ajustes>}></Route>
+          <Route exact path="*" element={<Error404></Error404>}></Route>
+        </Routes>
       </BrowserRouter>
     </>
-  )
+  );
 }
 
 export default App

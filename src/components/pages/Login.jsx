@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Row, Container, Form, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { login, registro } from "../../helpers/queries.usuarios.js";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+// import logo from "../../assets/hotelCode.jpg";
 
 const Login = ({ setUsuarioLogueado }) => {
   const [registrarse, setRegistrarse] = useState(false);
@@ -27,10 +28,10 @@ const Login = ({ setUsuarioLogueado }) => {
             title: "Registro Exitoso",
             text: `Gracias por unirte a Hotel Code, ya puedes Iniciar Sesión`,
             icon: "success",
-          }).then(()=>{
-            reset()
-            setRegistrarse(false)
-          })
+          }).then(() => {
+            reset();
+            setRegistrarse(false);
+          });
         } else {
           Swal.fire({
             title: "Error",
@@ -40,14 +41,26 @@ const Login = ({ setUsuarioLogueado }) => {
         }
       } else {
         const respuesta = await login(usuario);
-        const datos = await respuesta.json();
+        console.log(respuesta)
+       
 
-        if (respuesta.status === 200) {
+        if (respuesta.ok) {
+           const datos = await respuesta.json();
+           console.log(datos);
           Swal.fire({
             title: "Usuario Logueado",
             text: `Bienvenido a HotelCode`,
             icon: "success",
           });
+          setUsuarioLogueado({ email: datos.email, token: datos.token });
+          sessionStorage.setItem(
+            "userKey",
+            JSON.stringify({
+              email: datos.email,
+              token: datos.token,
+            })
+          );
+          navegacion("/administrador");
         } else {
           Swal.fire({
             title: "Error",
@@ -73,21 +86,33 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <section className="container text-center my-5 m-auto">
+    <section className="container text-center my-5 m-auto bg-user-login">
       <Container>
         <Row className="justify-content-center">
-          <div className="col-lg-6 d-flex my-lg-5">
-            <h1 className="fst-italic text-primary my-lg-5">
+          <div className="col-lg-6 d-flex my-lg-5 border border-dark">
+            <h1 className="fst-italic text-primary my-lg-5 ms-lg-5">
               {registrarse
                 ? "¡Creá tu cuenta y comenzá a navegar!"
                 : `¡Iniciá sesión y encontrá tu habitación ideal!`}
             </h1>
+            {/* <img
+              src={logo}
+              alt="imagen del logo de hotel code"
+              className="img-login"
+            /> */}
           </div>
-          <Card className={`col-lg-6 text-center my-5 ${
-        registrarse ? "bg-registro" : "bg-login"
-      }`}>
+          <Card
+            className={`col-lg-6 text-center my-5 border-0 ${
+              registrarse ? "bg-registro" : "bg-login"
+            }`}
+          >
             <Card.Body>
-              <Form onSubmit={handleSubmit(onsubmit)} className={`fw-bold ${registrarse? 'text-dark' : 'text-white'}`}>
+              <Form
+                onSubmit={handleSubmit(onsubmit)}
+                className={`fw-bold ${
+                  registrarse ? "text-dark" : "text-white"
+                }`}
+              >
                 <Form.Group controlId="formGroupEmail">
                   <Form.Label>Correo Electrónico *</Form.Label>
                   <Form.Control
@@ -170,7 +195,12 @@ const Login = ({ setUsuarioLogueado }) => {
                 </div>
               </Form>
               <div>
-                <p onClick={cambiarFormulario} className={`texto-opcion ${registrarse?'text-dark':'text-white'}`}>
+                <p
+                  onClick={cambiarFormulario}
+                  className={`texto-opcion ${
+                    registrarse ? "text-dark" : "text-white"
+                  }`}
+                >
                   {registrarse
                     ? "¿Ya tenes cuenta? Inicia sesión aquí"
                     : "¿No tenes cuenta?  Registrate aquí"}
