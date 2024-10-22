@@ -1,51 +1,70 @@
 :root {
-    --dorado-metalico: #D4AF37;
-    --blanco-marfil: #F8F4E3;
-    --gris-plomo: #2F2F2F;
-    --azul-marino: #1C3D5A;
-    --beige-champagne: #E0C097;
-    --verde-esmeralda: #2E8B57;
+  --dorado-metalico: #d4af37;
+  --blanco-marfil: #f8f4e3;
+  --gris-plomo: #2f2f2f;
+  --azul-marino: #1c3d5a;
+  --beige-champagne: #e0c097;
+  --verde-esmeralda: #2e8b57;
 }
 
 /* Estilos FormLogin */
 
 .texto-opcion {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-p.texto-opcion:hover{
-    color: aqua !important;
+p.texto-opcion:hover {
+  color: aqua !important;
 }
 
 .btnLogin:hover {
-    background-color: var(--azul-marino) 
+  background-color: var(--azul-marino);
 }
 
-.bg-registro{
-    background: var(--dorado-metalico);
+.bg-registro {
+  background: var(--dorado-metalico);
 }
 
-.bg-login{
-    background: var(--azul-marino);   
+.bg-login {
+  background: var(--azul-marino);
 }
 
-.bg-user-login{
-    background: var(--blanco-marfil);
-    opacity: 80%;
+.bg-user-login {
+  background: var(--blanco-marfil);
+  opacity: 80%;
 }
 
-.img-login{
-    height: 100px; 
-    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .8));     
+.img-login {
+  height: 100px;
+  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
 }
-.titulo-login{
-font-family: playfair-display;
+.titulo-login {
+  font-family: playfair-display;
+  color: var(--azul-marino);
+}
+
+.titulo-registro {
+  font-family: playfair-display;
+  color: var(--dorado-metalico);
 }
 
 @media (min-width: 992px) {
-  .titulo-login{
+  .titulo-login {
     display: block;
     align-items: center;
     font-family: playfair-display;
+    color: var(--azul-marino);
   }
+  .titulo-registro {
+    display: block;
+    align-items: center;
+    font-family: playfair-display;
+    color: var(--dorado-metalico);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .titulo-registro{
+        margin-left: 150px;
+    }
 }
