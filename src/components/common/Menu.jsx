@@ -29,16 +29,16 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
             <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/contacto'>Contacto</NavLink>
             <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/galeria'>Galeria de imagenes</NavLink>
             <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/catalogo'>Catalogo de habitaciones</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/administrador'>Administrador</NavLink>
-            <button className="nav-link text-white d-flex align-self-center text-center" onClick={logout}>logout</button>
-            {/* {
+            {
                 usuarioLogueado!==''?(
-                    <>
+                  <>
+                  <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/administrador'>Administrador</NavLink>
+                  <button className="nav-link text-white d-flex align-self-center text-center" onClick={logout}>logout</button>
                 </>
-              ): */}
-              {/* <NavLink end className='nav-link text-white d-flex flex-wrap align-self-center text-center' to='/login'>Login</NavLink> */}
-            {/* } */}
-            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/ajustes'>Ajustes</NavLink>
+              ):
+              <NavLink end className='nav-link text-white d-flex flex-wrap align-self-center text-center' to='/login'>Login</NavLink>
+            }
+            
           </Nav>
         </Navbar.Collapse>
       </Container>
