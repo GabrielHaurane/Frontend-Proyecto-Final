@@ -16,12 +16,19 @@
     --azul-marino: #1C3D5A;
     --beige-champagne: #E0C097;
     --verde-esmeralda: #2E8B57;
+    --morado: #bcadd8;
 }
 .backC{
     background-color: var(--gris-plomo);
 }
 .backS{
   background-color: var(--azul-marino);
+}
+.backQ{
+  background-color: var(--morado);
+}
+.backQS{
+  background-color: var(--blanco-marfil);
 }
 .Acerca{
   background-color: var(--verde-esmeralda);
