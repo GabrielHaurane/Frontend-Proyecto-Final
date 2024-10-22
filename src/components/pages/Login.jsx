@@ -82,15 +82,15 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <section className="container text-center my-5 m-auto bg-user-login">
+    <section className="container text-center my-5 m-auto sectionLogin mainSection">
       <Container>
         <Row className="justify-content-center">
-          <div
-            className={`col-lg-6 d-flex my-lg-5 mt-3 ${
-              registrarse ? "titulo-registro" : "titulo-login"
-            } `}
-          >
-            <h1 className=" fst-italic my-lg-5 ms-lg-5">
+          <div className="col-lg-6 d-flex my-lg-5 mt-3 ">
+            <h1
+              className={`fst-italic my-lg-5 ms-lg-5 ${
+                registrarse ? "titulo-registro" : "titulo-login"
+              }`}
+            >
               {registrarse
                 ? "¡Creá tu cuenta y comenzá a navegar!"
                 : `¡Iniciá sesión y encontrá tu habitación ideal!`}

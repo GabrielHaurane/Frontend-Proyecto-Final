@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import './App.css'
 import Menu from './components/common/Menu.jsx'
 import Footer from './components/common/Footer.jsx'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -5,7 +8,7 @@ import DetalleHabitacion from './components/pages/DetalleHabitacion.jsx'
 import Administrador from './components/pages/Administrador.jsx'
 import Login from './components/pages/Login.jsx'
 import Inicio from './components/pages/Inicio.jsx'
-import Ajustes from './components/pages/Ajustes.jsx'
+// import Ajustes from './components/pages/Ajustes.jsx'
 import Catalogo from './components/pages/Catalogo.jsx'
 import Contacto from './components/pages/Contacto.jsx'
 import Galeria from './components/pages/Galeria.jsx'
@@ -24,7 +27,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Menu></Menu>
+        <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Menu>
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>
           {/* <Route exact path='/quienessomos'element={<Quienes></Quienes>}></Route> */}
@@ -50,9 +53,10 @@ function App() {
               </RutasProtegidas>
             }
           ></Route>
-          <Route exact path="/ajustes" element={<Ajustes></Ajustes>}></Route>
+          {/* <Route exact path="/ajustes" element={<Ajustes></Ajustes>}></Route> */}
           <Route exact path="*" element={<Error404></Error404>}></Route>
         </Routes>
+      <Footer></Footer>
       </BrowserRouter>
     </>
   );
