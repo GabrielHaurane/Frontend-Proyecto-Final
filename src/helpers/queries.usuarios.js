@@ -1,9 +1,9 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
-const URLRegistro = import.meta.env.VITE_API_REGISTRO;
+
 
 export const login = async (usuario) => {
   try {
-    const respuesta = await fetch(URLUsuario, {
+    const respuesta = await fetch(URLUsuario + "/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,7 +17,7 @@ export const login = async (usuario) => {
 };
 export const registro = async (usuarioNuevo) => {
   try {
-    const respuesta = await fetch(URLRegistro, {
+    const respuesta = await fetch(URLUsuario + "/registro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,6 +27,54 @@ export const registro = async (usuarioNuevo) => {
         password: usuarioNuevo.password,
         confirmarPassword: usuarioNuevo.confirmarPassword,
       }),
+    });
+    return respuesta;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const obtenerUsuario = async (id) => {
+  try {
+    const respuesta = await fetch(URLUsuario + "/" + id);
+    return respuesta;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const editarUsuario = async (usuarioEditado) => {
+  try {
+    const respuesta = await fetch(URLUsuario + "/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": JSON.stringify(sessionStorage.getItem("userKey")).token,
+      },
+      body: JSON.stringify(usuarioEditado),
+    });
+    return respuesta;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const listarUsuarios = async () => {
+  try {
+    const respuesta = await fetch(URLUsuario);
+    return respuesta;
+  } catch (error) {
+    return false;
+  }
+};
+
+export const borrarUsuario = async (id) => {
+  try {
+    const respuesta = await fetch(URLUsuario + "/" + id, {
+      method: "DELETE",
+      headers: {
+        "x-token": JSON.stringify(sessionStorage.getItem("userKey")).token,
+      },
     });
     return respuesta;
   } catch (error) {
