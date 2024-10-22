@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
 const Catalogo = () => {
     const location = useLocation();
@@ -8,7 +9,12 @@ const Catalogo = () => {
     return (
         <div>
       <h1>Catálogo de Habitaciones</h1>
-      {habitaciones.length > 0 ? (
+      <section>
+          <CardHabitacion></CardHabitacion>
+        {
+        }
+      </section>
+      {/* {habitaciones.length > 0 ? (
         habitaciones.map((habitacion) => (
           <div key={habitacion._id}>
             <h2>{habitacion.tipoHabitacion}</h2>
@@ -20,7 +26,7 @@ const Catalogo = () => {
         ))
       ) : (
         <p>No hay habitaciones disponibles.</p>
-      )}
+      )} */}
     </div>
     );
 };

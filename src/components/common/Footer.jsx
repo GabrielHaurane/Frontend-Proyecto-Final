@@ -27,11 +27,11 @@ const Footer = () => {
   return (
     <div className="backC py-3 d-flex justify-content-center justify-content-md-around">
       <div className="d-flex flex-column flex-md-row justify-content-around">
-        <div className="col-12 col-sm-6 col-md-4">
+        <div className="col-12 col-sm-6 col-md-4 d-flex justify-content-center align-self-center mb-4 mb-md-0">
         <img
           src={logo}
           alt="logo Hotel code"
-          className="img-fluid"
+          className="img-fluid "
           width={100}
         />
         </div>
