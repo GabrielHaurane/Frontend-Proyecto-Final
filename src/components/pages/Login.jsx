@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { login, registro } from "../../helpers/queries.usuarios.js";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-// import logo from "../../assets/hotelCode.jpg";
+import logo from "../../assets/hotelCode.jpg";
 
 const Login = ({ setUsuarioLogueado }) => {
   const [registrarse, setRegistrarse] = useState(false);
@@ -41,12 +41,8 @@ const Login = ({ setUsuarioLogueado }) => {
         }
       } else {
         const respuesta = await login(usuario);
-        console.log(respuesta)
-       
-
         if (respuesta.ok) {
            const datos = await respuesta.json();
-           console.log(datos);
           Swal.fire({
             title: "Usuario Logueado",
             text: `Bienvenido a HotelCode`,
@@ -89,23 +85,21 @@ const Login = ({ setUsuarioLogueado }) => {
     <section className="container text-center my-5 m-auto bg-user-login">
       <Container>
         <Row className="justify-content-center">
-          <div className="col-lg-6 d-flex my-lg-5 border border-dark">
-            <h1 className="fst-italic text-primary my-lg-5 ms-lg-5">
+          <div className="col-lg-6 d-flex my-lg-5 mt-3 titulo-login">
+            <h1 className=" fst-italic text-primary my-lg-5 ms-lg-5">
               {registrarse
                 ? "¡Creá tu cuenta y comenzá a navegar!"
                 : `¡Iniciá sesión y encontrá tu habitación ideal!`}
             </h1>
-            {/* <img
-              src={logo}
-              alt="imagen del logo de hotel code"
-              className="img-login"
-            /> */}
           </div>
           <Card
             className={`col-lg-6 text-center my-5 border-0 ${
               registrarse ? "bg-registro" : "bg-login"
             }`}
           >
+            <Card.Title>
+              <img src={logo} alt="" className="img-login mt-lg-3 mt-3" />
+            </Card.Title>
             <Card.Body>
               <Form
                 onSubmit={handleSubmit(onsubmit)}

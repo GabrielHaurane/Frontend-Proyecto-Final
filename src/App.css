@@ -22,7 +22,7 @@ p.texto-opcion:hover{
 }
 
 .bg-registro{
-    background: var(--beige-champagne);
+    background: var(--dorado-metalico);
 }
 
 .bg-login{
@@ -30,14 +30,22 @@ p.texto-opcion:hover{
 }
 
 .bg-user-login{
-    background: var(--beige-champagne);
+    background: var(--blanco-marfil);
+    opacity: 80%;
 }
 
+.img-login{
+    height: 100px; 
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, .8));     
+}
+.titulo-login{
+font-family: playfair-display;
+}
 
 @media (min-width: 992px) {
-    .img-login{
-        height: 20px;
-        margin: 100px;        
-    }
-  
+  .titulo-login{
+    display: block;
+    align-items: center;
+    font-family: playfair-display;
+  }
 }
