@@ -31,7 +31,7 @@ const Quienes = () => {
         </div>
         <Card.Body className="col-12 d-flex flex-row">
           <div className="d-flex flex-column flex-wrap justify-content-center align-items-center">
-          <Card.Title>Augusto Brito</Card.Title>
+          <Card.Title>Augusto Patricio Brito</Card.Title>
           <Card.Text>
             <b>Desarrollador</b>
           </Card.Text>

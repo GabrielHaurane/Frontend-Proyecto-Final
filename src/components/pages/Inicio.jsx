@@ -86,7 +86,7 @@ const Inicio = () => {
           <p className="fs-5">
             El Hotel Code fue fundado en el año 1995 por unos visionarios
             emprendedores y apasionados de la tecnología, Gabriel Haurane y
-            Augusto Brito, quien siempre había soñado con fusionar lo mejor de
+            Augusto Patricio Brito, quien siempre había soñado con fusionar lo mejor de
             la hospitalidad tradicional con los avances tecnológicos del futuro.
             Ubicado en una ciudad cosmopolita y vibrante, el hotel abrió sus
             puertas como una joya de diseño moderno, con una promesa clara:
