@@ -37,23 +37,23 @@ const CardDetalles = () => {
           />
         </div>
         <Card.Body className="col-12">
-          <Card.Title>Habitacion Individual</Card.Title>
+          <Card.Title className="fs-1">Habitacion Individual</Card.Title>
           {/* habitacion.tipoHabitacion */}
           <Card.Text>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel
             perferendis, eligendi aut maiores praesentium fuga omnis quod
             {/* habitacion.dercripcion_breve */}
           </Card.Text>
-          <div className="mb-2">
+          <div className="mb-2 fs-5">
             <b>Capacidad: 1</b>
             {/* habitacion.capacidad */}
           </div>
-          <div className="mb-2">
+          <div className="mb-2 fs-5">
             <b>Tamaño: 5</b>
             {/* habitacion.tamanio */}
           </div>
-          <div className="mb-2">
-            <b>$100</b>
+          <div className="mb-2 fs-3">
+            <b>$100 X Noche</b>
             {/* habitacion.precio */}
           </div>
           <div>

@@ -21,24 +21,24 @@ const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
           />
         </Navbar.Brand>
         <NavLink end className='nav-link fs-2 text-white text-decoration-none' to="/">Hotel Code</NavLink>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle className=" bg-white" aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto w-100 d-flex justify-content-end">
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/'>Inicio</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/quienessomos'>Quienes somos</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/contacto'>Contacto</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/galeria'>Galeria de imagenes</NavLink>
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/catalogo'>Catalogo de habitaciones</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/'>Inicio</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/quienessomos'>Quienes somos</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/contacto'>Contacto</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/galeria'>Galeria de imagenes</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/catalogo'>Catalogo de habitaciones</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/administrador'>Administrador</NavLink>
+            <button className="nav-link text-white d-flex align-self-center text-center" onClick={logout}>logout</button>
             {/* {
                 usuarioLogueado!==''?(
                     <>
-                <NavLink end className='nav-link text-white d-flex align-self-center' to='/administrador'>Administrador</NavLink>
-                <button className="nav-link d-flex align-self-end" onClick={logout}>logout</button>
                 </>
               ): */}
-              <NavLink end className='nav-link text-white' to='/login'>Login</NavLink>
+              {/* <NavLink end className='nav-link text-white d-flex flex-wrap align-self-center text-center' to='/login'>Login</NavLink> */}
             {/* } */}
-            <NavLink end className='nav-link text-white d-flex align-self-center' to='/ajustes'>Ajustes</NavLink>
+            <NavLink end className='nav-link text-white d-flex align-self-center text-center' to='/ajustes'>Ajustes</NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

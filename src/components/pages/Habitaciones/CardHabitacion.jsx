@@ -28,7 +28,7 @@ const CardHabitacion = () => {
         </Card.Body>
         <CardFooter className="d-flex align-content-md-end flex-md-wrap justify-content-end">
             <div >
-                <Link to={`./DetalleHabitacion/`}
+                <Link to={`../DetalleHabitacion/id`}
                 // ${habitacion._id}
                 className="btn btn-dark text-white">
                     Ver detalles
