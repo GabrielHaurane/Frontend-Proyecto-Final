@@ -2,8 +2,8 @@ import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { borrarUsuario, listarUsuarios } from "../helpers/queries.usuarios.js";
 
-const ItemUsuarios = ({usuario, fila, setListaUsuarios}) => {
-const eliminarUsuario =  () => {
+const ItemUsuarios = ({ usuario, fila, setListaUsuarios }) => {
+  const eliminarUsuario = () => {
     Swal.fire({
       title: "¿Estás seguro de borrar el usuario?",
       text: "No puedes revertir esta operacion",
@@ -15,14 +15,14 @@ const eliminarUsuario =  () => {
       cancelButtonText: "Cancelar",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        const respuesta = await borrarUsuario(usuario._id)
+        const respuesta = await borrarUsuario(usuario._id);
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Eliminado",
             text: `El usuario ${usuario.email} fue elminado correctamente`,
             icon: "success",
           });
-          const usuariosAPI = await  listarUsuarios();
+          const usuariosAPI = await listarUsuarios();
           if (usuariosAPI.status === 200) {
             const usuariosActualizados = await usuariosAPI.json();
             setListaUsuarios(usuariosActualizados);
@@ -36,21 +36,20 @@ const eliminarUsuario =  () => {
         }
       }
     });
-}
+  };
 
+  return (
+    <tr className="text-center">
+      <td>{fila}</td>
+      <td>{usuario.email}</td>
 
-    return (
-      <tr className="text-center">
-        <td>{fila}</td>
-        <td>{usuario.email}</td>
-
-        <td >
-          <Button variant="danger" onClick={eliminarUsuario}>
-            <i className="bi bi-trash"></i>
-          </Button>
-        </td>
-      </tr>
-    );
+      <td>
+        <Button variant="danger" onClick={eliminarUsuario}>
+          <i className="bi bi-trash"></i>
+        </Button>
+      </td>
+    </tr>
+  );
 };
 
 export default ItemUsuarios;
