@@ -114,6 +114,12 @@ p.texto-opcion:hover {
         1px 1px 0 #000;
 }
 
+.img-admin {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+}
+
 @media (min-width: 992px) {
   .titulo-login {
     padding-top: 120px;

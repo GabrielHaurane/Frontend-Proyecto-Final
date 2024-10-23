@@ -1,7 +1,7 @@
 import { Table, Dropdown, DropdownButton } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { listarUsuarios } from "../../helpers/queries.usuarios";
-import { listarHabitacionesAdmin } from "../../helpers/queries";
+import { listarUsuarios } from "../../helpers/queries.usuarios.js";
+import { listarHabitacionesAdmin } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
@@ -68,12 +68,7 @@ const desplegarHabitaciones = ()=>{
           onClick={desplegarHabitaciones}
         >
           <Dropdown.Item>
-            <Link
-              className="btn btn-primary"
-              to="/administrador/crear"
-            >
-              <i className="bi bi-file-earmark-plus"></i> Crear Habitación
-            </Link>
+            <p className="text-secondary-emphasis fw-bold">Lista de habitaciones</p>
           </Dropdown.Item>
         </DropdownButton>
       </div>
