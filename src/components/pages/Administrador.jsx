@@ -5,26 +5,26 @@ import { listarHabitacionesAdmin } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
+import { Link } from "react-router-dom";
 
 const Administrador = () => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
   const [listaUsuarios, setListaUsuarios] = useState([]);
-  const [mostrarHabitaciones, setMostrarHabitaciones]=useState(false)
-  const [mostrarUsuarios, setMostrarUsuarios]=useState(false)
-
+  const [mostrarHabitaciones, setMostrarHabitaciones] = useState(false);
+  const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
 
   useEffect(() => {
-       if (mostrarHabitaciones) {
-         cargarHabitaciones();
-       }
-       if (mostrarUsuarios) {
-         cargarUsuarios();
-       }
+    if (mostrarHabitaciones) {
+      cargarHabitaciones();
+    }
+    if (mostrarUsuarios) {
+      cargarUsuarios();
+    }
   }, [mostrarHabitaciones, mostrarUsuarios]);
 
   const cargarHabitaciones = async () => {
     const respuesta = await listarHabitacionesAdmin();
-    console.log(respuesta)
+    console.log(respuesta);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
@@ -37,27 +37,26 @@ const Administrador = () => {
     }
   };
 
-  const cargarUsuarios = async ()=>{
+  const cargarUsuarios = async () => {
     const respuesta = await listarUsuarios();
     if (respuesta.status === 200) {
-        const datos = await respuesta.json();
-        setListaUsuarios(datos);
-    }else{
-        Swal.fire({
-          title: "Error",
-          text: "No se pueden mostrar los usuarios, intentá más tarde",
-          icon: "error",
-        });
+      const datos = await respuesta.json();
+      setListaUsuarios(datos);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "No se pueden mostrar los usuarios, intentá más tarde",
+        icon: "error",
+      });
     }
-  }
+  };
 
-
-const desplegarUsuarios = ()=>{
-    setMostrarUsuarios(!mostrarUsuarios)
-}
-const desplegarHabitaciones = ()=>{
-    setMostrarHabitaciones(!mostrarHabitaciones)
-}
+  const desplegarUsuarios = () => {
+    setMostrarUsuarios(!mostrarUsuarios);
+  };
+  const desplegarHabitaciones = () => {
+    setMostrarHabitaciones(!mostrarHabitaciones);
+  };
 
   return (
     <section className="mainSection container">
@@ -67,14 +66,20 @@ const desplegarHabitaciones = ()=>{
           title="Gestionar Habitaciones"
           onClick={desplegarHabitaciones}
         >
-          <Dropdown.Item>
-            <p className="text-secondary-emphasis fw-bold">Lista de habitaciones</p>
-          </Dropdown.Item>
+          {/* <Dropdown.Item as={Link} to={"/administrador/crear"}>
+            <i className="bi bi-file-earmark-plus"></i> Añadir +
+          </Dropdown.Item> */}
         </DropdownButton>
       </div>
       {mostrarHabitaciones && (
         <>
           <hr />
+          <div className="d-flex justify-content-between align-items-center mt-5">
+            <h1 className="display-4 ">Habitaciones</h1>
+            <Link className="btn btn-primary" to="/administrador/crear">
+              <i className="bi bi-file-earmark-plus"></i>
+            </Link>
+          </div>
           <Table responsive striped bordered hover>
             <thead>
               <tr className="text-center">
@@ -99,8 +104,6 @@ const desplegarHabitaciones = ()=>{
           </Table>
         </>
       )}
-
-      {/* Botón para gestionar usuarios */}
       <div className="d-flex justify-content-between align-items-center mt-5">
         <DropdownButton
           id="dropdown-usuarios"
@@ -115,6 +118,9 @@ const desplegarHabitaciones = ()=>{
       {mostrarUsuarios && (
         <>
           <hr />
+          <div className="d-flex mt-lg-4">
+            <h1 className="display-4 ">Usuarios</h1>
+          </div>
           <Table responsive striped bordered hover>
             <thead>
               <tr className="text-center">

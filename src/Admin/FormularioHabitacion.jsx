@@ -28,10 +28,10 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
   }, []);
 
   const cargarHabitacion = async () => {
-    const respuesta = await obtenerHabitacionAdmin(id);
-    if (respuesta.status === 200) {
-      const habitacionEncontrada = await respuesta.json();
-      console.log(habitacionEncontrada)
+    const habitacionEncontrada = await obtenerHabitacionAdmin(id);
+    if (habitacionEncontrada) {
+    //   const habitacionEncontrada = await respuesta.json();
+    //   console.log(habitacionEncontrada)
       setValue("tipoHabitacion", habitacionEncontrada.tipoHabitacion);
       setValue("capacidad", habitacionEncontrada.capacidad);
       setValue("precio", habitacionEncontrada.precio);
@@ -41,8 +41,22 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
       setValue("tamanio", habitacionEncontrada.tamanio);
       setValue("imagen", habitacionEncontrada.imagen);
       setValue("disponibilidad", habitacionEncontrada.disponibilidad);
-      setValue("fechaEntrada", habitacionEncontrada.fechaEntrada);
-      setValue("fechaSalida", habitacionEncontrada.fechaSalida);
+         const fechaEntradaFormateada = new Date(
+           habitacionEncontrada.fechaEntrada
+         )
+           .toISOString()
+           .slice(0, 16); 
+           
+         const fechaSalidaFormateada = new Date(
+           habitacionEncontrada.fechaSalida
+         )
+           .toISOString()
+           .slice(0, 16);
+
+         setValue("fechaEntrada", fechaEntradaFormateada);
+         setValue("fechaSalida", fechaSalidaFormateada);
+    //   setValue("fechaEntrada", habitacionEncontrada.fechaEntrada);
+    //   setValue("fechaSalida", habitacionEncontrada.fechaSalida);
     } else {
       Swal.fire({
         title: "Error",
@@ -255,7 +269,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
         <Form.Group>
           <Form.Label>Fecha de Entrada*</Form.Label>
           <Form.Control
-            type="date"
+            type="datetime-local"
             {...register("fechaEntrada", {
               required: "La fecha de entrada es un dato obligatorio",
               validate: {
@@ -271,7 +285,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
         <Form.Group>
           <Form.Label>Fecha de Salida*</Form.Label>
           <Form.Control
-            type="date"
+            type="datetime-local"
             {...register("fechaSalida", {
               required: "La fecha de salida es un dato obligatorio",
               validate: {

@@ -144,7 +144,7 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
 export const obtenerHabitacionAdmin = async (idHabitacion) => {
   try {
     const respuesta = await fetch(
-      `${URLHabitacion}/habitacion/${idHabitacion},`,
+      `${URLHabitacion}/habitacion/${idHabitacion}`,
     );
     if (!respuesta.ok) {
       throw new Error("Error al obtener los detalles de la habitación");
