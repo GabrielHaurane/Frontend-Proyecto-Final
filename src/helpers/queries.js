@@ -60,14 +60,10 @@ export const listarHabitacionesAdmin = async () => {
   try {
     const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
       method: "GET",
-      headers: {
-        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
-      },
     });
     if (!respuesta.ok) {
       throw new Error("Error al listar habitaciones");
     }
-    // const data = await respuesta.json();
     return respuesta;
   } catch (error) {
     console.error("Error en la solicitud:", error.message);
@@ -82,14 +78,14 @@ export const crearHabitacionAdmin = async (habitacion) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem('userKey')).token
       },
       body: JSON.stringify(habitacion),
     });
     if (!respuesta.ok) {
       throw new Error("Error al crear la habitación");
     }
-    const data = await respuesta.json();
-    return data;
+    return respuesta
   } catch (error) {
     console.error("Error en la solicitud:", error.message);
     return { mensaje: "Error al crear la habitación" };
@@ -132,16 +128,12 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
       `${URLHabitacion}/habitacion/${idHabitacion}`,
       {
         method: "DELETE",
-        headers:{
-          "x-token": JSON.parse(sessionStorage.getItem('userKey')).token
-        }
       }
     );
     if (!respuesta.ok) {
       throw new Error("Error al eliminar la habitación");
     }
-    const data = await respuesta.json();
-    return data;
+    return respuesta;
   } catch (error) {
     console.error("Error en la solicitud:", error.message);
     return { mensaje: "Error al eliminar la habitación" };
@@ -152,7 +144,7 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
 export const obtenerHabitacionAdmin = async (idHabitacion) => {
   try {
     const respuesta = await fetch(
-      `${URLHabitacion}/habitacion/${idHabitacion}`
+      `${URLHabitacion}/habitacion/${idHabitacion},`,
     );
     if (!respuesta.ok) {
       throw new Error("Error al obtener los detalles de la habitación");

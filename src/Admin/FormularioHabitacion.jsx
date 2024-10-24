@@ -3,6 +3,11 @@ import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import {
+  crearHabitacionAdmin,
+  editarHabitacionAdmin,
+  obtenerHabitacionAdmin,
+} from "../helpers/queries.js";
 
 const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
   const {
@@ -16,10 +21,74 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
   const { id } = useParams();
   const navegacion = useNavigate();
 
-  const onSubmit = ()=>{
-    console.log("habitacion editada")
-    reset();
-  }
+  useEffect(() => {
+    if (!creandoHabitacion) {
+      cargarHabitacion();
+    }
+  }, []);
+
+  const cargarHabitacion = async () => {
+    const respuesta = await obtenerHabitacionAdmin(id);
+    if (respuesta.status === 200) {
+      const habitacionEncontrada = await respuesta.json();
+      console.log(habitacionEncontrada)
+      setValue("tipoHabitacion", habitacionEncontrada.tipoHabitacion);
+      setValue("capacidad", habitacionEncontrada.capacidad);
+      setValue("precio", habitacionEncontrada.precio);
+      setValue("servicios", habitacionEncontrada.servicios);
+      setValue("descripcion_breve", habitacionEncontrada.descripcion_breve);
+      setValue("descripcion_amplia", habitacionEncontrada.descripcion_amplia);
+      setValue("tamanio", habitacionEncontrada.tamanio);
+      setValue("imagen", habitacionEncontrada.imagen);
+      setValue("disponibilidad", habitacionEncontrada.disponibilidad);
+      setValue("fechaEntrada", habitacionEncontrada.fechaEntrada);
+      setValue("fechaSalida", habitacionEncontrada.fechaSalida);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "No se pudo cargar la habitación. Inténtalo más tarde.",
+        icon: "error",
+      });
+    }
+  };
+
+  const onSubmit = async (habitacion) => {
+    if (creandoHabitacion) {
+        console.log(habitacion)
+      const respuesta = await crearHabitacionAdmin(habitacion);
+      console.log(respuesta)
+      if (respuesta.status === 201) {
+        reset();
+        Swal.fire({
+          title: "Habitación creada",
+          text: `La habitación fue creada correctamente`,
+          icon: "success",
+        });
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: `No se pudo cargar la ${habitacion.tipoHabitacion}. Inténtalo más tarde.`,
+          icon: "error",
+        });
+      }
+    } else {
+      const respuesta = await editarHabitacionAdmin(habitacion, id);
+      if (respuesta.status === 200) {
+        Swal.fire({
+          title: "Habitación editada",
+          text: `La habitación fue editada correctamente`,
+          icon: "success",
+        });
+        navegacion("/administrador");
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: "No se pudo editar la habitación. Inténtalo más tarde.",
+          icon: "error",
+        });
+      }
+    }
+  };
   return (
     <section className="container mainSection">
       <h1 className="display-4 mt-5">{titulo}</h1>
