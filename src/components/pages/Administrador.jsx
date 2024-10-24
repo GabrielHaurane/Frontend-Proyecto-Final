@@ -65,11 +65,7 @@ const Administrador = () => {
           id="dropdown-habitaciones"
           title="Gestionar Habitaciones"
           onClick={desplegarHabitaciones}
-        >
-          {/* <Dropdown.Item as={Link} to={"/administrador/crear"}>
-            <i className="bi bi-file-earmark-plus"></i> Añadir +
-          </Dropdown.Item> */}
-        </DropdownButton>
+        ></DropdownButton>
       </div>
       {mostrarHabitaciones && (
         <>
@@ -80,28 +76,30 @@ const Administrador = () => {
               <i className="bi bi-file-earmark-plus"></i>
             </Link>
           </div>
-          <Table responsive striped bordered hover>
-            <thead>
-              <tr className="text-center">
-                <th>Fila</th>
-                <th>Tipo de Habitación</th>
-                <th>Imagen</th>
-                <th>Precio</th>
-                <th>Disponibilidad</th>
-                <th>Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listaHabitaciones.map((habitacion, index) => (
-                <ItemHabitacion
-                  key={habitacion._id}
-                  habitacion={habitacion}
-                  fila={index + 1}
-                  setListaHabitaciones={setListaHabitaciones}
-                />
-              ))}
-            </tbody>
-          </Table>
+          <div className="tabla-scroll">
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr className="text-center">
+                  <th>Fila</th>
+                  <th>Tipo de Habitación</th>
+                  <th>Imagen</th>
+                  <th>Precio</th>
+                  <th>Disponibilidad</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaHabitaciones.map((habitacion, index) => (
+                  <ItemHabitacion
+                    key={habitacion._id}
+                    habitacion={habitacion}
+                    fila={index + 1}
+                    setListaHabitaciones={setListaHabitaciones}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </>
       )}
       <div className="d-flex justify-content-between align-items-center mt-5">
@@ -109,11 +107,7 @@ const Administrador = () => {
           id="dropdown-usuarios"
           title="Gestionar Usuarios"
           onClick={desplegarUsuarios}
-        >
-          <Dropdown.Item>
-            <p className="text-secondary-emphasis fw-bold">Lista de Usuarios</p>
-          </Dropdown.Item>
-        </DropdownButton>
+        ></DropdownButton>
       </div>
       {mostrarUsuarios && (
         <>
@@ -121,25 +115,27 @@ const Administrador = () => {
           <div className="d-flex mt-lg-4">
             <h1 className="display-4 ">Usuarios</h1>
           </div>
-          <Table responsive striped bordered hover>
-            <thead>
-              <tr className="text-center">
-                <th>Fila</th>
-                <th>Email</th>
-                <th>Opciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {listaUsuarios.map((usuario, index) => (
-                <ItemUsuarios
-                  key={usuario._id}
-                  usuario={usuario}
-                  fila={index + 1}
-                  setListaUsuarios={setListaUsuarios}
-                />
-              ))}
-            </tbody>
-          </Table>
+          <div className="tabla-scroll">
+            <Table responsive striped bordered hover>
+              <thead>
+                <tr className="text-center">
+                  <th>Fila</th>
+                  <th>Email</th>
+                  <th>Opciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaUsuarios.map((usuario, index) => (
+                  <ItemUsuarios
+                    key={usuario._id}
+                    usuario={usuario}
+                    fila={index + 1}
+                    setListaUsuarios={setListaUsuarios}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </div>
         </>
       )}
     </section>

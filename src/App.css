@@ -120,6 +120,13 @@ p.texto-opcion:hover {
   object-fit: cover;
 }
 
+/* Estilos Admin */
+.tabla-scroll{
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
 @media (min-width: 992px) {
   .titulo-login {
     padding-top: 120px;
