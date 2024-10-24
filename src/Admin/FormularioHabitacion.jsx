@@ -30,8 +30,6 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
   const cargarHabitacion = async () => {
     const habitacionEncontrada = await obtenerHabitacionAdmin(id);
     if (habitacionEncontrada) {
-    //   const habitacionEncontrada = await respuesta.json();
-    //   console.log(habitacionEncontrada)
       setValue("tipoHabitacion", habitacionEncontrada.tipoHabitacion);
       setValue("capacidad", habitacionEncontrada.capacidad);
       setValue("precio", habitacionEncontrada.precio);
@@ -55,8 +53,6 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
 
          setValue("fechaEntrada", fechaEntradaFormateada);
          setValue("fechaSalida", fechaSalidaFormateada);
-    //   setValue("fechaEntrada", habitacionEncontrada.fechaEntrada);
-    //   setValue("fechaSalida", habitacionEncontrada.fechaSalida);
     } else {
       Swal.fire({
         title: "Error",
@@ -86,8 +82,8 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
         });
       }
     } else {
-      const respuesta = await editarHabitacionAdmin(habitacion, id);
-      if (respuesta.status === 200) {
+      const respuesta = await editarHabitacionAdmin(id, habitacion);
+      if (respuesta.status !== "Error al editar la habitación") {
         Swal.fire({
           title: "Habitación editada",
           text: `La habitación fue editada correctamente`,
@@ -126,7 +122,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.tipoHabitacion?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Capacidad</Form.Label>
           <Form.Control
             type="number"
@@ -143,7 +139,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.capacidad?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Precio por noche ($)*</Form.Label>
           <Form.Control
             type="number"
@@ -156,7 +152,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.precio?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Servicios*</Form.Label>
           <Form.Control
             type="text"
@@ -176,7 +172,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.servicios?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Descripcion Breve*</Form.Label>
           <Form.Control
             type="text"
@@ -197,7 +193,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.descripcion_breve?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Descripcion Amplia*</Form.Label>
           <Form.Control
             as="textarea"
@@ -218,7 +214,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.descripcion_amplia?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Tamaño de la Habitación (m²)*</Form.Label>
           <Form.Control
             type="number"
@@ -238,7 +234,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.tamanio?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group className="mb-3">
           <Form.Label>Url de imagen</Form.Label>
           <Form.Control
             type="text"
@@ -256,7 +252,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.tamanio?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group  className="mb-3">
           <Form.Label>Disponibilidad*</Form.Label>
           <Form.Check
             type="checkbox"
@@ -266,7 +262,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             })}
           />
         </Form.Group>
-        <Form.Group>
+        <Form.Group  className="mb-3">
           <Form.Label>Fecha de Entrada*</Form.Label>
           <Form.Control
             type="datetime-local"
@@ -282,7 +278,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
             {errors.fechaEntrada?.message}
           </Form.Text>
         </Form.Group>
-        <Form.Group>
+        <Form.Group   className="mb-3">
           <Form.Label>Fecha de Salida*</Form.Label>
           <Form.Control
             type="datetime-local"

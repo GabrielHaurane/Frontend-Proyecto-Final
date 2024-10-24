@@ -64,10 +64,7 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion, listaHabitacio
         >
           <i className="bi bi-pencil-square"></i>
         </Link>
-        {/* <Link className="btn btn-primary mx-lg-2" to="/administrador/crear">
-          <i className="bi bi-file-earmark-plus"></i>
-        </Link> */}
-        <Button variant="danger" onClick={eliminarHabitacion}>
+        <Button variant="danger" onClick={eliminarHabitacion} className="my-3">
           <i className="bi bi-trash"></i>
         </Button>
       </td>
