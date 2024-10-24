@@ -87,9 +87,9 @@ export const listarHabitacionesAdmin = async () => {
   };
   
   // Función para editar una habitación existente (solo administrador)
-  export const editarHabitacionAdmin = async (idHabitacion, habitacionActualizada) => {
+  export const editarHabitacionAdmin = async (id, habitacionActualizada) => {
     try {
-      const respuesta = await fetch(`${URLHabitacion}/habitacion/${idHabitacion}`, {
+      const respuesta = await fetch(`${URLHabitacion}/habitacion/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -108,9 +108,9 @@ export const listarHabitacionesAdmin = async () => {
   };
   
   // Función para eliminar una habitación (solo administrador)
-  export const eliminarHabitacionAdmin = async (idHabitacion) => {
+  export const eliminarHabitacionAdmin = async (id) => {
     try {
-      const respuesta = await fetch(`${URLHabitacion}/habitacion/${idHabitacion}`, {
+      const respuesta = await fetch(`${URLHabitacion}/habitacion/${id}`, {
         method: "DELETE",
       });
       if (!respuesta.ok) {
@@ -125,9 +125,9 @@ export const listarHabitacionesAdmin = async () => {
   };
   
   // Función para obtener los detalles de una habitación específica (solo administrador)
-  export const obtenerHabitacionAdmin = async (idHabitacion) => {
+  export const obtenerHabitacionAdmin = async (id) => {
     try {
-      const respuesta = await fetch(`${URLHabitacion}/habitacion/${idHabitacion}`);
+      const respuesta = await fetch(`${URLHabitacion}/habitacion/${id}`);
       if (!respuesta.ok) {
         throw new Error("Error al obtener los detalles de la habitación");
       }

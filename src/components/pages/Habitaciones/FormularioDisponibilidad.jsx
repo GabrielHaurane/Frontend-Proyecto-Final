@@ -14,19 +14,18 @@ const FormularioDisponibilidad = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`/api/catalogo?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`);
-      const data = await response.json();
-
-      if (response.ok) {
-        // Redirige al catálogo de habitaciones con los datos obtenidos
-        navegacion("/catalogo", { state: { habitaciones: data.habitaciones } });
-      } else {
-        setMensajeError(data.mensaje || "No se encontraron habitaciones.");
+      const response = await fetch(`${URLHabitacion}/habitaciones?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`);
+      if (!response.ok) {
+          throw new Error("Error al buscar habitaciones");
       }
-    } catch (error) {
-      console.error("Error al buscar habitaciones:", error);
-      setMensajeError("Ocurrió un error al buscar las habitaciones.");
-    }
+      const data = await response.json();
+      console.log(data); // Aquí puedes manejar la respuesta como quieras
+
+      // Manejar el resultado de las habitaciones disponibles
+  } catch (error) {
+      console.error("Error al buscar habitaciones:", error.message);
+      setMensajeError("No se encontraron habitaciones disponibles."); // O el mensaje de error que prefieras
+  }
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -41,9 +40,9 @@ const FormularioDisponibilidad = () => {
       </div>
       <Form
         onSubmit={handleSubmit}
-        className="d-flex flex-warp flex-column justify-content-between w-100 align-self-center"
+        className="d-flex flex-wrap flex-column justify-content-between w-100 align-self-center"
       >
-        <Form.Group controlId="formFechaEntrada" className="col-8 mb-2">
+        <Form.Group className="col-8 mb-2">
           <Form.Label>Fecha de Entrada</Form.Label>
           <Form.Control
             type="date"
@@ -54,7 +53,7 @@ const FormularioDisponibilidad = () => {
             required
           />
         </Form.Group>
-        <Form.Group controlId="formFechaSalida" className="col-8 mb-2">
+        <Form.Group className="col-8 mb-2">
           <Form.Label>Fecha de Salida</Form.Label>
           <Form.Control
             type="date"
@@ -66,23 +65,23 @@ const FormularioDisponibilidad = () => {
           />
         </Form.Group>
 
-        <Form.Group controlId="formAdultos" className="col-8 mb-2">
+        <Form.Group className="col-8 mb-2">
           <Form.Label>Cantidad de Adultos</Form.Label>
           <Form.Control
             type="number"
             value={adultos}
-            onChange={(e) => setAdultos(e.target.value)}
+            onChange={(e) => setAdultos(Number(e.target.value))} // Asegúrate de convertir a número
             min={1}
             required
           />
         </Form.Group>
 
-        <Form.Group controlId="formNinos" className="col-8 mb-2">
+        <Form.Group className="col-8 mb-2">
           <Form.Label>Cantidad de Niños</Form.Label>
           <Form.Control
             type="number"
             value={ninos}
-            onChange={(e) => setNinos(e.target.value)}
+            onChange={(e) => setNinos(Number(e.target.value))} // Asegúrate de convertir a número
             min={0}
             required
           />
