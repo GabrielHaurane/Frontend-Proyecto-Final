@@ -4,10 +4,11 @@ import {
   eliminarHabitacionAdmin,
   listarHabitacionesAdmin,
 } from "../helpers/queries.js";
+import { Link } from "react-router-dom";
 
-const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion }) => {
- 
-    const eliminarHabitacion = () => {
+
+const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion, listaHabitaciones }) => {
+  const eliminarHabitacion = () => {
     Swal.fire({
       title: "¿Estás seguro de borrar la habitación?",
       text: "No puedes revertir esta operacion",
@@ -42,6 +43,7 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion }) => {
     });
   };
 
+
   return (
     <tr className="text-center">
       <td>{fila}</td>
@@ -56,6 +58,12 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion }) => {
       <td>{habitacion.precio}</td>
       <td>{habitacion.disponibilidad ? "Disponible" : "No disponible"}</td>
       <td>
+        <Link
+          className="btn btn-warning  me-lg-2"
+          to={`/administrador/editar/${habitacion._id}`}
+        >
+          <i className="bi bi-pencil-square"></i>
+        </Link>
         <Button variant="danger" onClick={eliminarHabitacion}>
           <i className="bi bi-trash"></i>
         </Button>

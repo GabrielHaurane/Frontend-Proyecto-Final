@@ -5,7 +5,6 @@ import { listarHabitacionesAdmin } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
-import { Link } from "react-router-dom";
 
 const Administrador = () => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
@@ -25,6 +24,7 @@ const Administrador = () => {
 
   const cargarHabitaciones = async () => {
     const respuesta = await listarHabitacionesAdmin();
+    console.log(respuesta)
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
