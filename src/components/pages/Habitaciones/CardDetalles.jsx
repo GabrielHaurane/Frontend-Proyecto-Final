@@ -112,15 +112,6 @@ const CardDetalles = () => {
               onChange={() => setMetodoPago("Debito")}
               checked={metodoPago === "Debito"}
             />
-            <Form.Check
-              type="radio"
-              label="Mercado Pago"
-              name="metodoPago"
-              id="mercadoPago"
-              onChange={() => setMetodoPago("Mercado Pago")}
-              checked={metodoPago === "Mercado Pago"}
-            />
-
             {/* Mostrar formulario dependiendo del método de pago seleccionado */}
             {metodoPago === "Credito" && (
               <div className="mt-3">
