@@ -2,10 +2,10 @@ import React from "react";
 import { Card } from "react-bootstrap";
 const Contacto = () => {
   return (
-    <div className="backQS flex-grow-1 d-flex flex-column justify-content-around align-content-center">
+    <div className="backQS flex-grow-1 d-flex flex-column justify-content-evenly align-content-center">
       <h1 className="text-center">Por si quieres contactarnos:</h1>
-      <section className="container d-flex flex-wrap justify-content-around">
-        <Card className="col-5 backQ text-center">
+      <section className="container d-flex flex-wrap justify-content-around flex-column flex-md-row align-items-center">
+        <Card className="col-12 col-sm-5 mb-2 m-sm-0 backQ text-center">
           <Card.Title>Gabriel Alejandro Haurane</Card.Title>
           <Card.Body>
             <a href="https://www.linkedin.com/in/gabriel-haurane-b117a627b/"
@@ -34,10 +34,10 @@ const Contacto = () => {
              </a>
           </Card.Body>
         </Card>
-        <Card className="col-5 backQ text-center">
+        <Card className="col-12 col-sm-5 mt-2 m-sm-0 backQ text-center">
           <Card.Title>Augusto Patricio Brito</Card.Title>
           <Card.Body>
-            <a href="https://www.linkedin.com/in/gabriel-haurane-b117a627b/"
+            <a href="https://www.linkedin.com/in/augusto-brito-399a05334/"
             target="_blank" 
             rel="noopener noreferrer" >
               <i
@@ -45,7 +45,7 @@ const Contacto = () => {
                 style={{ fontSize: "2rem", color: "#0077b5" }}
               ></i>
             </a>
-            <a className="ms-3" href="https://github.com/GabrielHaurane"
+            <a className="ms-3" href="https://github.com/BritoAugusto"
             target="_blank" 
             rel="noopener noreferrer" >
               <i
@@ -53,7 +53,7 @@ const Contacto = () => {
                 style={{ fontSize: "2rem", color: "black" }}
               ></i>
             </a>
-            <a className="ms-3" href="mailto:gabrielhaurane@gmail.com?subject=Hola&body=Escribe%20tu%20mensaje%20aquí"
+            <a className="ms-3" href="mailto:britoaugusto1@gmail.com?subject=Hola&body=Escribe%20tu%20mensaje%20aquí"
             target="_blank" 
             rel="noopener noreferrer" >
               <i

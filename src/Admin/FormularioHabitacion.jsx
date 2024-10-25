@@ -252,14 +252,17 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
           </Form.Text>
         </Form.Group>
         <Form.Group  className="mb-3">
-          <Form.Label>Disponibilidad*</Form.Label>
-          <Form.Check
+          <Form.Select
             type="checkbox"
             label="Disponible"
             {...register("disponibilidad", {
               required: true,
             })}
-          />
+          >
+          <option value="">Disponibilidad</option>
+          <option value="true">Si</option>
+          <option value="false">No</option>
+          </Form.Select>
         </Form.Group>
         <Form.Group  className="mb-3">
           <Form.Label>Fecha de Entrada*</Form.Label>
