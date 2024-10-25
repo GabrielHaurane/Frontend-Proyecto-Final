@@ -1,5 +1,5 @@
 import { Table, Button } from "react-bootstrap";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { listarUsuarios } from "../../helpers/queries.usuarios.js";
 import { listarHabitacionesAdmin } from "../../helpers/queries.js";
 import Swal from "sweetalert2";
@@ -13,12 +13,17 @@ const Administrador = () => {
   const [mostrarHabitaciones, setMostrarHabitaciones] = useState(false);
   const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
 
+const habitacionesRef = useRef(null)
+const usuariosRef = useRef(null)
+
   useEffect(() => {
     if (mostrarHabitaciones) {
       cargarHabitaciones();
+      habitacionesRef.current.scrollIntoView({behavior: "smooth"})
     }
     if (mostrarUsuarios) {
       cargarUsuarios();
+      usuariosRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarHabitaciones, mostrarUsuarios]);
 
@@ -64,13 +69,16 @@ const Administrador = () => {
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5">
         <Button className="m-auto mt-5 mb-5" onClick={desplegarHabitaciones}>
-          Gestionar Habitaciones
+          {mostrarHabitaciones ? "Ocultar Tabla" : "Gestionar Habitaciones"}
         </Button>
       </div>
       {mostrarHabitaciones && (
         <>
           <hr />
-          <div className="d-flex justify-content-between align-items-center mt-5">
+          <div
+            className="d-flex justify-content-between align-items-center mt-5"
+            ref={habitacionesRef}
+          >
             <h2 className="display-4 ">Habitaciones</h2>
             <Link className="btn btn-primary" to="/administrador/crear">
               <i className="bi bi-file-earmark-plus"></i>
@@ -102,9 +110,12 @@ const Administrador = () => {
           </div>
         </>
       )}
-      <div className="d-flex justify-content-between align-items-center mt-5">
+      <div
+        className="d-flex justify-content-between align-items-center mt-5"
+        ref={usuariosRef}
+      >
         <Button className="m-auto mt-5 mb-lg-5" onClick={desplegarUsuarios}>
-          Gestionar Usuarios
+          {mostrarUsuarios ? "Ocultar Lista" : "Lista de Usuarios"}
         </Button>
       </div>
       {mostrarUsuarios && (
