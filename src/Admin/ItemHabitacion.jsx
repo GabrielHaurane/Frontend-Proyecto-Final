@@ -55,7 +55,7 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion, listaHabitacio
           className="img-admin"
         />
       </td>
-      <td>{habitacion.precio}</td>
+      <td>{habitacion.precio} usd</td>
       <td>{habitacion.disponibilidad ? "Disponible" : "No disponible"}</td>
       <td>
         <Link

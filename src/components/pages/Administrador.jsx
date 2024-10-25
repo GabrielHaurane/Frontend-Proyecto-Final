@@ -1,4 +1,4 @@
-import { Table, Dropdown, DropdownButton } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { listarUsuarios } from "../../helpers/queries.usuarios.js";
 import { listarHabitacionesAdmin } from "../../helpers/queries.js";
@@ -24,7 +24,6 @@ const Administrador = () => {
 
   const cargarHabitaciones = async () => {
     const respuesta = await listarHabitacionesAdmin();
-    console.log(respuesta);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
@@ -59,19 +58,20 @@ const Administrador = () => {
   };
 
   return (
-    <section className="mainSection container">
+    <section className="mainSection container-fluid bg-registro">
+      <div className="text-center my-5">
+        <h1>Administración Hotel Code</h1>
+      </div>
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <DropdownButton
-          id="dropdown-habitaciones"
-          title="Gestionar Habitaciones"
-          onClick={desplegarHabitaciones}
-        ></DropdownButton>
+        <Button className="m-auto mt-5 mb-5" onClick={desplegarHabitaciones}>
+          Gestionar Habitaciones
+        </Button>
       </div>
       {mostrarHabitaciones && (
         <>
           <hr />
           <div className="d-flex justify-content-between align-items-center mt-5">
-            <h1 className="display-4 ">Habitaciones</h1>
+            <h2 className="display-4 ">Habitaciones</h2>
             <Link className="btn btn-primary" to="/administrador/crear">
               <i className="bi bi-file-earmark-plus"></i>
             </Link>
@@ -103,17 +103,15 @@ const Administrador = () => {
         </>
       )}
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <DropdownButton
-          id="dropdown-usuarios"
-          title="Gestionar Usuarios"
-          onClick={desplegarUsuarios}
-        ></DropdownButton>
+        <Button className="m-auto mt-5 mb-lg-5" onClick={desplegarUsuarios}>
+          Gestionar Usuarios
+        </Button>
       </div>
       {mostrarUsuarios && (
         <>
           <hr />
           <div className="d-flex mt-lg-4">
-            <h1 className="display-4 ">Usuarios</h1>
+            <h2 className="display-4 ">Usuarios</h2>
           </div>
           <div className="tabla-scroll">
             <Table responsive striped bordered hover>
