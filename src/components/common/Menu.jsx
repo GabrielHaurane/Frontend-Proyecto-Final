@@ -2,12 +2,12 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../assets/logo-hotelcode.jpg'
 const Menu = ({usuarioLogueado, setUsuarioLogueado}) => {
+  const navegacion = useNavigate()
     const logout =()=>{
         sessionStorage.removeItem('userKey')
         setUsuarioLogueado('')
         navegacion('/')
       }
-      const navegacion = useNavigate()
     return (
         <>
         <Navbar expand="lg" className="backC">

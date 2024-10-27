@@ -82,7 +82,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
       }
     } else {
       const respuesta = await editarHabitacionAdmin(id, habitacion);
-      if (respuesta.status !== "Error al editar la habitación") {
+      if (respuesta.status === 200) {
         Swal.fire({
           title: "Habitación editada",
           text: `La habitación fue editada correctamente`,

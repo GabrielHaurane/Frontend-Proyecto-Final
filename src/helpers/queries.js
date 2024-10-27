@@ -113,8 +113,7 @@ export const editarHabitacionAdmin = async (
     if (!respuesta.ok) {
       throw new Error("Error al editar la habitación");
     }
-    const data = await respuesta.json();
-    return data;
+    return respuesta
   } catch (error) {
     console.error("Error en la solicitud:", error.message);
     return { mensaje: "Error al editar la habitación" };
@@ -128,6 +127,9 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
       `${URLHabitacion}/habitacion/${idHabitacion}`,
       {
         method: "DELETE",
+        headers: {
+          "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+        },
       }
     );
     if (!respuesta.ok) {

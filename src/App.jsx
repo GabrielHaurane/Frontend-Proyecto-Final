@@ -20,7 +20,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 
 function App() {
-  const usuario = JSON.parse(sessionStorage.getItem('userKey')) || {};
+  const usuario = JSON.parse(sessionStorage.getItem('userKey')) || '';
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario)
 
   return (
