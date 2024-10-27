@@ -48,15 +48,24 @@ const Login = ({ setUsuarioLogueado }) => {
             text: `Bienvenido a HotelCode`,
             icon: "success",
           });
-          setUsuarioLogueado({ email: datos.email, token: datos.token });
+          setUsuarioLogueado({
+            email: datos.email,
+            token: datos.token,
+            rol: datos.rol,
+          });
           sessionStorage.setItem(
             "userKey",
             JSON.stringify({
               email: datos.email,
               token: datos.token,
+              rol: datos.rol,
             })
           );
-          navegacion("/administrador");
+          if (datos.rol === "admin") {
+            navegacion("/administrador");
+          }else{
+            navegacion("/")
+          }
         } else {
           Swal.fire({
             title: "Error",
