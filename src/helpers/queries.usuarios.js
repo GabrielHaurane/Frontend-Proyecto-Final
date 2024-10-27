@@ -43,7 +43,7 @@ export const obtenerUsuario = async (id) => {
   }
 };
 
-export const editarUsuario = async (usuarioEditado) => {
+export const editarUsuario = async (usuarioEditado, id) => {
   try {
     const respuesta = await fetch(URLUsuario + "/" + id, {
       method: "PUT",

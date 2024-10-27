@@ -130,6 +130,7 @@ const usuariosRef = useRef(null)
                 <tr className="text-center">
                   <th>Fila</th>
                   <th>Email</th>
+                  <th className="row">Permisos</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
