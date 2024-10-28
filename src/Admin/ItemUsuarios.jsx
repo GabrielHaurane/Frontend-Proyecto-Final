@@ -74,6 +74,7 @@ const ItemUsuarios = ({ usuario, fila, setListaUsuarios }) => {
       <td>{usuario.email}</td>
       <td className="col-lg-4">
         <Form.Select
+        className="text-center"
           value={nuevoRol}
           onChange={(e) => setNuevoRol(e.target.value)}
         >

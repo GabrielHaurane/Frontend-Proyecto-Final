@@ -44,7 +44,7 @@ const Inicio = () => {
           />
           <Carousel.Caption className="caption-centered w-100">
             <hr className="line" />
-            <h3 className="tama1">Disfruta tu instrancia</h3>
+            <h3 className="tama1">Disfruta tu instancia</h3>
             <p className="text-white fs-3">En conjunto a tu familia</p>
             <hr className="line" />
           </Carousel.Caption>

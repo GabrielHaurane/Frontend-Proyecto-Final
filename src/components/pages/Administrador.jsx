@@ -63,13 +63,13 @@ const usuariosRef = useRef(null)
   };
 
   return (
-    <section className="mainSection container-fluid bg-registro">
+    <section className="mainSection container-fluid bg-registro bg-admin">
       <div className="text-center my-5">
-        <h1>Administración Hotel Code</h1>
+        <h1 className="titulo-admin">Administración Hotel Code</h1>
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <Button className="m-auto mt-5 mb-5" onClick={desplegarHabitaciones}>
-          {mostrarHabitaciones ? "Ocultar Tabla" : "Gestionar Habitaciones"}
+        <Button className="m-auto mt-5 mb-5 btn-admin" onClick={desplegarHabitaciones}>
+          {mostrarHabitaciones ? "Ocultar Lista" : "Gestionar Habitaciones"}
         </Button>
       </div>
       {mostrarHabitaciones && (
@@ -114,7 +114,7 @@ const usuariosRef = useRef(null)
         className="d-flex justify-content-between align-items-center mt-5"
         ref={usuariosRef}
       >
-        <Button className="m-auto mt-5 mb-lg-5" onClick={desplegarUsuarios}>
+        <Button className="m-auto mt-5 mb-lg-5 btn-admin mb-5" onClick={desplegarUsuarios}>
           {mostrarUsuarios ? "Ocultar Lista" : "Lista de Usuarios"}
         </Button>
       </div>
@@ -125,7 +125,7 @@ const usuariosRef = useRef(null)
             <h2 className="display-4 ">Usuarios</h2>
           </div>
           <div className="tabla-scroll">
-            <Table responsive striped bordered hover>
+            <Table responsive striped bordered hover className="tabla">
               <thead>
                 <tr className="text-center">
                   <th>Fila</th>
