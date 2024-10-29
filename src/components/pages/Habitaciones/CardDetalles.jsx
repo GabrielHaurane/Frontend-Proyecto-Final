@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Form, Modal } from "react-bootstrap";
+import Swal from "sweetalert2";
 const CardDetalles = ({habitacion}) => {
   // Estado para las fechas de entrada y salida
   const [fechaEntradaa, setFechaEntradaa] = useState("");
@@ -26,8 +27,8 @@ const CardDetalles = ({habitacion}) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          habitacionId: habitacion._id,  // asumiendo que `habitacion` contiene el ID
-          usuarioId: userId,  // reemplazar con el ID del usuario autenticado
+          habitacionId: habitacion._id,  
+          usuarioId: userId,  
           fechaEntrada: fechaEntradaa,
           fechaSalida: fechaSalidaa,
         }),
@@ -39,7 +40,8 @@ const CardDetalles = ({habitacion}) => {
   
       const data = await response.json();
       console.log("Reserva creada:", data);
-      // Opcional: mensaje de éxito o redirección
+      Swal.fire("Su habitacion fue Reservada con exito");
+      
     } catch (error) {
       console.error("Error:", error);
     }
