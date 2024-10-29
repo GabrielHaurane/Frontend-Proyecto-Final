@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card, Form, Modal } from "react-bootstrap";
-
-import { galeriaIMG1 } from "../../assets/imagenes.js";
-const CardDetalles = () => {
+import Swal from "sweetalert2";
+const CardDetalles = ({habitacion}) => {
   // Estado para las fechas de entrada y salida
   const [fechaEntradaa, setFechaEntradaa] = useState("");
   const [fechaSalidaa, setFechaSalidaa] = useState("");
@@ -15,13 +14,38 @@ const CardDetalles = () => {
     setShowModal(true); // Abre el modal al hacer clic en Reservar
   };
 
-  const handlePago = () => {
-    // Aquí puedes manejar la lógica para procesar la reserva con el método de pago
+  const handlePago = async () => {
     console.log("Método de pago seleccionado:", metodoPago);
-    // Cierra el modal
     setShowModal(false);
+    const user = JSON.parse(sessionStorage.getItem("userKey"))
+    const userId = user ? user._id : null;
+    console.log(userId)
+    try {
+      const response = await fetch(`${URLReserva}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          habitacionId: habitacion._id,  
+          usuarioId: userId,  
+          fechaEntrada: fechaEntradaa,
+          fechaSalida: fechaSalidaa,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error al crear la reserva");
+      }
+  
+      const data = await response.json();
+      console.log("Reserva creada:", data);
+      Swal.fire("Su habitacion fue Reservada con exito");
+      
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
-
   const handleClose = () => setShowModal(false);
 
 
@@ -32,29 +56,27 @@ const CardDetalles = () => {
         <div className="d-flex flex-wrap align-content-center">
           <img
             className="col-12 rounded-top-2 "
-            src={galeriaIMG1}
-            // habitacion.imagen
+            src={habitacion.imagen}
+            // 
           />
         </div>
         <Card.Body className="col-12">
-          <Card.Title className="fs-1">Habitacion Individual</Card.Title>
-          {/* habitacion.tipoHabitacion */}
+          <Card.Title className="fs-1">{habitacion.tipoHabitacion}</Card.Title>
+          
           <Card.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel
-            perferendis, eligendi aut maiores praesentium fuga omnis quod
-            {/* habitacion.dercripcion_breve */}
+            { habitacion.dercripcion_breve }
           </Card.Text>
           <div className="mb-2 fs-5">
-            <b>Capacidad: 1</b>
-            {/* habitacion.capacidad */}
+            <b>Capacidad: {habitacion.capacidad}</b>
+            
           </div>
           <div className="mb-2 fs-5">
-            <b>Tamaño: 5</b>
-            {/* habitacion.tamanio */}
+            <b>Tamaño: {habitacion.tamanio}</b>
+            
           </div>
           <div className="mb-2 fs-3">
-            <b>$100 X Noche</b>
-            {/* habitacion.precio */}
+            <b>${habitacion.precio} X Noche</b>
+            
           </div>
           <div>
             <Form onSubmit={handleReservar}>
@@ -112,15 +134,6 @@ const CardDetalles = () => {
               onChange={() => setMetodoPago("Debito")}
               checked={metodoPago === "Debito"}
             />
-            <Form.Check
-              type="radio"
-              label="Mercado Pago"
-              name="metodoPago"
-              id="mercadoPago"
-              onChange={() => setMetodoPago("Mercado Pago")}
-              checked={metodoPago === "Mercado Pago"}
-            />
-
             {/* Mostrar formulario dependiendo del método de pago seleccionado */}
             {metodoPago === "Credito" && (
               <div className="mt-3">

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { login, registro } from "../../helpers/queries.usuarios.js";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import logo from "../../assets/hotelCode.jpg";
+import logo from "../assets/logo-hotelcode.jpg";
 
 const Login = ({ setUsuarioLogueado }) => {
   const [registrarse, setRegistrarse] = useState(false);
