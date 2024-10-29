@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Form, Modal } from "react-bootstrap";
-
-import { galeriaIMG1 } from "../../assets/imagenes.js";
-const CardDetalles = () => {
+const CardDetalles = ({habitacion}) => {
   // Estado para las fechas de entrada y salida
   const [fechaEntradaa, setFechaEntradaa] = useState("");
   const [fechaSalidaa, setFechaSalidaa] = useState("");
@@ -32,29 +30,27 @@ const CardDetalles = () => {
         <div className="d-flex flex-wrap align-content-center">
           <img
             className="col-12 rounded-top-2 "
-            src={galeriaIMG1}
-            // habitacion.imagen
+            src={habitacion.imagen}
+            // 
           />
         </div>
         <Card.Body className="col-12">
-          <Card.Title className="fs-1">Habitacion Individual</Card.Title>
-          {/* habitacion.tipoHabitacion */}
+          <Card.Title className="fs-1">{habitacion.tipoHabitacion}</Card.Title>
+          
           <Card.Text>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint vel
-            perferendis, eligendi aut maiores praesentium fuga omnis quod
-            {/* habitacion.dercripcion_breve */}
+            { habitacion.dercripcion_breve }
           </Card.Text>
           <div className="mb-2 fs-5">
-            <b>Capacidad: 1</b>
-            {/* habitacion.capacidad */}
+            <b>Capacidad: {habitacion.capacidad}</b>
+            
           </div>
           <div className="mb-2 fs-5">
-            <b>Tamaño: 5</b>
-            {/* habitacion.tamanio */}
+            <b>Tamaño: {habitacion.tamanio}</b>
+            
           </div>
           <div className="mb-2 fs-3">
-            <b>$100 X Noche</b>
-            {/* habitacion.precio */}
+            <b>${habitacion.precio} X Noche</b>
+            
           </div>
           <div>
             <Form onSubmit={handleReservar}>
