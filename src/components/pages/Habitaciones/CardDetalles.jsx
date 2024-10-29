@@ -13,13 +13,37 @@ const CardDetalles = ({habitacion}) => {
     setShowModal(true); // Abre el modal al hacer clic en Reservar
   };
 
-  const handlePago = () => {
-    // Aquí puedes manejar la lógica para procesar la reserva con el método de pago
+  const handlePago = async () => {
     console.log("Método de pago seleccionado:", metodoPago);
-    // Cierra el modal
     setShowModal(false);
+    const user = JSON.parse(sessionStorage.getItem("userKey"))
+    const userId = user ? user._id : null;
+    console.log(userId)
+    try {
+      const response = await fetch(`${URLReserva}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          habitacionId: habitacion._id,  // asumiendo que `habitacion` contiene el ID
+          usuarioId: userId,  // reemplazar con el ID del usuario autenticado
+          fechaEntrada: fechaEntradaa,
+          fechaSalida: fechaSalidaa,
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error al crear la reserva");
+      }
+  
+      const data = await response.json();
+      console.log("Reserva creada:", data);
+      // Opcional: mensaje de éxito o redirección
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
-
   const handleClose = () => setShowModal(false);
 
 

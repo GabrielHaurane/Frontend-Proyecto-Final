@@ -13,7 +13,7 @@ const DetalleHabitacion = () => {
             }
         };
         obtenerHabitacion
-    },[habitacionId])
+    },[habitacion])
     return (
         <div className=' flex-grow-1 container'>
             <h1>Detalles de la habitacion</h1>
