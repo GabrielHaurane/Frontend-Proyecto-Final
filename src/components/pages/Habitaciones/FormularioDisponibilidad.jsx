@@ -23,7 +23,7 @@ const FormularioDisponibilidad = () => {
 
     try {
       const response = await fetch(
-        `${URLHabitacion}/habitaciones?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`
+        `${URLHabitacion}/catalogo?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`
       );
       if (!response.ok) {
         throw new Error("Error al buscar habitaciones");
