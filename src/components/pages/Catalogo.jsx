@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { lis } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
+import { listadoHabitacionesDisponibles } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
 import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
@@ -28,14 +28,14 @@ const Catalogo = () => {
 
   //   obtenerHabitaciones();
   // }, []);
-
+  const disponibilidad = listadoHabitacionesDisponibles()
 
     return (
       <div className="container flex-grow-1">
       <h1>Catálogo de Habitaciones</h1>
       {mensajeError && <div className="alert alert-warning">{mensajeError}</div>}
       
-      {habitaciones.length > 0 ? (
+      {disponibilidad.length > 0 ? (
         <div className="row">
           {habitaciones.map((habitacion) => (
             <CardHabitacion key={habitacion._id} habitacion={habitacion} />
