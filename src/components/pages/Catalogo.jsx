@@ -27,14 +27,14 @@ const Catalogo = () => {
 
     obtenerHabitaciones();
   }, []);
-  const disponibilidad = listadoHabitacionesDisponibles()
+  
 
     return (
       <div className="container flex-grow-1">
       <h1>Catálogo de Habitaciones</h1>
       {mensajeError && <div className="alert alert-warning">{mensajeError}</div>}
       
-      {disponibilidad.length > 0 ? (
+      {habitaciones.length > 0 ? (
         <div className="row">
           {habitaciones.map((habitacion) => (
             <CardHabitacion key={habitacion._id} habitacion={habitacion} />

@@ -142,6 +142,16 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
     return { mensaje: "Error al eliminar la habitación" };
   }
 };
+export const buscarHabitacionAPI = async(_id)=>{
+  try {
+      const respuesta = await fetch(URLHabitacion+'/'+_id)
+      return respuesta
+  } catch (error) {
+      return false;
+  }
+}
+
+
 
 // Función para obtener los detalles de una habitación específica (solo administrador)
 export const obtenerHabitacionAdmin = async (idHabitacion) => {
