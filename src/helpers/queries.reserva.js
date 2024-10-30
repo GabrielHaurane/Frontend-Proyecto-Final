@@ -1,5 +1,5 @@
 const URLReserva = import.meta.env.VITE_API_RESERVA 
-const listarReservas = async () => {
+export const listarReservas = async () => {
     try {
       const response = await fetch(URLReserva);
       if (!response.ok) throw new Error('Error al listar las reservas');
@@ -10,7 +10,7 @@ const listarReservas = async () => {
       console.error(error);
     }
   };
-  const obtenerReserva = async (id) => {
+  export const obtenerReserva = async (id) => {
     try {
       const response = await fetch(URLReserva+`/${id}`);
       if (!response.ok) throw new Error('Error al obtener la reserva');
@@ -21,7 +21,7 @@ const listarReservas = async () => {
       console.error(error);
     }
   };
-  const crearReserva = async (nuevaReserva) => {
+  export const crearReserva = async (nuevaReserva) => {
     try {
       const response = await fetch(URLReserva, {
         method: 'POST',
@@ -38,7 +38,7 @@ const listarReservas = async () => {
       console.error(error);
     }
   };
-  const borrarReserva = async (id) => {
+  export const borrarReserva = async (id) => {
     try {
       const response = await fetch(URLReserva+`/${id}`, {
         method: 'DELETE',
