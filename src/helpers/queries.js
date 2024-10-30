@@ -160,7 +160,7 @@ export const obtenerHabitacionAdmin = async (idHabitacion) => {
   }
 };
 
-export const listadoHabitacionesDisponibles = async (req,res) =>{
+export const listadoHabitacionesDisponibles = async () =>{
   try {
     const respuesta = await fetch(`${URLHabitacion}/disponibles`,
       {
