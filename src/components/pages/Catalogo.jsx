@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listadoHabitacionesDisponibles, obtenerCatalogoHabitaciones } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
-const URLHabitacion = import.meta.env.VITE_API_HABITACION;
+import { listadoHabitacionesDisponibles} from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
 import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
 const Catalogo = () => {
