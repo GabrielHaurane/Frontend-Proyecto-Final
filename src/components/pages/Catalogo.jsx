@@ -7,27 +7,27 @@ const Catalogo = () => {
   const [habitaciones, setHabitaciones] = useState([]);
   const [mensajeError, setMensajeError] = useState("");
 
-  // useEffect(() => {
-  //   const obtenerHabitaciones = async () => {
-  //     try {
-  //       const response = await fetch(`${URLHabitacion}/reserva`);
-  //       if (!response.ok) {
-  //         throw new Error("Error al obtener las habitaciones");
-  //       }
-  //       const data = await response.json();
-  //       if (data.length === 0) {
-  //         setMensajeError("No hay habitaciones disponibles.");
-  //       } else {
-  //         setHabitaciones(data);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error al obtener habitaciones:", error);
-  //       setMensajeError("Ocurrió un error al cargar las habitaciones.");
-  //     }
-  //   };
+  useEffect(() => {
+    const obtenerHabitaciones = async () => {
+      try {
+        const response = await fetch(`${URLHabitacion}/disponibles`);
+        if (!response.ok) {
+          throw new Error("Error al obtener las habitaciones");
+        }
+        const data = await response.json();
+        if (data.length === 0) {
+          setMensajeError("No hay habitaciones disponibles.");
+        } else {
+          setHabitaciones(data);
+        }
+      } catch (error) {
+        console.error("Error al obtener habitaciones:", error);
+        setMensajeError("Ocurrió un error al cargar las habitaciones.");
+      }
+    };
 
-  //   obtenerHabitaciones();
-  // }, []);
+    obtenerHabitaciones();
+  }, []);
   const disponibilidad = listadoHabitacionesDisponibles()
 
     return (
