@@ -1,13 +1,10 @@
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
 
 // Función para buscar habitaciones disponibles
-export const buscarHabitacionesDisponibles = async (
-  fechaEntrada,
-  fechaSalida
-) => {
+export const buscarHabitacionesDisponibles = async () => {
   try {
     const respuesta = await fetch(
-      `${URLHabitacion}/catalogo?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`
+      `${URLHabitacion}/disponibles`
     );
     if (!respuesta.ok) {
       throw new Error("Error al buscar habitaciones");

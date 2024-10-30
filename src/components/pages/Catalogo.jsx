@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { obtenerCatalogoHabitaciones } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
+import { lis } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
 import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
@@ -7,27 +7,27 @@ const Catalogo = () => {
   const [habitaciones, setHabitaciones] = useState([]);
   const [mensajeError, setMensajeError] = useState("");
 
-  useEffect(() => {
-    const obtenerHabitaciones = async () => {
-      try {
-        const response = await fetch(`${URLHabitacion}/catalogo`);
-        if (!response.ok) {
-          throw new Error("Error al obtener las habitaciones");
-        }
-        const data = await response.json();
-        if (data.length === 0) {
-          setMensajeError("No hay habitaciones disponibles.");
-        } else {
-          setHabitaciones(data);
-        }
-      } catch (error) {
-        console.error("Error al obtener habitaciones:", error);
-        setMensajeError("Ocurrió un error al cargar las habitaciones.");
-      }
-    };
+  // useEffect(() => {
+  //   const obtenerHabitaciones = async () => {
+  //     try {
+  //       const response = await fetch(`${URLHabitacion}/reserva`);
+  //       if (!response.ok) {
+  //         throw new Error("Error al obtener las habitaciones");
+  //       }
+  //       const data = await response.json();
+  //       if (data.length === 0) {
+  //         setMensajeError("No hay habitaciones disponibles.");
+  //       } else {
+  //         setHabitaciones(data);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error al obtener habitaciones:", error);
+  //       setMensajeError("Ocurrió un error al cargar las habitaciones.");
+  //     }
+  //   };
 
-    obtenerHabitaciones();
-  }, []);
+  //   obtenerHabitaciones();
+  // }, []);
 
 
     return (
