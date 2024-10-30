@@ -21,25 +21,25 @@ export const buscarHabitacionesDisponibles = async (
 };
 
 // Función para crear una nueva habitación
-export const crearHabitacion = async (habitacion) => {
-  try {
-    const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(habitacion),
-    });
-    if (!respuesta.ok) {
-      throw new Error("Error al crear habitación");
-    }
-    const data = await respuesta.json();
-    return data;
-  } catch (error) {
-    console.error("Error en la solicitud:", error.message);
-    return { mensaje: "Error al crear habitación" };
-  }
-};
+// export const crearHabitacion = async (habitacion) => {
+//   try {
+//     const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(habitacion),
+//     });
+//     if (!respuesta.ok) {
+//       throw new Error("Error al crear habitación");
+//     }
+//     const data = await respuesta.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error en la solicitud:", error.message);
+//     return { mensaje: "Error al crear habitación" };
+//   }
+// };
 
 // Función para obtener el catálogo de habitaciones
 export const obtenerCatalogoHabitaciones = async () => {
@@ -60,6 +60,10 @@ export const listarHabitacionesAdmin = async () => {
   try {
     const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
       method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+      },
     });
     if (!respuesta.ok) {
       throw new Error("Error al listar habitaciones");
