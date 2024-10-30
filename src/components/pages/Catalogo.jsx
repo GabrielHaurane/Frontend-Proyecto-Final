@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listadoHabitacionesDisponibles } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
+import { listadoHabitacionesDisponibles, obtenerCatalogoHabitaciones } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
 import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
@@ -10,11 +10,11 @@ const Catalogo = () => {
   useEffect(() => {
     const obtenerHabitaciones = async () => {
       try {
-        const response = await fetch(`${URLHabitacion}/disponibles`);
-        if (!response.ok) {
+        const data = await listadoHabitacionesDisponibles();
+        if (data === null) {
           throw new Error("Error al obtener las habitaciones");
         }
-        const data = await response.json();
+  
         if (data.length === 0) {
           setMensajeError("No hay habitaciones disponibles.");
         } else {

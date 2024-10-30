@@ -162,13 +162,20 @@ export const obtenerHabitacionAdmin = async (idHabitacion) => {
 
 export const listadoHabitacionesDisponibles = async (req,res) =>{
   try {
-    const respuesta = await fetch(`${URLHabitacion}/disponibilidad`)
+    const respuesta = await fetch(`${URLHabitacion}/disponibles`,
+      {
+        headers:{
+          "x-token": JSON.parse(sessionStorage.getItem("userKey")).token
+        }
+      }
+    )
     if (!respuesta.ok) {
       throw new Error("Error al obtener los detalles de la habitación");
     }
-    return respuesta;
+    const data = await respuesta.json()
+    return data;
   } catch (error) {
     console.error(error)
-    return { mensaje: "Error al listar la habitación" };
+    return false;
   }
 }
