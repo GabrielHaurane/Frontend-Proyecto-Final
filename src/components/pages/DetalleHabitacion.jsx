@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { buscarHabitacionAPI } from "../../helpers/queries.js";
 import { Button, Card, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DetalleHabitacion = () => {
   const { id } = useParams();
@@ -27,6 +28,21 @@ const DetalleHabitacion = () => {
     obtenerHabitacion();
   }, [id]);
 
+  // Función para manejar la reserva
+  const handleReserva = (e) => {
+    e.preventDefault(); // Evita que el formulario se envíe y recargue la página
+
+    // Lógica adicional de reserva, si la hay, como guardar en el backend
+
+    // Alerta de éxito con SweetAlert2
+    Swal.fire({
+      icon: 'success',
+      title: '¡Reserva exitosa!',
+      text: 'Tu habitación ha sido reservada con éxito.',
+      confirmButtonText: 'Aceptar',
+    });
+  };
+
   return (
     <div className="flex-grow-1 container">
       <h1>Detalles de la habitación</h1>
@@ -51,7 +67,7 @@ const DetalleHabitacion = () => {
                 <b>${habitacion?.precio || "N/A"} por noche</b>
               </div>
               <div>
-                <Form>
+                <Form onSubmit={handleReserva}>
                   <Form.Group className="col-6" controlId="formFechaEntrada">
                     <Form.Label>Fecha de Entrada</Form.Label>
                     <Form.Control
