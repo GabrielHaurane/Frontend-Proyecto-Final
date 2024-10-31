@@ -65,6 +65,16 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                 Galeria de imagenes
               </NavLink>
 
+              {usuarioLogueado && (
+                <NavLink
+                  end
+                  className="nav-link text-white d-flex align-self-center text-center"
+                  to="/reservas/:id"
+                >
+                  Reservas
+                </NavLink>
+              )}
+
               {usuarioLogueado !== "" && (
                 <NavLink
                   end
