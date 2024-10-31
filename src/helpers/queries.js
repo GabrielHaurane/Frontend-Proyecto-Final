@@ -1,4 +1,5 @@
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
+const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 
 // Función para buscar habitaciones disponibles
 export const buscarHabitacionesDisponibles = async () => {
@@ -142,9 +143,9 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
     return { mensaje: "Error al eliminar la habitación" };
   }
 };
-export const buscarHabitacionAPI = async(_id)=>{
+export const buscarHabitacionAPI = async(id)=>{
   try {
-      const respuesta = await fetch(URLHabitacion+'/'+_id)
+      const respuesta = await fetch(URLHabitaciones+'/'+ id)
       return respuesta
   } catch (error) {
       return false;
