@@ -1,13 +1,11 @@
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
+const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 
 // Función para buscar habitaciones disponibles
-export const buscarHabitacionesDisponibles = async (
-  fechaEntrada,
-  fechaSalida
-) => {
+export const buscarHabitacionesDisponibles = async () => {
   try {
     const respuesta = await fetch(
-      `${URLHabitacion}/catalogo?fechaEntrada=${fechaEntrada}&fechaSalida=${fechaSalida}`
+      `${URLHabitacion}/disponibles`
     );
     if (!respuesta.ok) {
       throw new Error("Error al buscar habitaciones");
@@ -145,6 +143,16 @@ export const eliminarHabitacionAdmin = async (idHabitacion) => {
     return { mensaje: "Error al eliminar la habitación" };
   }
 };
+export const buscarHabitacionAPI = async(id)=>{
+  try {
+      const respuesta = await fetch(URLHabitaciones+'/'+ id)
+      return respuesta
+  } catch (error) {
+      return false;
+  }
+}
+
+
 
 // Función para obtener los detalles de una habitación específica (solo administrador)
 export const obtenerHabitacionAdmin = async (idHabitacion) => {
@@ -163,7 +171,7 @@ export const obtenerHabitacionAdmin = async (idHabitacion) => {
   }
 };
 
-export const listadoHabitacionesDisponibles = async (req,res) =>{
+export const listadoHabitacionesDisponibles = async () =>{
   try {
     const respuesta = await fetch(`${URLHabitacion}/disponibles`,
       {

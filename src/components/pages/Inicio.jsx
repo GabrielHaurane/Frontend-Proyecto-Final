@@ -6,6 +6,7 @@ import {
   terceraImg,
 } from "../assets/imagenes.js";
 
+
 const Inicio = () => {
   return (
     <div className="mainSection">
@@ -74,6 +75,7 @@ const Inicio = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
+      
       <div className="text-center py-2 Acerca text-white">
         <h1>Acerca del Hotel</h1>
       </div>

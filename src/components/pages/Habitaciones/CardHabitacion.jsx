@@ -19,7 +19,7 @@ const CardHabitacion = ({ habitacion }) => {
         </Card.Body>
         <CardFooter className="d-flex align-content-md-end flex-md-wrap justify-content-end">
           <div>
-            <Link to={`../DetalleHabitacion/${habitacion._id}`} className="btn btn-dark text-white">
+            <Link to={`../detallehabitacion/${habitacion._id}`} className="btn btn-dark text-white">
               Ver detalles
             </Link>
           </div>

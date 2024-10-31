@@ -27,7 +27,7 @@ const Catalogo = () => {
 
     obtenerHabitaciones();
   }, []);
-
+  
 
     return (
       <div className="container flex-grow-1">
