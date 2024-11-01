@@ -26,7 +26,7 @@ const ItemUsuarios = ({ usuario, fila, setListaUsuarios }) => {
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Eliminado",
-            text: `El usuario ${usuario.email} fue elminado correctamente`,
+            text: `El usuario ${usuario.email} fue eliminado correctamente`,
             icon: "success",
           });
           const usuariosAPI = await listarUsuarios();
