@@ -18,10 +18,13 @@ import RutasProtegidas from './components/routes/RutasProtegidas.jsx'
 import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
+import Reservas from './components/pages/Reservas.jsx';
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('userKey')) || '';
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario)
+
+
 
   return (
     <>
@@ -33,6 +36,7 @@ function App() {
           <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
           <Route exact path="/galeria" element={<Galeria></Galeria>}></Route>
           <Route exact path="/catalogo" element={<Catalogo></Catalogo>}></Route>
+          <Route exact path="/reservas"  element={<Reservas email={usuarioLogueado.email} token={usuarioLogueado.token}></Reservas>}></Route>
           <Route
             exact
             path="/detallehabitacion/:id"
@@ -48,7 +52,7 @@ function App() {
             path="/administrador/*"
             element={
               <RutasProtegidas>
-                <RutasAdmin></RutasAdmin>
+                <RutasAdmin email={usuarioLogueado.email} token={usuarioLogueado.token}></RutasAdmin>
               </RutasProtegidas>
             }
           ></Route>
