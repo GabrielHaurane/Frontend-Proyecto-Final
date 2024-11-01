@@ -24,7 +24,7 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion, listaHabitacio
         if (respuesta.status === 200) {
           Swal.fire({
             title: "Eliminado",
-            text: `La habitacion fue elminada correctamente`,
+            text: `La habitacion fue eliminada correctamente`,
             icon: "success",
           });
           const habitacionesAPI = await listarHabitacionesAdmin();
