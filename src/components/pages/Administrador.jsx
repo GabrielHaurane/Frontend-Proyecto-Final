@@ -1,34 +1,46 @@
 import { Table, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { listarUsuarios } from "../../helpers/queries.usuarios.js";
-import { listarHabitacionesAdmin } from "../../helpers/queries.js";
-import Swal from "sweetalert2";
+import {
+  listarHabitacionesAdmin,
+  obtenerHabitacionAdmin,
+} from "../../helpers/queries.js";
+import { listarReservasAdmin } from "../../helpers/queries.reserva.js";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
-import { Link } from "react-router-dom";
+import ItemReservasAdmin from "../../Admin/ItemReservasAdmin.jsx";
 
-const Administrador = () => {
+const Administrador = ({ email, token }) => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
   const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [listaReservas, setListaReservas] = useState([]);
   const [mostrarHabitaciones, setMostrarHabitaciones] = useState(false);
   const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
+  const [mostrarReservas, setMostrarReservas] = useState(false);
 
-const habitacionesRef = useRef(null)
-const usuariosRef = useRef(null)
+  const habitacionesRef = useRef(null);
+  const usuariosRef = useRef(null);
+  const reservasRef = useRef(null);
 
   useEffect(() => {
     if (mostrarHabitaciones) {
       cargarHabitaciones();
-      habitacionesRef.current.scrollIntoView({behavior: "smooth"})
+      habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarUsuarios) {
       cargarUsuarios();
       usuariosRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [mostrarHabitaciones, mostrarUsuarios]);
+    if (mostrarReservas) {
+      cargarReservas();
+      reservasRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [mostrarHabitaciones, mostrarUsuarios, mostrarReservas]);
 
   const cargarHabitaciones = async () => {
-    const respuesta = await listarHabitacionesAdmin();
+    const respuesta = await listarHabitacionesAdmin(email, token);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
@@ -55,11 +67,33 @@ const usuariosRef = useRef(null)
     }
   };
 
+  const cargarReservas = async () => {
+    const respuesta = await listarReservasAdmin(email, token);
+    if (respuesta) {
+      const reservasConDetalles = await Promise.all(
+        respuesta.map(async (reserva) => {
+          const habitacion = await obtenerHabitacionAdmin(reserva.habitacionID);
+          return { ...reserva, habitacion };
+        })
+      );
+      setListaReservas(reservasConDetalles);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "No se pueden mostrar las reservas, intentá más tarde",
+        icon: "error",
+      });
+    }
+  };
+
   const desplegarUsuarios = () => {
     setMostrarUsuarios(!mostrarUsuarios);
   };
   const desplegarHabitaciones = () => {
     setMostrarHabitaciones(!mostrarHabitaciones);
+  };
+  const desplegarReservas = () => {
+    setMostrarReservas(!mostrarReservas);
   };
 
   return (
@@ -68,7 +102,10 @@ const usuariosRef = useRef(null)
         <h1 className="titulo-admin">Administración Hotel Code</h1>
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <Button className="m-auto mt-5 mb-5 btn-admin" onClick={desplegarHabitaciones}>
+        <Button
+          className="m-auto mt-5 mb-5 btn-admin"
+          onClick={desplegarHabitaciones}
+        >
           {mostrarHabitaciones ? "Ocultar Lista" : "Gestionar Habitaciones"}
         </Button>
       </div>
@@ -114,7 +151,10 @@ const usuariosRef = useRef(null)
         className="d-flex justify-content-between align-items-center mt-5"
         ref={usuariosRef}
       >
-        <Button className="m-auto mt-5 mb-lg-5 btn-admin mb-5" onClick={desplegarUsuarios}>
+        <Button
+          className="m-auto mt-5 mb-lg-5 btn-admin mb-5"
+          onClick={desplegarUsuarios}
+        >
           {mostrarUsuarios ? "Ocultar Lista" : "Lista de Usuarios"}
         </Button>
       </div>
@@ -141,6 +181,49 @@ const usuariosRef = useRef(null)
                     usuario={usuario}
                     fila={index + 1}
                     setListaUsuarios={setListaUsuarios}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </>
+      )}
+      <div
+        className="d-flex justify-content-between align-items-center mt-5"
+        ref={reservasRef}
+      >
+        <Button
+          className="m-auto mt-5 mb-lg-5 btn-admin mb-5"
+          onClick={desplegarReservas}
+        >
+          {mostrarReservas ? "Ocultar Lista" : "Lista de Reservas"}
+        </Button>
+      </div>
+      {mostrarReservas && (
+        <>
+          <hr />
+          <div className="d-flex mt-lg-4">
+            <h2 className="display-4 ">Reservas</h2>
+          </div>
+          <div className="tabla-scroll">
+            <Table responsive striped bordered hover className="tabla">
+              <thead>
+                <tr className="text-center">
+                  <th>Fila</th>
+                  <th>Usuario</th>
+                  <th>Tipo de Habitación</th>
+                  <th>Imagen</th>
+                  <th>Fecha Entrada</th>
+                  <th>Fecha Salida</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaReservas.map((reserva, index) => (
+                  <ItemReservasAdmin
+                    key={reserva._id}
+                    reserva={reserva}
+                    fila={index + 1}
+                    setListaReservas={setListaReservas}
                   />
                 ))}
               </tbody>

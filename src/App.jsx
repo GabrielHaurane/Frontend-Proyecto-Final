@@ -52,7 +52,7 @@ function App() {
             path="/administrador/*"
             element={
               <RutasProtegidas>
-                <RutasAdmin></RutasAdmin>
+                <RutasAdmin email={usuarioLogueado.email} token={usuarioLogueado.token}></RutasAdmin>
               </RutasProtegidas>
             }
           ></Route>
