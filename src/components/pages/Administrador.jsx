@@ -6,26 +6,34 @@ import Swal from "sweetalert2";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
 import { Link } from "react-router-dom";
+import { listarReservasAdmin } from "../../helpers/queries.reserva.js";
 
 const Administrador = () => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
   const [listaUsuarios, setListaUsuarios] = useState([]);
+  const [listaReservas, setListaReservas] = useState([]);
   const [mostrarHabitaciones, setMostrarHabitaciones] = useState(false);
   const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
+  const [mostrarReservas, setMostrarReservas] = useState(false);
 
-const habitacionesRef = useRef(null)
-const usuariosRef = useRef(null)
+  const habitacionesRef = useRef(null);
+  const usuariosRef = useRef(null);
+  const reservasRef = useRef(null);
 
   useEffect(() => {
     if (mostrarHabitaciones) {
       cargarHabitaciones();
-      habitacionesRef.current.scrollIntoView({behavior: "smooth"})
+      habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarUsuarios) {
       cargarUsuarios();
       usuariosRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  }, [mostrarHabitaciones, mostrarUsuarios]);
+    if (mostrarReservas) {
+      cargarReservas();
+      ReservasRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [mostrarHabitaciones, mostrarUsuarios, mostrarReservas]);
 
   const cargarHabitaciones = async () => {
     const respuesta = await listarHabitacionesAdmin();
@@ -55,12 +63,31 @@ const usuariosRef = useRef(null)
     }
   };
 
+  const cargarReservas = async () => {
+    const respuesta = await listarReservasAdmin();
+    if (respuesta.status === 200) {
+      const datos = await respuesta.json();
+      setListaReservas(datos);
+    } else {
+      Swal.fire({
+        title: "Error",
+        text: "No se pueden mostrar las reservas, intentá más tarde",
+        icon: "error",
+      });
+    }
+  };
+
   const desplegarUsuarios = () => {
     setMostrarUsuarios(!mostrarUsuarios);
   };
   const desplegarHabitaciones = () => {
     setMostrarHabitaciones(!mostrarHabitaciones);
   };
+  const desplegarReservas = () => {
+    setMostrarReservas(!mostrarReservas);
+  };
+
+  
 
   return (
     <section className="mainSection container-fluid bg-registro bg-admin">
@@ -68,7 +95,10 @@ const usuariosRef = useRef(null)
         <h1 className="titulo-admin">Administración Hotel Code</h1>
       </div>
       <div className="d-flex justify-content-between align-items-center mt-5">
-        <Button className="m-auto mt-5 mb-5 btn-admin" onClick={desplegarHabitaciones}>
+        <Button
+          className="m-auto mt-5 mb-5 btn-admin"
+          onClick={desplegarHabitaciones}
+        >
           {mostrarHabitaciones ? "Ocultar Lista" : "Gestionar Habitaciones"}
         </Button>
       </div>
@@ -114,7 +144,10 @@ const usuariosRef = useRef(null)
         className="d-flex justify-content-between align-items-center mt-5"
         ref={usuariosRef}
       >
-        <Button className="m-auto mt-5 mb-lg-5 btn-admin mb-5" onClick={desplegarUsuarios}>
+        <Button
+          className="m-auto mt-5 mb-lg-5 btn-admin mb-5"
+          onClick={desplegarUsuarios}
+        >
           {mostrarUsuarios ? "Ocultar Lista" : "Lista de Usuarios"}
         </Button>
       </div>
@@ -148,6 +181,17 @@ const usuariosRef = useRef(null)
           </div>
         </>
       )}
+      <div
+        className="d-flex justify-content-between align-items-center mt-5"
+        ref={usuariosRef}
+      >
+        <Button
+          className="m-auto mt-5 mb-lg-5 btn-admin mb-5"
+          onClick={desplegarReservas}
+        >
+          {mostrarReservas ? "Ocultar Lista" : "Lista de Reservas"}
+        </Button>
+      </div>
     </section>
   );
 };
