@@ -4,7 +4,17 @@ import Swal from "sweetalert2";
 import { borrarReserva } from "../../../helpers/queries.reserva.js";
 
 const ItemReservas = ({ reserva, fila, setListaReservas }) => {
-  const { habitacion } = reserva;
+  const { habitacion, fechaEntrada, fechaSalida } = reserva;
+
+   const formatearFecha = (fechaISO) => {
+     const fecha = new Date(fechaISO);
+     return fecha.toLocaleDateString("es-ES", {
+       year: "numeric",
+       month: "long",
+       day: "numeric",
+     });
+   };
+
   const eliminarReserva = () => {
     Swal.fire({
       title: "¿Estás seguro de borrar la reserva?",
@@ -53,10 +63,12 @@ const ItemReservas = ({ reserva, fila, setListaReservas }) => {
           "Cargando..."
         )}
       </td>
-      <td>{reserva.fechaEntrada}</td>
-      <td>{reserva.fechaSalida}</td>
+      <td>{formatearFecha(fechaEntrada)}</td>
+      <td>{formatearFecha(fechaSalida)}</td>
       <td>
-        <Button variant="danger" onClick={eliminarReserva}>Eliminar</Button>
+        <Button variant="danger" onClick={eliminarReserva}>
+          Eliminar
+        </Button>
       </td>
     </tr>
   );
