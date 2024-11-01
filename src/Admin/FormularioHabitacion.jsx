@@ -65,7 +65,7 @@ const FormularioHabitacion = ({ creandoHabitacion, titulo }) => {
   const onSubmit = async (habitacion) => {
     if (creandoHabitacion) {
       const respuesta = await crearHabitacionAdmin(habitacion);
-      console.log(respuesta)
+     
       if (respuesta.status === 201) {
         reset();
         Swal.fire({

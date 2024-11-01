@@ -4,7 +4,7 @@ export const listarReservas = async () => {
       const response = await fetch(URLReserva);
       if (!response.ok) throw new Error('Error al listar las reservas');
       const data = await response.json();
-      console.log('Reservas:', data);
+      
       return data;
     } catch (error) {
       console.error(error);
@@ -15,7 +15,7 @@ export const listarReservas = async () => {
       const response = await fetch(URLReserva+`/${id}`);
       if (!response.ok) throw new Error('Error al obtener la reserva');
       const data = await response.json();
-      console.log('Reserva obtenida:', data);
+      
       return data;
     } catch (error) {
       console.error(error);
@@ -32,7 +32,7 @@ export const listarReservas = async () => {
       });
       if (!response.ok) throw new Error('Error al crear la reserva');
       const data = await response.json();
-      console.log('Reserva creada:', data);
+      
       return data;
     } catch (error) {
       console.error(error);
