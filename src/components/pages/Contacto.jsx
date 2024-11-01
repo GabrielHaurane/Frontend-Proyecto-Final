@@ -1,5 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+
 const Contacto = () => {
   return (
     <div className="backQS flex-grow-1 d-flex flex-column justify-content-evenly align-content-center">
@@ -12,7 +13,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-linkedin"
+                className="bi bi-linkedin" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "#0077b5" }}
               ></i>
             </a>
@@ -20,7 +21,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-github"
+                className="bi bi-github" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "black" }}
               ></i>
             </a>
@@ -28,7 +29,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-envelope-fill"
+                className="bi bi-envelope-fill" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "#EA4335" }}
               ></i>
              </a>
@@ -41,7 +42,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-linkedin"
+                className="bi bi-linkedin" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "#0077b5" }}
               ></i>
             </a>
@@ -49,7 +50,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-github"
+                className="bi bi-github" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "black" }}
               ></i>
             </a>
@@ -57,7 +58,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                class="bi bi-envelope-fill"
+                className="bi bi-envelope-fill" // Cambiado aquí
                 style={{ fontSize: "2rem", color: "#EA4335" }}
               ></i>
             </a>
