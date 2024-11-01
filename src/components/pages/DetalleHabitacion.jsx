@@ -3,7 +3,7 @@ import { buscarHabitacionAPI } from "../../helpers/queries.js";
 import { Button, Card, Form } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
-
+const URLReserva = import.meta.env.VITE_API_HABITACION
 const DetalleHabitacion = () => {
   const { id } = useParams();
   const [habitacion, setHabitacion] = useState({});
@@ -16,10 +16,11 @@ const DetalleHabitacion = () => {
       try {
         const response = await buscarHabitacionAPI(id);
         if (response.ok) {
-          const habi = await response.json();
-          setHabitacion(habi);
+            const habi = await response.json();
+            setHabitacion(habi);
+            
         } else {
-          console.error("Error en la respuesta de la API");
+            console.error("Error en la respuesta de la API");
         }
       } catch (error) {
         console.error("Error al obtener detalles de la habitación");
@@ -29,18 +30,59 @@ const DetalleHabitacion = () => {
   }, [id]);
 
   // Función para manejar la reserva
-  const handleReserva = (e) => {
-    e.preventDefault(); // Evita que el formulario se envíe y recargue la página
+  const handleReserva = async (e) => {
+    e.preventDefault(); 
+    const usuario = JSON.parse(sessionStorage.getItem("userKey"));
+    
+    if (!usuario) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Debes iniciar sesión para reservar una habitación.',
+            confirmButtonText: 'Aceptar'
+          });
+          return;
+    }
+    const reservaData = {
+        usuarioEmail: usuario.email, // Asegúrate de que estás enviando el email
+        habitacionID: habitacion._id, // ID de la habitación
+        fechaEntrada: fechaEntradaa,
+        fechaSalida: fechaSalidaa,
+    };
+    try {
+        
+        const respuesta = await fetch(`${URLReserva}/reserva`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-token": `${usuario.token}` // Token de autorización si tu backend lo requiere
+            },
+            body: JSON.stringify(reservaData)
+        });
 
-    // Lógica adicional de reserva, si la hay, como guardar en el backend
+        const datos = await respuesta.json();
 
-    // Alerta de éxito con SweetAlert2
-    Swal.fire({
-      icon: 'success',
-      title: '¡Reserva exitosa!',
-      text: 'Tu habitación ha sido reservada con éxito.',
-      confirmButtonText: 'Aceptar',
-    });
+        if (respuesta.ok) {
+            Swal.fire({
+                title: "Reserva Exitosa",
+                text: `Tu reserva ha sido confirmada.`,
+                icon: "success"
+            });
+            // Puedes redirigir al usuario o actualizar el estado de la UI aquí
+        } else {
+            Swal.fire({
+                title: "Error",
+                text: datos.mensaje || "No se pudo realizar la reserva",
+                icon: "error"
+            });
+        }
+    } catch (error) {
+        Swal.fire({
+            title: "Error",
+            text: "Ocurrió un error al realizar la reserva. Inténtalo nuevamente.",
+            icon: "error"
+        });
+    }
   };
 
   return (

@@ -6,24 +6,6 @@ import { useRef } from "react";
 
 
 const Footer = () => {
-  const form = useRef();
-
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form.current, {
-        publicKey: "YOUR_PUBLIC_KEY",
-      })
-      .then(
-        () => {
-          console.log("SUCCESS!");
-        },
-        (error) => {
-          console.log("FAILED...", error.text);
-        }
-      );
-  };
   return (
     <div className="backC py-3 d-flex justify-content-center justify-content-md-around">
       <div className="d-flex flex-column flex-md-row justify-content-around">

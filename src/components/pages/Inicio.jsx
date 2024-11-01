@@ -5,9 +5,19 @@ import {
   segundaImg,
   terceraImg,
 } from "../assets/imagenes.js";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 const Inicio = () => {
+  const [usuarioLogueado, setUsuarioLogueado] = useState(false)
+  const navegacion = useNavigate()
+useEffect(()=>{
+  const usuario = sessionStorage.getItem("userKey");
+  if (usuario) {
+    setUsuarioLogueado(true)
+  }
+},[])
   return (
     <div className="mainSection">
       <Carousel interval={null}>
@@ -75,7 +85,17 @@ const Inicio = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      
+      {!usuarioLogueado && (
+        <section className="text-center py-3 backC">
+        <h2 className="text-yello">Para conocer nuestro catálogo de habitaciones, primero debes iniciar sesión.</h2>
+        <button 
+          className="btn btn-primary" 
+          onClick={() => navegacion('/login')}
+        >
+          Iniciar Sesión
+        </button>
+      </section>
+      )}
       <div className="text-center py-2 Acerca text-white">
         <h1>Acerca del Hotel</h1>
       </div>
