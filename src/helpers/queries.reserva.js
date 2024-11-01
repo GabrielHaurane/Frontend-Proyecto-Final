@@ -62,9 +62,14 @@ export const borrarReserva = async (id) => {
 
 export const listarReservasAdmin = async () => {
   try {
-    const respuesta = await fetch(URLReservasAdmin);
+    const respuesta = await fetch(URLReservasAdmin,{
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+      }
+    });
     if (!respuesta.ok) throw new Error("Error al listar las reservas");
-    return respuesta;
+    const data =  await respuesta.json();
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error(error);
   }

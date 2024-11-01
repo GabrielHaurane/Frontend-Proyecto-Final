@@ -1,14 +1,18 @@
 import { Table, Button } from "react-bootstrap";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import { useEffect, useState, useRef } from "react";
 import { listarUsuarios } from "../../helpers/queries.usuarios.js";
-import { listarHabitacionesAdmin } from "../../helpers/queries.js";
-import Swal from "sweetalert2";
+import {
+  listarHabitacionesAdmin,
+  obtenerHabitacionAdmin,
+} from "../../helpers/queries.js";
+import { listarReservasAdmin } from "../../helpers/queries.reserva.js";
 import ItemUsuarios from "../../Admin/ItemUsuarios.jsx";
 import ItemHabitacion from "../../Admin/ItemHabitacion.jsx";
-import { Link } from "react-router-dom";
-import { listarReservasAdmin } from "../../helpers/queries.reserva.js";
+import ItemReservasAdmin from "../../Admin/ItemReservasAdmin.jsx";
 
-const Administrador = () => {
+const Administrador = ({ email, token }) => {
   const [listaHabitaciones, setListaHabitaciones] = useState([]);
   const [listaUsuarios, setListaUsuarios] = useState([]);
   const [listaReservas, setListaReservas] = useState([]);
@@ -31,12 +35,12 @@ const Administrador = () => {
     }
     if (mostrarReservas) {
       cargarReservas();
-      ReservasRef.current.scrollIntoView({ behavior: "smooth" });
+      reservasRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarHabitaciones, mostrarUsuarios, mostrarReservas]);
 
   const cargarHabitaciones = async () => {
-    const respuesta = await listarHabitacionesAdmin();
+    const respuesta = await listarHabitacionesAdmin(email, token);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
@@ -64,10 +68,15 @@ const Administrador = () => {
   };
 
   const cargarReservas = async () => {
-    const respuesta = await listarReservasAdmin();
-    if (respuesta.status === 200) {
-      const datos = await respuesta.json();
-      setListaReservas(datos);
+    const respuesta = await listarReservasAdmin(email, token);
+    if (respuesta) {
+      const reservasConDetalles = await Promise.all(
+        respuesta.map(async (reserva) => {
+          const habitacion = await obtenerHabitacionAdmin(reserva.habitacionID);
+          return { ...reserva, habitacion };
+        })
+      );
+      setListaReservas(reservasConDetalles);
     } else {
       Swal.fire({
         title: "Error",
@@ -86,8 +95,6 @@ const Administrador = () => {
   const desplegarReservas = () => {
     setMostrarReservas(!mostrarReservas);
   };
-
-  
 
   return (
     <section className="mainSection container-fluid bg-registro bg-admin">
@@ -183,7 +190,7 @@ const Administrador = () => {
       )}
       <div
         className="d-flex justify-content-between align-items-center mt-5"
-        ref={usuariosRef}
+        ref={reservasRef}
       >
         <Button
           className="m-auto mt-5 mb-lg-5 btn-admin mb-5"
@@ -192,6 +199,38 @@ const Administrador = () => {
           {mostrarReservas ? "Ocultar Lista" : "Lista de Reservas"}
         </Button>
       </div>
+      {mostrarReservas && (
+        <>
+          <hr />
+          <div className="d-flex mt-lg-4">
+            <h2 className="display-4 ">Reservas</h2>
+          </div>
+          <div className="tabla-scroll">
+            <Table responsive striped bordered hover className="tabla">
+              <thead>
+                <tr className="text-center">
+                  <th>Fila</th>
+                  <th>Usuario</th>
+                  <th>Tipo de Habitación</th>
+                  <th>Imagen</th>
+                  <th>Fecha Entrada</th>
+                  <th>Fecha Salida</th>
+                </tr>
+              </thead>
+              <tbody>
+                {listaReservas.map((reserva, index) => (
+                  <ItemReservasAdmin
+                    key={reserva._id}
+                    reserva={reserva}
+                    fila={index + 1}
+                    setListaReservas={setListaReservas}
+                  />
+                ))}
+              </tbody>
+            </Table>
+          </div>
+        </>
+      )}
     </section>
   );
 };
