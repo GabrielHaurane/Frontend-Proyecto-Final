@@ -1,7 +1,13 @@
 const URLReserva = import.meta.env.VITE_API_RESERVA 
-export const listarReservas = async () => {
+export const listarReservas = async (email) => {
     try {
-      const response = await fetch(URLReserva);
+      const response = await fetch(`${URLReserva}?email=${email}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+        },
+      });
       if (!response.ok) throw new Error('Error al listar las reservas');
       const data = await response.json();
       

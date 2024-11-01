@@ -1,8 +1,26 @@
-import React from 'react';
+import{ useState, useEffect } from 'react';
 import { Table } from 'react-bootstrap';
-const Reservas = ({setUsuarioLogueado}) => {
+import ItemReservas from './Habitaciones/ItemReservas';
+import Swal from 'sweetalert2';
+import { listarReservas } from '../../helpers/queries.reserva.js';
+
+const Reservas = () => {
+    const [listaReservas, setListaReservas] =useState([])
+
+    const cargarReservas = async () =>{
+        const datos = await listarReservas()
+        if (datos) {
+            setListaReservas(datos)
+        }else{
+            Swal.fire({
+              title: "Error",
+              text: "No se pueden mostrar las reservas, intenta más tarde",
+              icon: "error",
+            });
+        }
+    }
     return (
-        <div className='mainSection'>
+        <div className='mainSection container'>
             <div>
                 <h1>Reservas</h1>
             </div>
@@ -19,7 +37,7 @@ const Reservas = ({setUsuarioLogueado}) => {
                        </tr>
                     </thead>
                     <tbody>
-                        
+                <ItemReservas></ItemReservas>
                     </tbody>
                 </Table>
             </div>
