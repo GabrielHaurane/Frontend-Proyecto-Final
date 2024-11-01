@@ -7,6 +7,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
     sessionStorage.removeItem("userKey");
     setUsuarioLogueado("");
     navegacion("/");
+    window.location.reload();
   };
   const userKey = JSON.parse(sessionStorage.getItem("userKey"));
   const rol = userKey ? userKey.rol : null;
