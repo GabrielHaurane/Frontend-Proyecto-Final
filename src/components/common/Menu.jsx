@@ -72,7 +72,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                   className="nav-link text-white d-flex align-self-center text-center"
                   to="/reservas"
                 >
-                  Reservas
+                  Mis Reservas
                 </NavLink>
               )}
 

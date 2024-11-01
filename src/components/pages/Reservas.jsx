@@ -30,7 +30,7 @@ const Reservas = ({ email, token }) => {
   return (
     <div className="mainSection container">
       <div>
-        <h1>Reservas</h1>
+        <h1>Mis Reservas</h1>
       </div>
       <div className="tabla-scroll">
         <Table responsive striped>
@@ -57,7 +57,7 @@ const Reservas = ({ email, token }) => {
             ) : (
               <tr>
                 <td colSpan="6" className="text-center">
-                  No hay reservas
+                  Aún no hay reservas
                 </td>
               </tr>
             )}
