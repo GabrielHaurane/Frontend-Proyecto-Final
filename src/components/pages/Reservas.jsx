@@ -51,6 +51,7 @@ const Reservas = ({ email, token }) => {
                   key={reserva._id}
                   reserva={reserva}
                   fila={index + 1}
+                  setListaReservas={setListaReservas}
                 ></ItemReservas>
               ))
             ) : (

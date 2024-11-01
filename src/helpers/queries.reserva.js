@@ -48,10 +48,12 @@ export const listarReservas = async (email) => {
     try {
       const response = await fetch(URLReserva + `/${id}`, {
         method: "DELETE",
-        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+        headers: {
+          "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+        },
       });
       if (!response.ok) throw new Error('Error al borrar la reserva');
-      
+      return response;
     } catch (error) {
       console.error(error);
     }
