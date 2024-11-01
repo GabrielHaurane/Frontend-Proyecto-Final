@@ -1,32 +1,50 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { listadoHabitacionesDisponibles} from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
 import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
 
 const Catalogo = () => {
-    const location = useLocation();
-  const { habitaciones } = location.state || { habitaciones: [] };
+  const [habitaciones, setHabitaciones] = useState([]);
+  const [mensajeError, setMensajeError] = useState("");
+
+  useEffect(() => {
+    const obtenerHabitaciones = async () => {
+      try {
+        const data = await listadoHabitacionesDisponibles();
+        if (data === null) {
+          throw new Error("Error al obtener las habitaciones");
+        }
+  
+        if (data.length === 0) {
+          setMensajeError("No hay habitaciones disponibles.");
+        } else {
+          setHabitaciones(data);
+        }
+      } catch (error) {
+        console.error("Error al obtener habitaciones:", error);
+        setMensajeError("Ocurrió un error al cargar las habitaciones.");
+      }
+    };
+
+    obtenerHabitaciones();
+  }, []);
+  
 
     return (
-        <div>
+      <div className="container flex-grow-1">
       <h1>Catálogo de Habitaciones</h1>
-      <section>
-          <CardHabitacion></CardHabitacion>
-        {
-        }
-      </section>
-      {/* {habitaciones.length > 0 ? (
-        habitaciones.map((habitacion) => (
-          <div key={habitacion._id}>
-            <h2>{habitacion.tipoHabitacion}</h2>
-            <p>Capacidad: {habitacion.capacidad}</p>
-            <p>Precio: ${habitacion.precio}</p>
-            <p>Descripción Breve: {habitacion.descripcion_breve}</p>
-            <img src={habitacion.imagen} alt={habitacion.tipoHabitacion} />
-          </div>
-        ))
+      {mensajeError && <div className="alert alert-warning">{mensajeError}</div>}
+      
+      {habitaciones.length > 0 ? (
+        <div className="row">
+          {habitaciones.map((habitacion) => (
+            <CardHabitacion key={habitacion._id} habitacion={habitacion} />
+          ))}
+        </div>
       ) : (
-        <p>No hay habitaciones disponibles.</p>
-      )} */}
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
+          <h3 className="fs-3 text-center">No hay habitaciones disponibles</h3>
+        </div>
+      )}
     </div>
     );
 };

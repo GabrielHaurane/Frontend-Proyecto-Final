@@ -48,6 +48,10 @@
     color: var(--dorado-metalico);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   }
+  .text-yello{
+    color: var(--dorado-metalico);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  }
   .line {
     width: 500px;  
     border: none;
@@ -113,6 +117,57 @@ p.texto-opcion:hover {
         -1px 1px 0 #000,  
         1px 1px 0 #000;
 }
+
+.img-admin {
+  width: 200px;
+  height: 120px;
+  object-fit: cover;
+}
+
+/* Estilos Admin */
+.tabla-scroll{
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+
+.btn-admin{
+     background-color: #001f3f;
+    color: #D4AF37;
+    padding: 30px;
+    border: 2px solid #D4AF37;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-admin:hover{
+ background-color: #D4AF37;
+    color: #001f3f;
+    box-shadow: 0px 0px 10px #FFD700;
+    transform: scale(1.05);
+  
+}
+
+.bg-admin{
+   background: linear-gradient(to bottom, #001f3f, #001129);
+    color: #D4AF37;
+    font-family: Arial, sans-serif;
+}
+
+.titulo-admin{
+   font-size: 36px;
+    font-weight: bold;
+    color: #D4AF37; /* Dorado metálico */
+    text-shadow: 1px 1px 4px #B8860B; 
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif;
+    position: relative;
+}
+
 
 @media (min-width: 992px) {
   .titulo-login {

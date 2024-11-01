@@ -5,9 +5,19 @@ import {
   segundaImg,
   terceraImg,
 } from "../assets/imagenes.js";
-import FormularioDisponibilidad from "./Habitaciones/FormularioDisponibilidad.jsx";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 const Inicio = () => {
+  const [usuarioLogueado, setUsuarioLogueado] = useState(false)
+  const navegacion = useNavigate()
+useEffect(()=>{
+  const usuario = sessionStorage.getItem("userKey");
+  if (usuario) {
+    setUsuarioLogueado(true)
+  }
+},[])
   return (
     <div className="mainSection">
       <Carousel interval={null}>
@@ -44,7 +54,7 @@ const Inicio = () => {
           />
           <Carousel.Caption className="caption-centered w-100">
             <hr className="line" />
-            <h3 className="tama1">Disfruta tu instrancia</h3>
+            <h3 className="tama1">Disfruta tu instancia</h3>
             <p className="text-white fs-3">En conjunto a tu familia</p>
             <hr className="line" />
           </Carousel.Caption>
@@ -75,9 +85,17 @@ const Inicio = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <div className="py-3 backC">
-        {<FormularioDisponibilidad></FormularioDisponibilidad>}
-      </div>
+      {!usuarioLogueado && (
+        <section className="text-center py-3 backC">
+        <h2 className="text-yello">Para conocer nuestro catálogo de habitaciones, primero debes iniciar sesión.</h2>
+        <button 
+          className="btn btn-primary" 
+          onClick={() => navegacion('/login')}
+        >
+          Iniciar Sesión
+        </button>
+      </section>
+      )}
       <div className="text-center py-2 Acerca text-white">
         <h1>Acerca del Hotel</h1>
       </div>

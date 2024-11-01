@@ -1,6 +1,5 @@
 const URLUsuario = import.meta.env.VITE_API_USUARIO;
 
-
 export const login = async (usuario) => {
   try {
     const respuesta = await fetch(URLUsuario + "/login", {
@@ -15,6 +14,7 @@ export const login = async (usuario) => {
     return false;
   }
 };
+
 export const registro = async (usuarioNuevo) => {
   try {
     const respuesta = await fetch(URLUsuario + "/registro", {
@@ -43,13 +43,13 @@ export const obtenerUsuario = async (id) => {
   }
 };
 
-export const editarUsuario = async (usuarioEditado) => {
+export const editarUsuario = async (usuarioEditado, id) => {
   try {
     const respuesta = await fetch(URLUsuario + "/" + id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "x-token": JSON.stringify(sessionStorage.getItem("userKey")).token,
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
       },
       body: JSON.stringify(usuarioEditado),
     });
@@ -61,7 +61,12 @@ export const editarUsuario = async (usuarioEditado) => {
 
 export const listarUsuarios = async () => {
   try {
-    const respuesta = await fetch(URLUsuario);
+    const respuesta = await fetch(URLUsuario, {
+      method: "GET",
+      headers: {
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
+      },
+    });
     return respuesta;
   } catch (error) {
     return false;
@@ -73,7 +78,7 @@ export const borrarUsuario = async (id) => {
     const respuesta = await fetch(URLUsuario + "/" + id, {
       method: "DELETE",
       headers: {
-        "x-token": JSON.stringify(sessionStorage.getItem("userKey")).token,
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
       },
     });
     return respuesta;

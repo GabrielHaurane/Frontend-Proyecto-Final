@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { login, registro } from "../../helpers/queries.usuarios.js";
 import { Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import logo from "../../assets/hotelCode.jpg";
+import logo from "../assets/logo-hotelcode.jpg";
 
 const Login = ({ setUsuarioLogueado }) => {
   const [registrarse, setRegistrarse] = useState(false);
@@ -15,6 +15,7 @@ const Login = ({ setUsuarioLogueado }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
   } = useForm();
 
   const onsubmit = async (usuario) => {
@@ -48,15 +49,24 @@ const Login = ({ setUsuarioLogueado }) => {
             text: `Bienvenido a HotelCode`,
             icon: "success",
           });
-          setUsuarioLogueado({ email: datos.email, token: datos.token });
+          setUsuarioLogueado({
+            email: datos.email,
+            token: datos.token,
+            rol: datos.rol,
+          });
           sessionStorage.setItem(
             "userKey",
             JSON.stringify({
               email: datos.email,
               token: datos.token,
+              rol: datos.rol,
             })
           );
-          navegacion("/administrador");
+          if (datos.rol === "admin") {
+            navegacion("/administrador");
+          } else {
+            navegacion("/");
+          }
         } else {
           Swal.fire({
             title: "Error",
@@ -168,17 +178,18 @@ const Login = ({ setUsuarioLogueado }) => {
                       placeholder="Ej: 123aA45$"
                       {...register("confirmarPassword", {
                         required: "La contraseña es un campo obligatorio",
+                        validate: (value) =>
+                          value === getValues("password") || "Las contraseñas no coinciden",
                         minLength: {
                           value: 8,
-                          message:
-                            "La contraseña debe contener al menos 8 caracteres",
+                          message: "La contraseña debe contener al menos 8 caracteres",
                         },
                         maxLength: {
                           value: 100,
-                          message:
-                            "La contraseña no debe contener más de 320 caracteres",
+                          message: "La contraseña no debe contener más de 320 caracteres",
                         },
                       })}
+                      
                     />
                     <Form.Text className="text-danger">
                       {errors.confirmarPassword?.message}
