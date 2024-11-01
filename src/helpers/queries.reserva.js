@@ -10,8 +10,8 @@ export const listarReservas = async (email) => {
       });
       if (!response.ok) throw new Error('Error al listar las reservas');
       const data = await response.json();
-      
-      return data;
+      return Array.isArray(data)? data : []
+      // return data;
     } catch (error) {
       console.error(error);
     }
@@ -46,8 +46,9 @@ export const listarReservas = async (email) => {
   };
   export const borrarReserva = async (id) => {
     try {
-      const response = await fetch(URLReserva+`/${id}`, {
-        method: 'DELETE',
+      const response = await fetch(URLReserva + `/${id}`, {
+        method: "DELETE",
+        "x-token": JSON.parse(sessionStorage.getItem("userKey")).token,
       });
       if (!response.ok) throw new Error('Error al borrar la reserva');
       

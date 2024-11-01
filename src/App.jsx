@@ -24,6 +24,8 @@ function App() {
   const usuario = JSON.parse(sessionStorage.getItem('userKey')) || '';
   const [usuarioLogueado, setUsuarioLogueado] = useState(usuario)
 
+
+
   return (
     <>
       <BrowserRouter>
@@ -34,7 +36,7 @@ function App() {
           <Route exact path="/contacto" element={<Contacto></Contacto>}></Route>
           <Route exact path="/galeria" element={<Galeria></Galeria>}></Route>
           <Route exact path="/catalogo" element={<Catalogo></Catalogo>}></Route>
-          <Route exact path="/reservas/:id" setUsuarioLogueado={setUsuarioLogueado} element={<Reservas></Reservas>}></Route>
+          <Route exact path="/reservas"  element={<Reservas email={usuarioLogueado.email} token={usuarioLogueado.token}></Reservas>}></Route>
           <Route
             exact
             path="/detallehabitacion/:id"
