@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import ItemReservas from "./Habitaciones/ItemReservas";
 import Swal from "sweetalert2";
 import { listarReservas } from "../../helpers/queries.reserva.js";
+import { obtenerHabitacionAdmin } from "../../helpers/queries.js";
 
 const Reservas = ({ email, token }) => {
   const [listaReservas, setListaReservas] = useState([]);
@@ -10,7 +11,11 @@ const Reservas = ({ email, token }) => {
   const cargarReservas = async () => {
     const datos = await listarReservas(email, token);
     if (datos) {
-      setListaReservas(datos);
+        const reservasConDetalles = await Promise.all(datos.map(async(reserva)=>{
+            const habitacion = await obtenerHabitacionAdmin(reserva.habitacionID)
+            return {...reserva, habitacion}
+        }))
+      setListaReservas(reservasConDetalles);
     } else {
       Swal.fire({
         title: "Error",
@@ -27,7 +32,7 @@ const Reservas = ({ email, token }) => {
       <div>
         <h1>Reservas</h1>
       </div>
-      <div>
+      <div className="tabla-scroll">
         <Table responsive striped>
           <thead>
             <tr>
