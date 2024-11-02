@@ -7,7 +7,7 @@ import {
 import { Link } from "react-router-dom";
 
 
-const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion, listaHabitaciones }) => {
+const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion }) => {
   const eliminarHabitacion = () => {
     Swal.fire({
       title: "¿Estás seguro de borrar la habitación?",
