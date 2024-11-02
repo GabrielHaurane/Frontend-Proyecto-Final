@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Row, Container, Form, Button, Card } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { login, registro } from "../../helpers/queries.usuarios.js";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import logo from "../assets/logo-hotelcode.jpg";
 
