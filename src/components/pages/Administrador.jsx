@@ -27,15 +27,15 @@ const Administrador = ({ email, token }) => {
   useEffect(() => {
     if (mostrarHabitaciones) {
       cargarHabitaciones();
-      habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
+      // habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarUsuarios) {
       cargarUsuarios();
-      usuariosRef.current.scrollIntoView({ behavior: "smooth" });
+      // usuariosRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarReservas) {
       cargarReservas();
-      reservasRef.current.scrollIntoView({ behavior: "smooth" });
+      // reservasRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarHabitaciones, mostrarUsuarios, mostrarReservas]);
 
@@ -88,12 +88,26 @@ const Administrador = ({ email, token }) => {
 
   const desplegarUsuarios = () => {
     setMostrarUsuarios(!mostrarUsuarios);
+
+    if (!mostrarUsuarios && usuariosRef.current) {
+      usuariosRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
   const desplegarHabitaciones = () => {
     setMostrarHabitaciones(!mostrarHabitaciones);
+
+    if (!mostrarHabitaciones && habitacionesRef.current) {
+      habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
+
   const desplegarReservas = () => {
     setMostrarReservas(!mostrarReservas);
+
+    if (!mostrarReservas && reservasRef.current) {
+      reservasRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   return (
