@@ -18,9 +18,9 @@ const TiempoToken = () => {
         if (tiempoAntesExpiracion < 300000) {
           Swal.fire({
             title: "Sesión Expirada",
-            text: "Tu sesión está a punto de expirar. Por favor, inicia sesión nuevamente.",
+            text: "Tu sesión expiró. Por favor, inicia sesión nuevamente.",
             icon: "warning",
-            confirmButtonText: "Ir a Inicio de Sesión",
+            confirmButtonText: "Iniciá Sesión Nuevamente",
           }).then(() => {
             sessionStorage.removeItem("token");
             sessionStorage.removeItem("expiracionToken");
