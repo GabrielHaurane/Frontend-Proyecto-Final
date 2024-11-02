@@ -1,7 +1,6 @@
 const URLHabitacion = import.meta.env.VITE_API_HABITACION;
 const URLHabitaciones = import.meta.env.VITE_API_HABITACIONES;
 
-// Función para buscar habitaciones disponibles
 export const buscarHabitacionesDisponibles = async () => {
   try {
     const respuesta = await fetch(
@@ -18,8 +17,6 @@ export const buscarHabitacionesDisponibles = async () => {
   }
 };
 
-
-// Función para obtener el catálogo de habitaciones
 export const obtenerCatalogoHabitaciones = async () => {
   try {
     const respuesta = await fetch(`${URLHabitacion}/catalogo`);
@@ -33,7 +30,7 @@ export const obtenerCatalogoHabitaciones = async () => {
     return { mensaje: "Error al obtener el catálogo de habitaciones" };
   }
 };
-// Función para listar todas las habitaciones
+
 export const listarHabitacionesAdmin = async () => {
   try {
     const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
@@ -53,7 +50,6 @@ export const listarHabitacionesAdmin = async () => {
   }
 };
 
-// Función para crear una nueva habitación (solo administrador)
 export const crearHabitacionAdmin = async (habitacion) => {
   try {
     const respuesta = await fetch(`${URLHabitacion}/habitacion`, {
@@ -74,7 +70,6 @@ export const crearHabitacionAdmin = async (habitacion) => {
   }
 };
 
-// Función para editar una habitación existente (solo administrador)
 export const editarHabitacionAdmin = async (
   idHabitacion,
   habitacionActualizada
@@ -102,7 +97,6 @@ export const editarHabitacionAdmin = async (
   }
 };
 
-// Función para eliminar una habitación (solo administrador)
 export const eliminarHabitacionAdmin = async (idHabitacion) => {
   try {
     const respuesta = await fetch(
@@ -132,9 +126,6 @@ export const buscarHabitacionAPI = async(id)=>{
   }
 }
 
-
-
-// Función para obtener los detalles de una habitación específica (solo administrador)
 export const obtenerHabitacionAdmin = async (idHabitacion) => {
   try {
     const respuesta = await fetch(

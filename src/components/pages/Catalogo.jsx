@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { listadoHabitacionesDisponibles } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
+import { listadoHabitacionesDisponibles } from "../../helpers/queries.js"; 
 import CardHabitacion from "./Habitaciones/CardHabitacion.jsx";
 
 const Catalogo = () => {

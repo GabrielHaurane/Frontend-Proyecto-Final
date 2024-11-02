@@ -29,7 +29,7 @@ const DetalleHabitacion = () => {
     obtenerHabitacion();
   }, [id]);
 
-  // Función para manejar la reserva
+ 
   const handleReserva = async (e) => {
     e.preventDefault(); 
     const usuario = JSON.parse(sessionStorage.getItem("userKey"));
@@ -44,8 +44,8 @@ const DetalleHabitacion = () => {
           return;
     }
     const reservaData = {
-        usuarioEmail: usuario.email, // Asegúrate de que estás enviando el email
-        habitacionID: habitacion._id, // ID de la habitación
+        usuarioEmail: usuario.email, 
+        habitacionID: habitacion._id, 
         fechaEntrada: fechaEntradaa,
         fechaSalida: fechaSalidaa,
     };
@@ -55,7 +55,7 @@ const DetalleHabitacion = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-token": `${usuario.token}` // Token de autorización si tu backend lo requiere
+                "x-token": `${usuario.token}` 
             },
             body: JSON.stringify(reservaData)
         });
@@ -68,7 +68,7 @@ const DetalleHabitacion = () => {
                 text: `Tu reserva ha sido confirmada.`,
                 icon: "success"
             });
-            // Puedes redirigir al usuario o actualizar el estado de la UI aquí
+            
         } else {
             Swal.fire({
                 title: "Error",

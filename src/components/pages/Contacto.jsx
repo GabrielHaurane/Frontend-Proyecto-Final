@@ -13,7 +13,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-linkedin" // Cambiado aquí
+                className="bi bi-linkedin" 
                 style={{ fontSize: "2rem", color: "#0077b5" }}
               ></i>
             </a>
@@ -21,7 +21,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-github" // Cambiado aquí
+                className="bi bi-github" 
                 style={{ fontSize: "2rem", color: "black" }}
               ></i>
             </a>
@@ -29,7 +29,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-envelope-fill" // Cambiado aquí
+                className="bi bi-envelope-fill" 
                 style={{ fontSize: "2rem", color: "#EA4335" }}
               ></i>
              </a>
@@ -42,7 +42,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-linkedin" // Cambiado aquí
+                className="bi bi-linkedin" 
                 style={{ fontSize: "2rem", color: "#0077b5" }}
               ></i>
             </a>
@@ -50,7 +50,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-github" // Cambiado aquí
+                className="bi bi-github" 
                 style={{ fontSize: "2rem", color: "black" }}
               ></i>
             </a>
@@ -58,7 +58,7 @@ const Contacto = () => {
             target="_blank" 
             rel="noopener noreferrer" >
               <i
-                className="bi bi-envelope-fill" // Cambiado aquí
+                className="bi bi-envelope-fill" 
                 style={{ fontSize: "2rem", color: "#EA4335" }}
               ></i>
             </a>
