@@ -5,8 +5,8 @@ import { galeriaIMG1 } from "../../assets/imagenes.js";
 
 const CardHabitacion = ({ habitacion }) => {
   return (
-    <div className="m-2">
-      <Card className="d-flex flex-md-row flex-column">
+    <div>
+      <Card className="d-flex flex-md-row flex-column mb-3">
         <div>
           <img className="col-12 rounded-top-2" src={habitacion.imagen || galeriaIMG1} alt={habitacion.tipoHabitacion} />
         </div>

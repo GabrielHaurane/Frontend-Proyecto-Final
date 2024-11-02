@@ -4,7 +4,7 @@ import { Card } from "react-bootstrap";
 const Contacto = () => {
   return (
     <div className="backQS flex-grow-1 d-flex flex-column justify-content-evenly align-content-center">
-      <h1 className="text-center">Por si quieres contactarnos:</h1>
+      <h1 className="text-center my-3">Por si quieres contactarnos:</h1>
       <section className="container d-flex flex-wrap justify-content-around flex-column flex-md-row align-items-center">
         <Card className="my-3 col-12 col-sm-5 backQ text-center">
           <Card.Title>Gabriel Alejandro Haurane</Card.Title>

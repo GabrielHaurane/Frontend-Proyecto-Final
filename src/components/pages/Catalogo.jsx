@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { listadoHabitacionesDisponibles} from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
-import CardHabitacion from './Habitaciones/CardHabitacion.jsx';
+import { listadoHabitacionesDisponibles } from "../../helpers/queries.js"; // Ajusta la ruta según tu estructura de archivos
+import CardHabitacion from "./Habitaciones/CardHabitacion.jsx";
 
 const Catalogo = () => {
   const [habitaciones, setHabitaciones] = useState([]);
@@ -13,7 +13,7 @@ const Catalogo = () => {
         if (data === null) {
           throw new Error("Error al obtener las habitaciones");
         }
-  
+
         if (data.length === 0) {
           setMensajeError("No hay habitaciones disponibles.");
         } else {
@@ -27,13 +27,15 @@ const Catalogo = () => {
 
     obtenerHabitaciones();
   }, []);
-  
 
-    return (
-      <div className="container flex-grow-1">
-      <h1>Catálogo de Habitaciones</h1>
-      {mensajeError && <div className="alert alert-warning">{mensajeError}</div>}
-      
+  return (
+    <div className="container flex-grow-1">
+      <h1 className="text-center my-3">Catálogo de Habitaciones</h1>
+      <section className="d-flex justify-content-center">
+      {mensajeError && (
+        <div className="alert alert-warning">{mensajeError}</div>
+      )}
+
       {habitaciones.length > 0 ? (
         <div className="row">
           {habitaciones.map((habitacion) => (
@@ -41,12 +43,13 @@ const Catalogo = () => {
           ))}
         </div>
       ) : (
-        <div className="d-flex justify-content-center align-items-center" style={{ height: '300px' }}>
-          <h3 className="fs-3 text-center">No hay habitaciones disponibles</h3>
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
         </div>
       )}
+      </section>
     </div>
-    );
+  );
 };
 
 export default Catalogo;
