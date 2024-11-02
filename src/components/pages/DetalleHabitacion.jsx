@@ -29,7 +29,7 @@ const DetalleHabitacion = () => {
     obtenerHabitacion();
   }, [id]);
 
-  // Función para manejar la reserva
+ 
   const handleReserva = async (e) => {
     e.preventDefault(); 
     const usuario = JSON.parse(sessionStorage.getItem("userKey"));
@@ -44,8 +44,8 @@ const DetalleHabitacion = () => {
           return;
     }
     const reservaData = {
-        usuarioEmail: usuario.email, // Asegúrate de que estás enviando el email
-        habitacionID: habitacion._id, // ID de la habitación
+        usuarioEmail: usuario.email, 
+        habitacionID: habitacion._id, 
         fechaEntrada: fechaEntradaa,
         fechaSalida: fechaSalidaa,
     };
@@ -55,7 +55,7 @@ const DetalleHabitacion = () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "x-token": `${usuario.token}` // Token de autorización si tu backend lo requiere
+                "x-token": `${usuario.token}` 
             },
             body: JSON.stringify(reservaData)
         });
@@ -68,7 +68,7 @@ const DetalleHabitacion = () => {
                 text: `Tu reserva ha sido confirmada.`,
                 icon: "success"
             });
-            // Puedes redirigir al usuario o actualizar el estado de la UI aquí
+            
         } else {
             Swal.fire({
                 title: "Error",
@@ -87,30 +87,29 @@ const DetalleHabitacion = () => {
 
   return (
     <div className="flex-grow-1 container">
-      <h1>Detalles de la habitación</h1>
-      <section>
-        <div className="m-2">
-          <Card className="d-flex flex-md-row flex-column">
+      <h1 className="text-center my-3">Detalles de la habitación</h1>
+      
+          <Card className="d-flex flex-lg-row flex-column mb-4">
             <div className="d-flex flex-wrap align-content-center">
               <img className="col-12 rounded-top-2" src={habitacion?.imagen || ""} alt="Imagen de la habitación" />
             </div>
             <Card.Body className="col-12">
-              <Card.Title className="fs-1">
-                {habitacion?.tipoHabitacion || "Tipo de habitación no disponible"}
+              <Card.Title className="fs-2 col-12">
+                {habitacion?.tipoHabitacion || <span className="placeholder col-12"></span>}
               </Card.Title>
-              <Card.Text>{habitacion?.descripcion_breve || "Descripción no disponible"}</Card.Text>
+              <Card.Text>{habitacion?.descripcion_breve || <span className="placeholder col-12"></span>}</Card.Text>
               <div className="mb-2 fs-5">
-                <b>Capacidad: {habitacion?.capacidad || "N/A"}</b>
+                <b>Capacidad: {habitacion?.capacidad || <span className="placeholder col-12"></span>}</b>
               </div>
               <div className="mb-2 fs-5">
-                <b>Tamaño: {habitacion?.tamanio || "N/A"}</b>
+                <b>Tamaño: {habitacion?.tamanio || <span className="placeholder col-12"></span>}</b>
               </div>
               <div className="mb-2 fs-3">
-                <b>${habitacion?.precio || "N/A"} por noche</b>
+                <b>${habitacion?.precio || <span className="placeholder col-12"></span>} por noche</b>
               </div>
-              <div>
+              
                 <Form onSubmit={handleReserva}>
-                  <Form.Group className="col-6" controlId="formFechaEntrada">
+                  <Form.Group className="col-12" controlId="formFechaEntrada">
                     <Form.Label>Fecha de Entrada</Form.Label>
                     <Form.Control
                       type="date"
@@ -121,7 +120,7 @@ const DetalleHabitacion = () => {
                     />
                   </Form.Group>
 
-                  <Form.Group className="col-6" controlId="formFechaSalida">
+                  <Form.Group className="col-12" controlId="formFechaSalida">
                     <Form.Label>Fecha de Salida</Form.Label>
                     <Form.Control
                       type="date"
@@ -131,17 +130,15 @@ const DetalleHabitacion = () => {
                       required
                     />
                   </Form.Group>
-                  <div className="d-flex align-content-md-end flex-md-wrap justify-content-end">
+                  <div className="d-flex align-content-md-end flex-md-wrap justify-content-end my-2">
                     <Button variant="dark" type="submit" className="mt-2">
                       Reservar
                     </Button>
                   </div>
                 </Form>
-              </div>
             </Card.Body>
           </Card>
-        </div>
-      </section>
+      
     </div>
   );
 };

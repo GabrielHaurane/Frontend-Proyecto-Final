@@ -2,13 +2,13 @@ import React from "react";
 import logo from "../assets/logo-hotelcode.jpg";
 
 import { useRef } from "react";
-// import emailjs from "@emailjs/browser";
+
 
 
 const Footer = () => {
   return (
-    <div className="backC py-3 d-flex justify-content-center justify-content-md-around">
-      <div className="d-flex flex-column flex-md-row justify-content-around">
+    <div className=" backC py-3 d-flex justify-content-center justify-content-md-around">
+      <div className="mx-4 d-flex flex-column flex-md-row justify-content-around">
         <div className="col-12 col-sm-6 col-md-4 d-flex justify-content-center align-self-center mb-4 mb-md-0">
         <img
           src={logo}
@@ -17,7 +17,7 @@ const Footer = () => {
           width={100}
         />
         </div>
-        <div className="col-12 col-sm-6 col-md-4">
+        <div className="col-12 col-sm-6 col-md-4 d-flex flex-column align-self-center">
           <h3 className="text-white fs-5">Quieres trabajar con nosotros:</h3>
           <div className="d-flex flex-column">
           <p className="text-white col-12">Tel: +54 381 2584026</p>

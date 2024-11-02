@@ -15,6 +15,7 @@ const Login = ({ setUsuarioLogueado }) => {
     handleSubmit,
     formState: { errors },
     reset,
+    getValues,
   } = useForm();
 
   const onsubmit = async (usuario) => {
@@ -189,15 +190,15 @@ const Login = ({ setUsuarioLogueado }) => {
                       placeholder="Ej: 123aA45$"
                       {...register("confirmarPassword", {
                         required: "La contraseña es un campo obligatorio",
+                        validate: (value) =>
+                          value === getValues("password") || "Las contraseñas no coinciden",
                         minLength: {
                           value: 8,
-                          message:
-                            "La contraseña debe contener al menos 8 caracteres",
+                          message: "La contraseña debe contener al menos 8 caracteres",
                         },
                         maxLength: {
                           value: 100,
-                          message:
-                            "La contraseña no debe contener más de 320 caracteres",
+                          message: "La contraseña no debe contener más de 320 caracteres",
                         },
                         pattern: {
                           value:
@@ -206,6 +207,7 @@ const Login = ({ setUsuarioLogueado }) => {
                             "La contraseña debe incluir al menos una letra mayúscula, una minúscula, un númmero y un carácter especial",
                         },
                       })}
+                      
                     />
                     <Form.Text className="text-danger">
                       {errors.confirmarPassword?.message}

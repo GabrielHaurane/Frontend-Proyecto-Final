@@ -12,7 +12,7 @@ export const listarReservas = async (email) => {
     if (!response.ok) throw new Error("Error al listar las reservas");
     const data = await response.json();
     return Array.isArray(data) ? data : [];
-    // return data;
+    
   } catch (error) {
     console.error(error);
   }
