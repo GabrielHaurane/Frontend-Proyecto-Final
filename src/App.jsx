@@ -19,6 +19,7 @@ import { useState } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css'
 import Reservas from './components/pages/Reservas.jsx';
+import TiempoToken from './components/TiempoToken/TiempoToken.jsx';
 
 function App() {
   const usuario = JSON.parse(sessionStorage.getItem('userKey')) || '';
@@ -29,6 +30,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+      <TiempoToken/>
         <Menu usuarioLogueado={usuarioLogueado} setUsuarioLogueado={setUsuarioLogueado}></Menu>
         <Routes>
           <Route exact path="/" element={<Inicio></Inicio>}></Route>

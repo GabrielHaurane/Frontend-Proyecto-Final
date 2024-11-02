@@ -49,6 +49,11 @@ const Login = ({ setUsuarioLogueado }) => {
             text: `Bienvenido a HotelCode`,
             icon: "success",
           });
+          
+          const tiempoExpiracion = Date.now() + 3600000;
+          sessionStorage.setItem('token', datos.token);
+          sessionStorage.setItem('expiracionToken', tiempoExpiracion);
+
           setUsuarioLogueado({
             email: datos.email,
             token: datos.token,
