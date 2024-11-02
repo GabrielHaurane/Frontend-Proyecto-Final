@@ -5,7 +5,7 @@ import { galeriaIMG1, galeriaIMG10, galeriaIMG11, galeriaIMG2, galeriaIMG3, gale
 const Galeria = () => {
     return (
         <Container>
-            <h1>Nuestra Galeria</h1>
+            <h1 className='text-center my-3'>Nuestra Galeria</h1>
             <section className='d-flex flex-wrap justify-content-center'>
             <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
