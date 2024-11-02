@@ -138,6 +138,12 @@ const Login = ({ setUsuarioLogueado }) => {
                         message:
                           "El correo electrónico no debe tener más de 320 caracteres",
                       },
+                      pattern: {
+                        value:
+                          /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/,
+                        message:
+                          "Ingresa un formato valido de email.Ej: juanperez@email.com",
+                      },
                     })}
                   />
                   <Form.Text className="text-danger">
@@ -160,7 +166,13 @@ const Login = ({ setUsuarioLogueado }) => {
                       maxLength: {
                         value: 100,
                         message:
-                          "La contraseña no debe contener más de 320 caracteres",
+                          "La contraseña no debe contener más de 100 caracteres",
+                      },
+                      pattern: {
+                        value:
+                          /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,100}$/,
+                        message:
+                          "La contraseña debe incluir al menos una letra mayúscula, una minúscula, un númmero y un carácter especial",
                       },
                     })}
                   />
@@ -186,6 +198,12 @@ const Login = ({ setUsuarioLogueado }) => {
                           value: 100,
                           message:
                             "La contraseña no debe contener más de 320 caracteres",
+                        },
+                        pattern: {
+                          value:
+                            /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,100}$/,
+                          message:
+                            "La contraseña debe incluir al menos una letra mayúscula, una minúscula, un númmero y un carácter especial",
                         },
                       })}
                     />
