@@ -229,6 +229,7 @@ const Administrador = ({ email, token }) => {
                   <th>Imagen</th>
                   <th>Fecha Entrada</th>
                   <th>Fecha Salida</th>
+                  <th>Opciones</th>
                 </tr>
               </thead>
               <tbody>
