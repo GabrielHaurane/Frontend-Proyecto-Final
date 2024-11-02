@@ -19,6 +19,9 @@ const Administrador = ({ email, token }) => {
   const [mostrarHabitaciones, setMostrarHabitaciones] = useState(false);
   const [mostrarUsuarios, setMostrarUsuarios] = useState(false);
   const [mostrarReservas, setMostrarReservas] = useState(false);
+  const [cargandoHabitaciones, setCargandoHabitaciones] = useState(false);
+  const [cargandoUsuarios, setCargandoUsuarios] = useState(false);
+  const [cargandoReservas, setCargandoReservas] = useState(false);
 
   const habitacionesRef = useRef(null);
   const usuariosRef = useRef(null);
@@ -27,20 +30,19 @@ const Administrador = ({ email, token }) => {
   useEffect(() => {
     if (mostrarHabitaciones) {
       cargarHabitaciones();
-      // habitacionesRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarUsuarios) {
       cargarUsuarios();
-      // usuariosRef.current.scrollIntoView({ behavior: "smooth" });
     }
     if (mostrarReservas) {
       cargarReservas();
-      // reservasRef.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [mostrarHabitaciones, mostrarUsuarios, mostrarReservas]);
 
   const cargarHabitaciones = async () => {
+    setCargandoHabitaciones(true);
     const respuesta = await listarHabitacionesAdmin(email, token);
+    setCargandoHabitaciones(false);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaHabitaciones(datos);
@@ -54,7 +56,9 @@ const Administrador = ({ email, token }) => {
   };
 
   const cargarUsuarios = async () => {
+    setCargandoUsuarios(true);
     const respuesta = await listarUsuarios();
+    setCargandoUsuarios(false);
     if (respuesta.status === 200) {
       const datos = await respuesta.json();
       setListaUsuarios(datos);
@@ -68,7 +72,9 @@ const Administrador = ({ email, token }) => {
   };
 
   const cargarReservas = async () => {
+    setCargandoReservas(true);
     const respuesta = await listarReservasAdmin(email, token);
+    setCargandoReservas(false);
     if (respuesta) {
       const reservasConDetalles = await Promise.all(
         respuesta.map(async (reserva) => {
@@ -148,14 +154,27 @@ const Administrador = ({ email, token }) => {
                 </tr>
               </thead>
               <tbody>
-                {listaHabitaciones.map((habitacion, index) => (
-                  <ItemHabitacion
-                    key={habitacion._id}
-                    habitacion={habitacion}
-                    fila={index + 1}
-                    setListaHabitaciones={setListaHabitaciones}
-                  />
-                ))}
+                {cargandoHabitaciones ? (
+                  <tr>
+                    <td colSpan="6" className="text-center">
+                      <div
+                        className="spinner-border text-warning"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Cargando...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  listaHabitaciones.map((habitacion, index) => (
+                    <ItemHabitacion
+                      key={habitacion._id}
+                      habitacion={habitacion}
+                      fila={index + 1}
+                      setListaHabitaciones={setListaHabitaciones}
+                    />
+                  ))
+                )}
               </tbody>
             </Table>
           </div>
@@ -189,14 +208,27 @@ const Administrador = ({ email, token }) => {
                 </tr>
               </thead>
               <tbody>
-                {listaUsuarios.map((usuario, index) => (
-                  <ItemUsuarios
-                    key={usuario._id}
-                    usuario={usuario}
-                    fila={index + 1}
-                    setListaUsuarios={setListaUsuarios}
-                  />
-                ))}
+                {cargandoUsuarios ? (
+                  <tr>
+                    <td colSpan="6" className="text-center">
+                      <div
+                        className="spinner-border text-warning"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Cargando...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  listaUsuarios.map((usuario, index) => (
+                    <ItemUsuarios
+                      key={usuario._id}
+                      usuario={usuario}
+                      fila={index + 1}
+                      setListaUsuarios={setListaUsuarios}
+                    />
+                  ))
+                )}
               </tbody>
             </Table>
           </div>
@@ -233,14 +265,27 @@ const Administrador = ({ email, token }) => {
                 </tr>
               </thead>
               <tbody>
-                {listaReservas.map((reserva, index) => (
-                  <ItemReservasAdmin
-                    key={reserva._id}
-                    reserva={reserva}
-                    fila={index + 1}
-                    setListaReservas={setListaReservas}
-                  />
-                ))}
+                {cargandoReservas ? (
+                  <tr>
+                    <td colSpan="6" className="text-center">
+                      <div
+                        className="spinner-border text-warning"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Cargando...</span>
+                      </div>
+                    </td>
+                  </tr>
+                ) : (
+                  listaReservas.map((reserva, index) => (
+                    <ItemReservasAdmin
+                      key={reserva._id}
+                      reserva={reserva}
+                      fila={index + 1}
+                      setListaReservas={setListaReservas}
+                    />
+                  ))
+                )}
               </tbody>
             </Table>
           </div>
