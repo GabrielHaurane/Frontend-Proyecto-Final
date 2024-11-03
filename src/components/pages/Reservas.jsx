@@ -16,13 +16,7 @@ const Reservas = ({ email, token }) => {
             return {...reserva, habitacion}
         }))
       setListaReservas(reservasConDetalles);
-    } else {
-      Swal.fire({
-        title: "Error",
-        text: "No se pueden mostrar las reservas, intenta más tarde",
-        icon: "error",
-      });
-    }
+    } 
   };
   useEffect(() => {
     cargarReservas();
