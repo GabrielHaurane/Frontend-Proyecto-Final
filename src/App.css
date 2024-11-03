@@ -16,13 +16,16 @@
   --azul-marino: #1c3d5a;
   --beige-champagne: #e0c097;
   --verde-esmeralda: #2e8b57;
-    --morado: #bcadd8;
+    --morado: #dadada;
 }
 .backC{
     background-color: var(--gris-plomo);
 }
 .backS{
   background-color: var(--azul-marino);
+}
+.backCC{
+  background-color: #444444;
 }
 .backQ{
   background-color: var(--morado);
@@ -31,10 +34,16 @@
   background-color: var(--blanco-marfil);
 }
 .Acerca{
-  background-color: var(--verde-esmeralda);
+  background-color: var(--dorado-metalico);
 }
 .tama1{
     font-size: 4em;
+}
+.text-justify{
+  text-align: justify;
+}
+.mainSection{
+  flex-grow: 1;
 }
 .caption-centered {
     position: absolute;

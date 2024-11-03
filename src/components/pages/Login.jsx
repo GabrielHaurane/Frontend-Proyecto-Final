@@ -70,7 +70,7 @@ const Login = ({ setUsuarioLogueado }) => {
           if (datos.rol === "admin") {
             navegacion("/administrador");
           } else {
-            navegacion("/");
+            navegacion("/catalogo");
           }
         } else {
           Swal.fire({

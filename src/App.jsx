@@ -58,7 +58,6 @@ function App() {
               </RutasProtegidas>
             }
           ></Route>
-          {/* <Route exact path="/ajustes" element={<Ajustes></Ajustes>}></Route> */}
           <Route exact path="*" element={<Error404></Error404>}></Route>
         </Routes>
       <Footer></Footer>
