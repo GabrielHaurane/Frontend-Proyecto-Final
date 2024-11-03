@@ -1,33 +1,40 @@
 # Hotel Code - Frontend
-Bienvenido al repositorio del frontend de Hotel Code, un sistema de gestión para hoteles que permite a los usuarios buscar habitaciones disponibles, realizar reservas, y gestionar su estadía de manera cómoda y eficiente.
 
-🌐## Demo en Producción
-Puedes acceder a la versión en producción en https://hotel-code.netlify.app.
+Bienvenido al repositorio del frontend de **Hotel Code**, un sistema de gestión para hoteles que permite a los usuarios buscar habitaciones disponibles, realizar reservas, y gestionar su estadía de manera cómoda y eficiente.
 
-🚀## Características
-Búsqueda de habitaciones: Filtra habitaciones según disponibilidad y otros criterios.
-Reservas: Completa reservas especificando fechas de entrada y salida.
-Gestión de Usuarios: Registro e inicio de sesión para clientes.
-Interfaz Amigable: Diseño atractivo y responsivo para una excelente experiencia de usuario.
-Notificaciones de éxito y error: Feedback visual con SweetAlert2.
+## 🌐 Demo en Producción
 
-🛠️## Tecnologías Utilizadas
-React + Vite: Desarrollo de la interfaz del usuario.
-JavaScript (JS): Lógica del frontend.
-HTML5 y CSS3: Estructura y estilos básicos.
-Bootstrap: Diseño responsivo y componentes predefinidos.
-SweetAlert2: Notificaciones interactivas y personalizadas para mejorar la experiencia del usuario.
+Puedes acceder a la versión en producción en [https://hotel-code.netlify.app](https://hotel-code.netlify.app).
 
-📸## Capturas de Pantalla
+## 🚀 Características
+
+- **Búsqueda de habitaciones**: Filtra habitaciones según disponibilidad y otros criterios.
+- **Reservas**: Completa reservas especificando fechas de entrada y salida.
+- **Gestión de Usuarios**: Registro e inicio de sesión para clientes.
+- **Interfaz Amigable**: Diseño atractivo y responsivo para una excelente experiencia de usuario.
+- **Notificaciones de éxito y error**: Feedback visual con SweetAlert2.
+
+## 🛠️ Tecnologías Utilizadas
+
+- **React + Vite**: Desarrollo de la interfaz del usuario.
+- **JavaScript (JS)**: Lógica del frontend.
+- **HTML5 y CSS3**: Estructura y estilos básicos.
+- **Bootstrap**: Diseño responsivo y componentes predefinidos.
+- **SweetAlert2**: Notificaciones interactivas y personalizadas para mejorar la experiencia del usuario.
+
+## 📸 Capturas de Pantalla
+
 ![Captura de HotelCode](https://github.com/user-attachments/assets/4daab127-8699-47ac-b418-fe02a37d5d9f)
 
+## 📂 Instalación y Ejecución Local
 
-
-📂 ## Instalación y Ejecución Local
 Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
-Pasos de Instalación
-1. Clona el repositorio:
-  git clone https://github.com/GabrielHaurane/Frontend-Proyecto-Final.git
+
+### Pasos de Instalación
+
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/GabrielHaurane/Frontend-Proyecto-Final.git
 2. Accede al directorio del proyecto:
    cd Frontend-Proyecto-Final
 3. Instala las dependencias:
