@@ -7,7 +7,7 @@ const CardHabitacion = ({ habitacion }) => {
   return (
     <div>
       <Card className="d-flex flex-md-row flex-column mb-3">
-        <div>
+        <div className="w-100">
           <img className="col-12 rounded-top-2" src={habitacion.imagen || galeriaIMG1} alt={habitacion.tipoHabitacion} />
         </div>
         <Card.Body className="col-12">
