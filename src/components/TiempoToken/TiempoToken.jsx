@@ -12,9 +12,8 @@ const TiempoToken = () => {
       const tiempoActual = Date.now();
 
       if (token && expiracionToken) {
-        const tiempoExpiracion = parseInt(expiracionToken); // Convertir a número
+        const tiempoExpiracion = parseInt(expiracionToken); 
         const tiempoAntesExpiracion = tiempoExpiracion - tiempoActual;
-
         if (tiempoAntesExpiracion < 300000) {
           Swal.fire({
             title: "Sesión Expirada",
@@ -30,12 +29,13 @@ const TiempoToken = () => {
       }
     };
 
-    const intervalId = setInterval(controlarTiempo, 60000); // Llama a controlarTiempo cada minuto
+    const intervalId = setInterval(controlarTiempo, 60000); 
 
-    return () => clearInterval(intervalId); // Limpia el intervalo al desmontar el componente
+    
+    return () => clearInterval(intervalId);
   }, [navigate]);
 
-  return null; // Este componente no necesita renderizar nada
+  return null; 
 };
 
 export default TiempoToken;
