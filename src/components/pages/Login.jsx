@@ -50,7 +50,7 @@ const Login = ({ setUsuarioLogueado }) => {
             icon: "success",
           });
           
-          const tiempoExpiracion = Date.now() + 60000;
+          const tiempoExpiracion = Date.now() + 3600000;
           sessionStorage.setItem('token', datos.token);
           sessionStorage.setItem('expiracionToken', tiempoExpiracion);
 
