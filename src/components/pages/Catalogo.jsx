@@ -29,8 +29,8 @@ const Catalogo = () => {
   }, []);
 
   return (
-    <div className="backQS">
-    <div className="container flex-grow-1">
+    <div className="backQS flex-grow-1">
+    <div className="container ">
       <h1 className="text-center my-3">Catálogo de Habitaciones</h1>
       <section className="d-flex justify-content-center">
       {mensajeError && (
