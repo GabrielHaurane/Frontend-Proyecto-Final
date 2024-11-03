@@ -7,7 +7,21 @@ const Galeria = () => {
       <div className='backQS'>
         
         <Container>
-            <h1 className='text-center my-3'>Nuestra Galeria</h1>
+            <h1 className='text-center my-3'>Nuestros Servicios</h1>
+            <section className='d-flex flex-column flex-md-row justify-content-evenly'>
+              <div>
+              <p><i className="bi bi-dot fs-5"></i>Desayuno buffet americano</p>
+              <p><i className="bi bi-dot fs-5"></i>Spa</p>
+              <p><i className="bi bi-dot fs-5"></i>Solarium</p>
+              <p><i className="bi bi-dot fs-5"></i>Room Service</p>
+              </div>
+              <div>
+              <p><i className="bi bi-dot fs-5"></i>Restaurant Nélida</p>
+              <p><i className="bi bi-dot fs-5"></i>Parking</p>
+              <p><i className="bi bi-dot fs-5"></i>Gimnasio</p>
+              <p><i className="bi bi-dot fs-5"></i>WiFi sin cargo</p>
+              </div>
+            </section>
             <section className='d-flex flex-wrap justify-content-center'>
             <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
