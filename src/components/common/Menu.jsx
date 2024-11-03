@@ -55,16 +55,9 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
               <NavLink
                 end
                 className="nav-link text-white d-flex align-self-center text-center"
-                to="/contacto"
-              >
-                Contacto
-              </NavLink>
-              <NavLink
-                end
-                className="nav-link text-white d-flex align-self-center text-center"
                 to="/galeria"
               >
-                Galeria de imagenes
+                Servicios
               </NavLink>
 
               {usuarioLogueado && (
@@ -99,7 +92,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                     className="nav-link text-white d-flex align-self-center text-center"
                     onClick={logout}
                   >
-                    logout
+                    Cerrar Sesion
                   </button>
                 </>
               ) : usuarioLogueado !== "" ? (
@@ -108,7 +101,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                     className="nav-link text-white d-flex align-self-center text-center"
                     onClick={logout}
                   >
-                    logout
+                    Cerrar Sesion
                   </button>
                 </>
               ) : (
@@ -117,9 +110,16 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                   className="nav-link text-white d-flex flex-wrap align-self-center text-center"
                   to="/login"
                 >
-                  Login
+                  Reservar
                 </NavLink>
               )}
+              <NavLink
+                end
+                className="nav-link text-white d-flex align-self-center text-center"
+                to="/contacto"
+              >
+                Contacto
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>
