@@ -7,23 +7,23 @@ import { useRef } from "react";
 
 const Footer = () => {
   return (
-    <div className=" backC py-3 d-flex justify-content-center justify-content-md-around">
-      <div className="mx-4 d-flex flex-column flex-md-row justify-content-around">
-        <div className="col-12 col-sm-6 col-md-4 d-flex justify-content-center align-self-center mb-4 mb-md-0">
+    <div className=" backC py-3 d-flex align-item-center">
+      <div className="mx-4 d-flex">
+        <div className="col-3 d-flex justify-content-start align-self-center">
         <img
           src={logo}
           alt="logo Hotel code"
           className="img-fluid "
-          width={100}
+          width={65}
         />
         </div>
-        <div className="col-12 col-sm-6 col-md-4 d-flex flex-column align-self-center">
-          <h3 className="text-white fs-5">Quieres trabajar con nosotros:</h3>
-          <div className="d-flex flex-column">
-          <p className="text-white col-12">Tel: +54 381 2584026</p>
-          <p className="text-white col-12">Email: HotelCode@gmail.com</p>
-          </div>
-          <h3 className="text-white fs-5">Te estaremos respondiendo lo mas pronto posible</h3>
+        <div className="col-10 d-flex flex-column ">
+          
+          <p className="text-white m-0 col-12">Trabaja con nosotros:</p>
+          <p className="text-white m-0 col-12">Tel: +54 381 2584026</p>
+          <p className="text-white m-0 col-12">Email: hotelcode@gmail.com</p>
+          
+          
         </div>
       </div>
     </div>
