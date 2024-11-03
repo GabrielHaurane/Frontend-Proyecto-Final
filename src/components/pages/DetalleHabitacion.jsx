@@ -89,7 +89,7 @@ const DetalleHabitacion = () => {
     <div className="flex-grow-1 container">
       <h1 className="text-center my-3">Detalles de la habitación</h1>
       
-          <Card className="d-flex flex-lg-row flex-column mb-4">
+          <Card className="d-flex flex-xl-row flex-column mb-4">
             <div className="d-flex flex-wrap align-content-center">
               <img className="col-12 rounded-top-2" src={habitacion?.imagen || ""} alt="Imagen de la habitación" />
             </div>
@@ -98,6 +98,9 @@ const DetalleHabitacion = () => {
                 {habitacion?.tipoHabitacion || <span className="placeholder col-12"></span>}
               </Card.Title>
               <Card.Text>{habitacion?.descripcion_breve || <span className="placeholder col-12"></span>}</Card.Text>
+              <div className="mb-2 fs-5">
+                <b>Servicios:</b> {habitacion?.servicios || <span className="placeholder col-12"></span>}
+              </div>
               <div className="mb-2 fs-5">
                 <b>Capacidad: {habitacion?.capacidad || <span className="placeholder col-12"></span>}</b>
               </div>
