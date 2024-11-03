@@ -5,9 +5,10 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
   const navegacion = useNavigate();
   const logout = () => {
     sessionStorage.removeItem("userKey");
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("expiracionToken");
     setUsuarioLogueado("");
     navegacion("/");
-    window.location.reload();
   };
   const userKey = JSON.parse(sessionStorage.getItem("userKey"));
   const rol = userKey ? userKey.rol : null;

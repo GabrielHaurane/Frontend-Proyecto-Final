@@ -203,7 +203,7 @@ const Administrador = ({ email, token }) => {
                 <tr className="text-center">
                   <th>Fila</th>
                   <th>Email</th>
-                  <th className="row">Permisos</th>
+                  <th className="text-center">Permisos</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
