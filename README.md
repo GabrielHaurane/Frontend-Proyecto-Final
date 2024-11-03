@@ -19,7 +19,8 @@ Bootstrap: Diseño responsivo y componentes predefinidos.
 SweetAlert2: Notificaciones interactivas y personalizadas para mejorar la experiencia del usuario.
 
 ##📸 Capturas de Pantalla
-![Captura de HotelCode](https://github.com/user-attachments/assets/b9baf0c3-cf73-4799-b9c8-5904e7c21b7d)
+![Captura de HotelCode](https://github.com/user-attachments/assets/4daab127-8699-47ac-b418-fe02a37d5d9f)
+
 
 
 📂 Instalación y Ejecución Local
