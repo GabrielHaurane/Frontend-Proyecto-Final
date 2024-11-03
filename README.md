@@ -6,6 +6,11 @@ Bienvenido al repositorio del frontend de **Hotel Code**, un sistema de gestión
 
 Puedes acceder a la versión en producción en [https://hotel-code.netlify.app](https://hotel-code.netlify.app).
 
+## 👥 Integrantes
+
+- [**Haurane Gabriel Alejandro**](https://github.com/GabrielHaurane)
+- [**Brito Augusto Patricio**](https://github.com/BritoAugusto)
+
 ## 🚀 Características
 
 - **Búsqueda de habitaciones**: Filtra habitaciones según disponibilidad y otros criterios.
