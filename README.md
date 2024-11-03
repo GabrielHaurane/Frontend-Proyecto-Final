@@ -27,7 +27,7 @@ Puedes acceder a la versión en producción en [https://hotel-code.netlify.app](
 - **Bootstrap**: Diseño responsivo y componentes predefinidos.
 - **SweetAlert2**: Notificaciones interactivas y personalizadas para mejorar la experiencia del usuario.
 
-## 📸 Capturas de Pantalla
+## 📸 Captura de Pantalla
 
 ![Captura de HotelCode](https://github.com/user-attachments/assets/4daab127-8699-47ac-b418-fe02a37d5d9f)
 
