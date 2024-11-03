@@ -117,7 +117,7 @@ const Login = ({ setUsuarioLogueado }) => {
             }`}
           >
             <Card.Title>
-              <img src={logo} alt="" className="img-login mt-lg-3 mt-3" />
+              <img src={logo} alt="Logo-HotelCode" className="img-login mt-lg-3 mt-3" />
             </Card.Title>
             <Card.Body>
               <Form
