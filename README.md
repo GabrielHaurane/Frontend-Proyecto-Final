@@ -44,12 +44,12 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu máquina local.
    npm run dev
 El proyecto debería estar corriendo en http://localhost:5173.
 
- 📖## Uso del Proyecto
+## 📖 Uso del Proyecto
 1. Inicio de Sesión/Registro: Los usuarios pueden crear una cuenta y autenticarse en el sistema.
 2. Búsqueda de Habitaciones: En el inicio, los usuarios pueden ver las habitaciones disponibles y aplicar filtros según sus preferencias.
 3. Reserva de Habitaciones: Selecciona una habitación y especifica las fechas para realizar una reserva.
 4. Notificaciones: Al completar acciones como reserva o inicio de sesión, el sistema muestra notificaciones visuales para confirmar la operación.
-📄## Variables de Entorno
+## 📄 Variables de Entorno
 Asegúrate de configurar las siguientes variables en el archivo .env:
 VITE_API_HABITACION: URL del backend para realizar las solicitudes de las habitaciones y reservas.
 Ejemplo:
