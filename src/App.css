@@ -24,6 +24,9 @@
 .backS{
   background-color: var(--azul-marino);
 }
+.backCC{
+  background-color: #444444;
+}
 .backQ{
   background-color: var(--morado);
 }
@@ -31,10 +34,13 @@
   background-color: var(--blanco-marfil);
 }
 .Acerca{
-  background-color: var(--verde-esmeralda);
+  background-color: var(--dorado-metalico);
 }
 .tama1{
     font-size: 4em;
+}
+.text-justify{
+  text-align: justify;
 }
 .caption-centered {
     position: absolute;
