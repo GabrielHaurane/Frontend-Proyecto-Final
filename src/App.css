@@ -42,6 +42,9 @@
 .text-justify{
   text-align: justify;
 }
+.mainSection{
+  flex-grow: 1;
+}
 .caption-centered {
     position: absolute;
     top: 50%;

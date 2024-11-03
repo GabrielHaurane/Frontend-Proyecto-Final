@@ -10,16 +10,16 @@ const Galeria = () => {
             <h1 className='text-center my-3'>Nuestros Servicios</h1>
             <section className='d-flex flex-column flex-md-row justify-content-evenly'>
               <div>
-              <p><i className="bi bi-dot fs-5"></i>Desayuno buffet americano</p>
-              <p><i className="bi bi-dot fs-5"></i>Spa</p>
-              <p><i className="bi bi-dot fs-5"></i>Solarium</p>
-              <p><i className="bi bi-dot fs-5"></i>Room Service</p>
+              <p><i className="bi bi-dot fs-5"></i><b> Desayuno buffet americano</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Spa</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Solarium</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Room Service</b></p>
               </div>
               <div>
-              <p><i className="bi bi-dot fs-5"></i>Restaurant Nélida</p>
-              <p><i className="bi bi-dot fs-5"></i>Parking</p>
-              <p><i className="bi bi-dot fs-5"></i>Gimnasio</p>
-              <p><i className="bi bi-dot fs-5"></i>WiFi sin cargo</p>
+              <p><i className="bi bi-dot fs-5"></i><b> Restaurant Nélida</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Parking</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Gimnasio</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> WiFi sin cargo</b></p>
               </div>
             </section>
             <section className='d-flex flex-wrap justify-content-center'>

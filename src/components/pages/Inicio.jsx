@@ -98,7 +98,7 @@ useEffect(()=>{
           className="btn backC text-white" 
           onClick={() => navegacion('/login')}
         >
-          Iniciar Sesión
+          RESERVA YA
         </button>
       </section>
       )}

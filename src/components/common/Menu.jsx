@@ -110,7 +110,7 @@ const Menu = ({ usuarioLogueado, setUsuarioLogueado }) => {
                   className="nav-link text-white d-flex flex-wrap align-self-center text-center"
                   to="/login"
                 >
-                  Reservar
+                  Iniciar Sesion
                 </NavLink>
               )}
               <NavLink
