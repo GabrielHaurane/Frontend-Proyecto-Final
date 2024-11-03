@@ -22,20 +22,20 @@ const Reservas = ({ email, token }) => {
     cargarReservas();
   }, [email, token]);
   return (
-    <div className="mainSection container">
-      <div>
-        <h1>Mis Reservas</h1>
-      </div>
+    <div className="backQS flex-grow-1">
+
+    <div className=" container">
+        <h1 className="text-center my-3">Mis Reservas</h1>
       <div className="tabla-scroll">
         <Table responsive striped>
           <thead>
             <tr>
-              <th>Fila</th>
-              <th>Tipo Habitacion</th>
-              <th>Imagen</th>
-              <th>Fecha Entrada</th>
-              <th>Fecha Salida</th>
-              <th>Opciones</th>
+              <th className="text-center">Fila</th>
+              <th className="text-center">Tipo Habitacion</th>
+              <th className="text-center">Imagen</th>
+              <th className="text-center">Fecha Entrada</th>
+              <th className="text-center">Fecha Salida</th>
+              <th className="text-center">Opciones</th>
             </tr>
           </thead>
           <tbody>
@@ -46,7 +46,7 @@ const Reservas = ({ email, token }) => {
                   reserva={reserva}
                   fila={index + 1}
                   setListaReservas={setListaReservas}
-                ></ItemReservas>
+                  ></ItemReservas>
               ))
             ) : (
               <tr>
@@ -59,6 +59,7 @@ const Reservas = ({ email, token }) => {
         </Table>
       </div>
     </div>
+  </div>
   );
 };
 

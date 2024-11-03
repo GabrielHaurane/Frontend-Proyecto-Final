@@ -117,7 +117,7 @@ const Administrador = ({ email, token }) => {
   };
 
   return (
-    <section className="mainSection container-fluid bg-registro bg-admin">
+    <section className="flex-grow-1 container-fluid bg-registro bg-admin">
       <div className="text-center my-5">
         <h1 className="titulo-admin">Administración Hotel Code</h1>
       </div>

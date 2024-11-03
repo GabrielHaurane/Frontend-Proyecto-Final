@@ -97,7 +97,7 @@ const Login = ({ setUsuarioLogueado }) => {
   };
 
   return (
-    <section className="container text-center my-5 m-auto sectionLogin mainSection">
+    <section className="container text-center my-5 m-auto sectionLogin flex-grow-1">
       <Container>
         <Row className="justify-content-center">
           <div className="col-lg-6 d-flex my-lg-5 mt-3 ">

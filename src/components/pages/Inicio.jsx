@@ -19,7 +19,7 @@ useEffect(()=>{
   }
 },[])
   return (
-    <div className="mainSection">
+    <div className="flex-grow-1">
       <Carousel interval={null}>
         <Carousel.Item>
           <img

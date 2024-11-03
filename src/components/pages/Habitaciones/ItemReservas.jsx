@@ -50,9 +50,9 @@ const ItemReservas = ({ reserva, fila, setListaReservas }) => {
 
   return (
     <tr>
-      <td>{fila}</td>
-      <td>{habitacion ? habitacion.tipoHabitacion : "Cargando..."}</td>
-      <td>
+      <td className="text-center">{fila}</td>
+      <td className="text-center">{habitacion ? habitacion.tipoHabitacion : "Cargando..."}</td>
+      <td className="text-center">
         {habitacion ? (
           <img
             src={habitacion.imagen}
@@ -63,11 +63,11 @@ const ItemReservas = ({ reserva, fila, setListaReservas }) => {
           "Cargando..."
         )}
       </td>
-      <td>{formatearFecha(fechaEntrada)}</td>
-      <td>{formatearFecha(fechaSalida)}</td>
-      <td>
+      <td className="text-center">{formatearFecha(fechaEntrada)}</td>
+      <td className="text-center">{formatearFecha(fechaSalida)}</td>
+      <td className="text-center">
         <Button variant="danger" onClick={eliminarReserva}>
-          Eliminar
+        <i className="bi bi-trash"></i>
         </Button>
       </td>
     </tr>

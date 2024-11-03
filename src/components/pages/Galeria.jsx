@@ -4,6 +4,8 @@ import { galeriaIMG1, galeriaIMG10, galeriaIMG11, galeriaIMG2, galeriaIMG3, gale
 
 const Galeria = () => {
     return (
+      <div className='backQS'>
+        
         <Container>
             <h1 className='text-center my-3'>Nuestra Galeria</h1>
             <section className='d-flex flex-wrap justify-content-center'>
@@ -13,7 +15,7 @@ const Galeria = () => {
             alt="imagen del hotel"
             width={400}
             height={200}
-          />
+            />
           <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
             src={galeriaIMG1}
@@ -34,21 +36,21 @@ const Galeria = () => {
             alt="imagen del hotel"
             width={400}
             height={200}
-          />
+            />
           <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
             src={galeriaIMG4}
             alt="imagen del hotel"
             width={400}
             height={200}
-          />
+            />
           <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
             src={galeriaIMG5}
             alt="imagen del hotel"
             width={400}
             height={200}
-          />
+            />
           <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
             src={galeriaIMG6}
@@ -69,7 +71,7 @@ const Galeria = () => {
             alt="imagen del hotel"
             width={400}
             height={200}
-          />
+            />
           <img
             className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
             src={galeriaIMG9}
@@ -93,6 +95,7 @@ const Galeria = () => {
           />
             </section>
         </Container>
+            </div>
     );
 };
 

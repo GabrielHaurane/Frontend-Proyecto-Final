@@ -33,9 +33,6 @@
 .Acerca{
   background-color: var(--verde-esmeralda);
 }
-.mainSection{
-    flex-grow: 1;
-}
 .tama1{
     font-size: 4em;
 }

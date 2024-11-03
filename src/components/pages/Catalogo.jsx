@@ -29,6 +29,7 @@ const Catalogo = () => {
   }, []);
 
   return (
+    <div className="backQS">
     <div className="container flex-grow-1">
       <h1 className="text-center my-3">Catálogo de Habitaciones</h1>
       <section className="d-flex justify-content-center">
@@ -49,6 +50,7 @@ const Catalogo = () => {
       )}
       </section>
     </div>
+      </div>
   );
 };
 
