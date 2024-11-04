@@ -21,7 +21,7 @@ const Footer = () => {
           
           <p className="text-white m-0 col-12">Trabaja con nosotros:</p>
           <p className="text-white m-0 col-12">Tel: +54 381 2584026</p>
-          <p className="text-white m-0 col-12">Email: hotelcode@gmail.com</p>
+          <p className="text-white m-0 col-12">Email: hotelcod3@gmail.com</p>
           
           
         </div>
