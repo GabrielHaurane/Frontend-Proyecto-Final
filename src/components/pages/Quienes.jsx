@@ -9,10 +9,10 @@ const Quienes = () => {
         <div className="col-12 col-md-8 backQ my-3 d-flex justify-content-center align-items-center flex-lg-row flex-column flex-wrap">
           <div className="d-flex flex-row flex-wrap">
             <div className="d-flex col-6 justify-content-center align-items-center">
-              <img className="col-11 h-75" src={gabrielH} />
+              <img className="col-11 h-75 object-fit-cover" src={gabrielH} />
             </div>
             <div className="d-flex col-6 justify-content-center align-items-center">
-              <img className="col-11 h-75" src={augustoB} />
+              <img className="col-11 h-75 object-fit-cover" src={augustoB} />
             </div>
             <Card.Body className="col-12 d-flex flex-row text-center">
               <div className="d-flex flex-column flex-wrap justify-content-center align-items-center">

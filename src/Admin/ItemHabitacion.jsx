@@ -52,7 +52,7 @@ const ItemHabitacion = ({ fila, setListaHabitaciones, habitacion }) => {
         <img
           src={habitacion.imagen}
           alt="imagen de una habitacion de hotel"
-          className="img-admin"
+          className="img-admin object-fit-cover"
         />
       </td>
       <td>{habitacion.precio} usd</td>

@@ -30,84 +30,84 @@ const Galeria = () => {
             </section>
             <section className='d-flex flex-wrap justify-content-center'>
             <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={hotelImg}
             alt="imagen del hotel"
             width={400}
             height={200}
             />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG1}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG2}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG3}
             alt="imagen del hotel"
             width={400}
             height={200}
             />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG4}
             alt="imagen del hotel"
             width={400}
             height={200}
             />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG5}
             alt="imagen del hotel"
             width={400}
             height={200}
             />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG6}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG7}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG8}
             alt="imagen del hotel"
             width={400}
             height={200}
             />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG9}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
             <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG10}
             alt="imagen del hotel"
             width={400}
             height={200}
           />
           <img
-            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded"
+            className="col-12 col-md-4 col-lg-3 border border-2 border-success-subtle m-2 rounded object-fit-cover"
             src={galeriaIMG11}
             alt="imagen del hotel"
             width={400}

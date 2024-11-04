@@ -24,7 +24,7 @@ useEffect(()=>{
       <Carousel interval={null}>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 object-fit-cover"
             src={primeraImg}
             alt="First slide"
             width={800}
@@ -47,7 +47,7 @@ useEffect(()=>{
 
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 object-fit-cover"
             src={segundaImg}
             alt="Second slide"
             width={800}
@@ -68,9 +68,9 @@ useEffect(()=>{
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item>
+        <Carousel.Item >
           <img
-            className="d-block w-100"
+            className="d-block w-100 object-fit-cover"
             src={terceraImg}
             alt="Third slide"
             width={800}
