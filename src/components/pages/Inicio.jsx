@@ -7,6 +7,7 @@ import {
 } from "../assets/imagenes.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 
 const Inicio = () => {
@@ -98,7 +99,7 @@ useEffect(()=>{
           className="btn backC text-white" 
           onClick={() => navegacion('/login')}
         >
-          RESERVA YA
+          RESERVAR
         </button>
       </section>
       )}
@@ -114,6 +115,9 @@ useEffect(()=>{
             
             height={580}
           />
+        </div>
+        <div className="text-center w-100 mb-3">
+        <Button className="backC border-0" onClick={()=> navegacion('/ubicacion')}>Ubicacion</Button>
         </div>
         <article className="pe-3 col-12 d-flex flex-column align-self-center text-justify">
           <p className="fs-5">
