@@ -15,7 +15,7 @@ const CardHabitacion = ({ habitacion }) => {
           <Card.Text>
             {habitacion.descripcion_breve}
           </Card.Text>
-          <div><b>${habitacion.precio}</b></div>
+          <div><b>U$D {habitacion.precio}</b></div>
         </Card.Body>
         <CardFooter className="d-flex align-content-md-end flex-md-wrap justify-content-end">
           <div>

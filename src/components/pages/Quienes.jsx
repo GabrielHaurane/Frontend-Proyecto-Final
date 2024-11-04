@@ -34,7 +34,7 @@ const Quienes = () => {
                   </Card.Text>
                   </div>
                 </div>
-                <Card.Text className="col-12 mt-4">
+                <Card.Text className="col-12 mt-4 fs-5">
                   “Nuestra misión es ofrecer una experiencia de estancia única y
                   cálida, donde cada huésped se sienta en un ambiente familiar,
                   rodeado de confort y elegancia. Aspiramos a ser la primera

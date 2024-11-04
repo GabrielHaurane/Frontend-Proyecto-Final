@@ -14,12 +14,18 @@ const Galeria = () => {
               <p><i className="bi bi-dot fs-5"></i><b> Spa</b></p>
               <p><i className="bi bi-dot fs-5"></i><b> Solarium</b></p>
               <p><i className="bi bi-dot fs-5"></i><b> Room Service</b></p>
-              </div>
-              <div>
-              <p><i className="bi bi-dot fs-5"></i><b> Restaurant Nélida</b></p>
               <p><i className="bi bi-dot fs-5"></i><b> Parking</b></p>
               <p><i className="bi bi-dot fs-5"></i><b> Gimnasio</b></p>
               <p><i className="bi bi-dot fs-5"></i><b> WiFi sin cargo</b></p>
+              
+              </div>
+              <div>
+              <p><i className="bi bi-dot fs-5"></i><b> Restaurant Nélida</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Habitacion individual</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Habitacion doble</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Habitacion familiar</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Suite Junior</b></p>
+              <p><i className="bi bi-dot fs-5"></i><b> Suite Presidencial</b></p>
               </div>
             </section>
             <section className='d-flex flex-wrap justify-content-center'>

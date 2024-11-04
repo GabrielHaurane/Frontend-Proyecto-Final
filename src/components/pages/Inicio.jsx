@@ -7,6 +7,7 @@ import {
 } from "../assets/imagenes.js";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 
 const Inicio = () => {
@@ -94,43 +95,40 @@ useEffect(()=>{
       </Carousel>
       {!usuarioLogueado && (
         <section className="text-center py-3 backCC">
-        <button 
-          className="btn backC text-white" 
-          onClick={() => navegacion('/login')}
-        >
-          RESERVA YA
-        </button>
-      </section>
+          <button className="btn-inicio" onClick={() => navegacion("/login")}>
+            RESERVAR
+          </button>
+        </section>
       )}
       <div className="text-center py-2 Acerca text-white">
         <h1>Acerca de Hotel Code</h1>
       </div>
       <section className="d-flex flex-wrap flex-column flex-lg-row text-white backCC p-3">
-      <div className="col-12  d-flex align-self-center justify-content-center mb-4">
+        <div className="col-12  d-flex align-self-center justify-content-center mb-4">
           <img
             className="w-100 p-0"
             src={hotelImg}
             alt="imagen del hotel"
-            
             height={580}
           />
         </div>
+        <div className="text-center w-100 mb-3">
+        <button className=" border-0 btn ubicacion fs-5" onClick={()=> navegacion('/ubicacion')}>Ubicación</button>
+        </div>
         <article className="pe-3 col-12 d-flex flex-column align-self-center text-justify">
           <p className="fs-5">
-            Fundado en el año 1995 por unos visionarios
-            emprendedores y apasionados de la tecnología, Gabriel Alejandro Haurane y
-            Augusto Patricio Brito, quienes soñaron con fusionar lo mejor de
-            la hospitalidad tradicional con los avances tecnológicos del futuro.
-            
+            Fundado en el año 1995 por unos visionarios emprendedores y
+            apasionados de la tecnología, Gabriel Alejandro Haurane y Augusto
+            Patricio Brito, quienes soñaron con fusionar lo mejor de la
+            hospitalidad tradicional con los avances tecnológicos del futuro.
           </p>
           <p className="fs-5">
-            Se consolidó como uno de los más prestigiosos
-            de la región, atrayendo a empresarios, artistas, y personalidades
-            del mundo de la tecnología y las startups. El Hotel Code no solo
-            ofrecía una estancia de lujo, sino que también se convirtió en un
-            centro de innovación, albergando conferencias tecnológicas,
-            lanzamientos de productos, y eventos exclusivos para los líderes del
-            sector.
+            Se consolidó como uno de los más prestigiosos de la región,
+            atrayendo a empresarios, artistas, y personalidades del mundo de la
+            tecnología y las startups. El Hotel Code ofrece una
+            estancia de lujo, siendo un centro de
+            innovación, que se convirtio en sede de conferencias tecnológicas, lanzamientos de
+            productos, y eventos exclusivos para los líderes del sector.
           </p>
           <p className="fs-5">
             Ubicado en una ciudad cosmopolita y vibrante, el hotel abrió sus
@@ -139,9 +137,7 @@ useEffect(()=>{
             tecnológica disponible en la época.
           </p>
         </article>
-        
       </section>
-     
     </div>
   );
 };
