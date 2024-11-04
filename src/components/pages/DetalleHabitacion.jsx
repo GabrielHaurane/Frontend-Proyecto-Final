@@ -113,7 +113,7 @@ if (Object.keys(errores).length > 0) {
         <Card className="d-flex flex-xl-row flex-column mb-4">
           <div className="d-flex flex-wrap align-content-center">
             <img
-              className="col-12 rounded-top-2"
+              className="col-12 rounded-top-2 object-fit-cover"
               src={habitacion?.imagen || ""}
               alt="Imagen de la habitación"
             />

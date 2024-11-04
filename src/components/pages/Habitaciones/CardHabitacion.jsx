@@ -8,7 +8,7 @@ const CardHabitacion = ({ habitacion }) => {
     <div>
       <Card className="d-flex flex-md-row flex-column mb-3">
         <div className="w-100">
-          <img className="col-12 rounded-top-2" src={habitacion.imagen || galeriaIMG1} alt={habitacion.tipoHabitacion} />
+          <img className="col-12 rounded-top-2 object-fit-cover" src={habitacion.imagen || galeriaIMG1} alt={habitacion.tipoHabitacion} />
         </div>
         <Card.Body className="col-12">
           <Card.Title>{habitacion.tipoHabitacion}</Card.Title>
