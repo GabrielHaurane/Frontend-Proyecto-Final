@@ -10,6 +10,7 @@ const DetalleHabitacion = () => {
   const [fechaEntradaa, setFechaEntradaa] = useState("");
   const [fechaSalidaa, setFechaSalidaa] = useState("");
   const today = new Date().toISOString().split("T")[0];
+  const [errores, setErrores]=useState("")
 
   useEffect(() => {
     const obtenerHabitacion = async () => {
@@ -30,6 +31,29 @@ const DetalleHabitacion = () => {
 
   const handleReserva = async (e) => {
     e.preventDefault();
+
+let errores = {}
+if (!fechaEntradaa) {
+  errores.fechaEntrada = "Por favor ingrese una fecha de entrada.";
+  
+}
+if (!fechaSalidaa) {
+  errores.fechaSalida="Por favor ingrese una fecha de entrada."
+  
+}
+
+ if (fechaEntradaa && fechaSalidaa && fechaEntradaa > fechaSalidaa) {
+   errores.fechaSalida =
+     "La fecha de salida debe ser posterior a la fecha de entrada.";
+ }
+
+if (Object.keys(errores).length > 0) {
+  setErrores(errores);
+  return;
+} else {
+  setErrores({});
+}
+
     const usuario = JSON.parse(sessionStorage.getItem("userKey"));
 
     if (!usuario) {
@@ -137,7 +161,7 @@ const DetalleHabitacion = () => {
               </b>
             </div>
 
-            <Form onSubmit={handleReserva}>
+            <Form onSubmit={handleReserva} noValidate>
               <Form.Group className="col-12" controlId="formFechaEntrada">
                 <Form.Label>Fecha de Entrada</Form.Label>
                 <Form.Control
@@ -147,6 +171,9 @@ const DetalleHabitacion = () => {
                   min={today}
                   required
                 />
+                {errores.fechaEntrada && (
+                  <p className="text-danger fw-bold">{errores.fechaEntrada}</p>
+                )}
               </Form.Group>
 
               <Form.Group className="col-12" controlId="formFechaSalida">
@@ -158,7 +185,11 @@ const DetalleHabitacion = () => {
                   min={fechaEntradaa}
                   required
                 />
+                {errores.fechaSalida && (
+                  <p className="text-danger fw-bold">{errores.fechaSalida}</p>
+                )}
               </Form.Group>
+
               <div className="d-flex align-content-md-end flex-md-wrap justify-content-end my-2">
                 <Button variant="dark" type="submit" className="mt-2">
                   Reservar
