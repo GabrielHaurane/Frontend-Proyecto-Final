@@ -29,7 +29,7 @@ Puedes acceder a la versión en producción en [https://hotel-code.netlify.app](
 
 ## 📸 Captura de Pantalla
 
-![Captura de HotelCode](https://github.com/user-attachments/assets/4daab127-8699-47ac-b418-fe02a37d5d9f)
+![Hotel code](https://github.com/user-attachments/assets/b8c864d8-0418-418d-bf0e-b83448574eff)
 
 ## 📂 Instalación y Ejecución Local
 
