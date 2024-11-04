@@ -129,7 +129,14 @@ p.texto-opcion:hover {
   height: 120px;
   object-fit: cover;
 }
-
+.ubicacion{
+  background-color: var(--gris-plomo);
+  color: white;
+}
+.ubicacion:hover{
+background-color: #0d253a;
+color: white;
+}
 /* Estilos Admin */
 .tabla-scroll{
   max-height: 400px;
@@ -154,6 +161,28 @@ p.texto-opcion:hover {
     color: #001f3f;
     box-shadow: 0px 0px 10px #FFD700;
     transform: scale(1.05);
+  
+}
+
+.btn-inicio{
+  background-color: #001f3f;
+    color: #D4AF37;
+    padding: 25px;
+    border: 2px solid #D4AF37;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+     width: 45%;
+}
+
+.btn-inicio:hover{
+ background-color: #D4AF37;
+    color: #001f3f;
+    box-shadow: 0px 0px 10px #FFD700;
+    transform: scale(1.05);
+    width: 60%;
+    font-size: larger;
   
 }
 
@@ -204,5 +233,24 @@ p.texto-opcion:hover {
     }
     .sectionLogin{
         padding: 40px;
+    }
+
+    .btn-inicio{
+      width: 40%;
+    }
+    .btn-inicio:hover{
+      width: 60%;
+      font-size: larger;
+    }
+}
+
+@media (min-width : 1024px) {
+  .btn-inicio{
+      width: 40%;
+      font-size: 30px;
+    }
+  .btn-inicio:hover{
+      width: 50%;
+      font-size: 35px;
     }
 }
