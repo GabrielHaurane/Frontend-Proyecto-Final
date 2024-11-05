@@ -5,6 +5,9 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const Contacto = () => {
+  const URLService = import.meta.env.SERVICE
+  const URLTemplate = import.meta.env.TEMPLATE
+  const URLPublicKey = import.meta.env.PUBLIC_KEY
   const form = useRef();
   const {
     register,
@@ -14,8 +17,8 @@ const Contacto = () => {
   } = useForm();
   const sendEmail = (e) => {
     emailjs
-      .sendForm("service_382cekq", "template_p4nt5ag", form.current, {
-        publicKey: "-NeKG0yvBE3YS21ux",
+      .sendForm(URLService, URLTemplate, form.current, {
+        publicKey: URLPublicKey,
       })
       .then(
         () => {
