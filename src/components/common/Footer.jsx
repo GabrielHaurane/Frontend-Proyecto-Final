@@ -66,8 +66,7 @@ const Footer = () => {
             className="text-white text-decoration-none"
           >
             Términos y Condiciones
-          </a>{" "}
-          |{" "}
+          </a>
           <a
             href="/politica-privacidad"
             className="text-white text-decoration-none"
