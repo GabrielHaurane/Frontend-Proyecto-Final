@@ -19,8 +19,8 @@ const Footer = () => {
             <p className="text-white m-0">Email: hotelcod3@gmail.com</p>
           </div>
         </div>
-        {/* Redes Sociales */}
-        <div className="d-flex mb-4 ">
+        
+        <div className="d-flex mb-4 flex-wrap">
           <a
             href="https://www.facebook.com"
             target="_blank"
@@ -55,7 +55,7 @@ const Footer = () => {
           </a>
         </div>
         </div>
-        {/* Información Legal y Derechos Reservados */}
+        
         <div className="text-center text-white mt-md-3 container col-12">
           <p className="m-0">
             © {new Date().getFullYear()} Hotel Code. Todos los derechos
